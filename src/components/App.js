@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Navigation from './Nav';
+import RecipesList from './RecipesList';
 import '../App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Navigation />
-        Hello World
+        <RecipesList />
       </div>
     );
   }
