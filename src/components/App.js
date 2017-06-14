@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './Nav';
-import RecipesList from './RecipesList';
+import RecipesList from '../containers/RecipesList';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 

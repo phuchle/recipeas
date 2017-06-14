@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddRecipe from './AddRecipe';
+import { connect } from 'react-redux';
 
 export default class RecipesList extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class RecipesList extends Component {
   }
   showAddRecipe(event) {
     event.preventDefault();
+
     this.setState({
       showAddRecipe: true
     });
@@ -21,10 +23,14 @@ export default class RecipesList extends Component {
   closeModal(event) {
     event.preventDefault();
     const target = event.target
-    if (target.id === 'myModal' || target.classList.contains('close-modal')) {
-      this.setState({
-        showAddRecipe: false
-      });
+
+    if (
+      target.id === 'myModal' ||
+      target.classList.contains('close-modal') ||
+      target.classList.contains('submit-recipe')) {
+        this.setState({
+          showAddRecipe: false
+        });
     }
   }
   render() {
@@ -36,4 +42,8 @@ export default class RecipesList extends Component {
       </div>
     )
   }
+}
+
+const mapStateToProps = (state) => {
+
 }
