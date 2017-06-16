@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddRecipe from './AddRecipe';
 import { connect } from 'react-redux';
 
-export default class RecipesList extends Component {
+class RecipesList extends Component {
   constructor(props) {
     super(props);
 
@@ -12,6 +12,7 @@ export default class RecipesList extends Component {
 
     this.showAddRecipe = this.showAddRecipe.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.renderList = this.renderList.bind(this);
   }
   showAddRecipe(event) {
     event.preventDefault();
@@ -33,10 +34,34 @@ export default class RecipesList extends Component {
         });
     }
   }
+  renderList() {
+    console.log(this.props.recipes);
+    return this.props.recipes.map(recipe => {
+      const ingredientsList = recipe.ingredients.split(',').map(ingredient => {
+        return (
+          <li className="list-group-item" key={recipe.title + ingredient}>
+            { ingredient }
+          </li>
+        )
+      });
+
+      return (
+        <li className="list-group-item" key={recipe.title}>
+          <h4>{recipe.title}</h4>
+          <ul className="list-group">
+            { ingredientsList }
+          </ul>
+        </li>
+      )
+    });
+  }
   render() {
     return (
       <div className="container">
         <h1>Recipes</h1>
+        <ul>
+          { this.renderList() }
+        </ul>
         <button className="btn btn-primary" onClick={this.showAddRecipe}>Add Recipe</button>
         <AddRecipe display={this.state.showAddRecipe} closeModal={this.closeModal}/>
       </div>
@@ -45,5 +70,9 @@ export default class RecipesList extends Component {
 }
 
 const mapStateToProps = (state) => {
-
+  return {
+    recipes: state.recipes
+  };
 }
+
+export default connect(mapStateToProps)(RecipesList);

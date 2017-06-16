@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import Recipes from './Recipes';
 
 const RootReducer = combineReducers({
-  Recipes
+  recipes: Recipes
 });
 
 export default RootReducer;

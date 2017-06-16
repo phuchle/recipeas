@@ -12,12 +12,18 @@ class AddRecipe extends Component {
     }
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleIngredientsChange = this.handleIngredientsChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleTitleChange(event) {
     this.setState({ title: event.target.value });
   }
   handleIngredientsChange(event) {
     this.setState({ ingredients: event.target.value });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.closeModal(event);
+    this.props.dispatch(addRecipe(this.state));
   }
   render() {
     const modalDisplay = {
@@ -53,7 +59,7 @@ class AddRecipe extends Component {
           <div className="pull-right">
             <button
               className="btn btn-primary submit-recipe"
-              onClick={this.props.handleSubmit}>
+              onClick={this.handleSubmit}>
               Add Recipe
             </button>
             <button
@@ -68,15 +74,4 @@ class AddRecipe extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    handleSubmit: (event) => {
-      event.preventDefault();
-      dispatch(addRecipe(this.state));
-      ownProps.closeModal(event);
-      console.log('logged');
-    }
-  }
-}
-
-export default connect(null, mapDispatchToProps)(AddRecipe);
+export default connect()(AddRecipe);
