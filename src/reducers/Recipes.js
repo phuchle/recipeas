@@ -3,7 +3,7 @@ import { ADD_RECIPE, REMOVE_RECIPE } from '../actions';
 const defaultRecipes = [
   {
     title: 'Pumpkin Pie',
-    ingredients: 'Pumkin Puree, Sweetened Condensed Milk, Eggs, Pumkin Pie Spice, Pie Crust'
+    ingredients: 'Pumpkin Puree, Sweetened Condensed Milk, Eggs, Pumpkin Pie Spice, Pie Crust'
   },
   {
     title: 'Spaghetti',
