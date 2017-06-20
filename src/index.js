@@ -15,7 +15,9 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  saveState(store.getState().recipes);
+  saveState({
+    recipes: store.getState().recipes
+  });
 });
 
 ReactDOM.render(
