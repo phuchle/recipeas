@@ -8,9 +8,9 @@ export const addRecipe = recipe => {
   }
 }
 
-export const removeRecipe = recipe => {
+export const removeRecipe = recipeTitle => {
   return {
     type: REMOVE_RECIPE,
-    recipe: recipe
+    recipeTitle: recipeTitle
   }
 }

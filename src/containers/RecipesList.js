@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import AddRecipe from './AddRecipe';
+import { removeRecipe } from '../actions/index';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Recipe from '../components/Recipe';
 
 class RecipesList extends Component {
   constructor(props) {
@@ -35,7 +38,9 @@ class RecipesList extends Component {
     }
   }
   renderList() {
-    console.log(this.props.recipes);
+    const { removeRecipe } = this.props;
+    // console.log(this.props.removeRecipe);
+
     return this.props.recipes.map(recipe => {
       const ingredientsList = recipe.ingredients.split(',').map(ingredient => {
         return (
@@ -47,10 +52,11 @@ class RecipesList extends Component {
 
       return (
         <li className="list-group-item" key={recipe.title}>
-          <h4>{recipe.title}</h4>
-          <ul className="list-group">
-            { ingredientsList }
-          </ul>
+          <Recipe
+            title={recipe.title}
+            ingredients={ingredientsList}
+            removeRecipe={removeRecipe}
+          />
         </li>
       )
     });
@@ -69,10 +75,17 @@ class RecipesList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     recipes: state.recipes
   };
 }
 
-export default connect(mapStateToProps)(RecipesList);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ removeRecipe }, dispatch);
+
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RecipesList);

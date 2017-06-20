@@ -23,7 +23,7 @@ const Recipes = (state = defaultRecipes, action) => {
         action.recipe
       ]
     case REMOVE_RECIPE:
-      return state.filter(recipe => recipe.name !== action.recipe.name );
+      return state.filter(recipe => recipe.title !== action.recipeTitle);
     default:
       return state;
   }
