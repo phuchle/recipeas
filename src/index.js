@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import RootReducer from './reducers/RootReducer';
 import App from './components/App';
 import { loadState, saveState } from './utils/localStorage';
+import throttle from 'lodash/throttle';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
@@ -14,11 +15,11 @@ const store = createStore(
   persistedState
 );
 
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   saveState({
     recipes: store.getState().recipes
   });
-});
+}, 1000));
 
 ReactDOM.render(
   <Provider store={store}>
