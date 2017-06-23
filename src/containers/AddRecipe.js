@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { addRecipe } from '../actions';
 import { connect } from 'react-redux';
 
-class AddRecipe extends Component {
+export class AddRecipe extends Component {
   constructor(props) {
     super(props);
 
