@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navigation from './Nav';
 import RecipesList from '../containers/RecipesList';
 import '../App.css';
