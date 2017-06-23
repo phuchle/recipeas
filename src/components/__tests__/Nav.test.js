@@ -1,13 +1,11 @@
 import React from 'react';
-import Navigation from '../../components/Nav';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import Navigation from '../Nav';
 
-test ('Navigation bar', () => {
-  it('renders without crashing', () => {
-    const component = renderer.create(
-      <Navigation />
-    );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+describe ('Navigation bar', () => {
+  test('renders without crashing', () => {
+    const wrapper = shallow(<Navigation />);
+
+    expect(wrapper.find('.navbar')).toHaveLength(1);
   });
 });

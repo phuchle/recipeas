@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Recipe from '../../components/Recipe';
+import Recipe from '../Recipe';
 
 const title = 'BLT';
 
@@ -28,19 +28,19 @@ const setup = () => {
 }
 
 describe('Recipe', () => {
-  it('renders without errors', () => {
+  test('renders without errors', () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper.find('.recipe-container')).toHaveLength(1);
   });
 
-  it('should render self with correct HTML', () => {
+  test('should render self with correct HTML', () => {
     const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('h4').text()).toBe('BLT');
+    expect(enzymeWrapper.find('h4').text()).toBe(title);
 
     expect(enzymeWrapper.find('ul').contains(ingredientsList)).toEqual(true);
 
   });
-  it('clicks delete correctly', () => {
+  test('clicks delete correctly', () => {
     const { enzymeWrapper } = setup();
     enzymeWrapper.find('button').simulate('click');
     expect(enzymeWrapper.unrendered.props.removeRecipe.mock.calls.length).toBe(1);
