@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { addRecipe } from '../actions';
 import { connect } from 'react-redux';
 
@@ -72,6 +73,12 @@ export class AddRecipe extends Component {
       </div>
     );
   }
+}
+
+AddRecipe.propTypes = {
+  display: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
 export default connect()(AddRecipe);
