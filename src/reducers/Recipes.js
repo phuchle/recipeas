@@ -1,6 +1,6 @@
 import { ADD_RECIPE, REMOVE_RECIPE } from '../actions';
 
-const defaultRecipes = [
+export const defaultRecipes = [
   {
     title: 'Pumpkin Pie',
     ingredients: 'Pumpkin Puree, Sweetened Condensed Milk, Eggs, Pumpkin Pie Spice, Pie Crust'
