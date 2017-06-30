@@ -17,15 +17,12 @@ export class RecipesList extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.renderList = this.renderList.bind(this);
   }
-  showAddRecipe(event) {
-    event.preventDefault();
-
+  showAddRecipe() {
     this.setState({
       showAddRecipe: true
     });
   }
   closeModal(event) {
-    event.preventDefault();
     const target = event.target
 
     if (
