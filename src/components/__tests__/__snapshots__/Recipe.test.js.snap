@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe renders without errors 1`] = `
+<div
+  className="recipe-container"
+>
+  <h4>
+    BLT
+  </h4>
+  <ul>
+    <li
+      className="list-group-item"
+    >
+      Bread
+    </li>
+    <li
+      className="list-group-item"
+    >
+       Bacon
+    </li>
+    <li
+      className="list-group-item"
+    >
+       Lettuce
+    </li>
+    <li
+      className="list-group-item"
+    >
+       Tomato
+    </li>
+  </ul>
+  <button
+    className="btn btn-danger"
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</div>
+`;

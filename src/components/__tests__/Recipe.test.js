@@ -1,4 +1,5 @@
 import React from 'react';
+import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import Recipe from '../Recipe';
 
@@ -12,13 +13,13 @@ const ingredientsList = 'Bread, Bacon, Lettuce, Tomato'.split(',').map(ingredien
   );
 });
 
-const setup = () => {
-  const props = {
-    title: title,
-    ingredients: ingredientsList,
-    removeRecipe: jest.fn()
-  };
+const props = {
+  title: title,
+  ingredients: ingredientsList,
+  removeRecipe: jest.fn()
+};
 
+const setup = () => {
   const enzymeWrapper = shallow(<Recipe {...props} />);
 
   return {
@@ -29,8 +30,9 @@ const setup = () => {
 
 describe('Recipe', () => {
   test('renders without errors', () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('.recipe-container')).toHaveLength(1);
+    const component = renderer.create(<Recipe { ...props }/>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   test('should render self with correct HTML', () => {

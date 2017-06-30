@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
 
-class RecipesList extends Component {
+export class RecipesList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       showAddRecipe: false
-    }
+    };
 
     this.showAddRecipe = this.showAddRecipe.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -39,7 +39,6 @@ class RecipesList extends Component {
   }
   renderList() {
     const { removeRecipe } = this.props;
-    // console.log(this.props.removeRecipe);
 
     return this.props.recipes.map(recipe => {
       const ingredientsList = recipe.ingredients.split(',').map(ingredient => {
@@ -58,7 +57,7 @@ class RecipesList extends Component {
             removeRecipe={removeRecipe}
           />
         </li>
-      )
+      );
     });
   }
   render() {
@@ -71,7 +70,7 @@ class RecipesList extends Component {
         <button className="btn btn-primary" onClick={this.showAddRecipe}>Add Recipe</button>
         <AddRecipe display={this.state.showAddRecipe} closeModal={this.closeModal}/>
       </div>
-    )
+    );
   }
 }
 
