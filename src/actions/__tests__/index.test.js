@@ -4,14 +4,12 @@ describe('Actions', () => {
   test('creates an action to add a recipe', () => {
     const recipeObject = {
       title: 'Hamburger',
-      ingredients: 'Ground Beef, Bread, Lettuce, Tomato'
+      ingredients: 'Ground Beef, Bread, Lettuce, Tomato',
+      open: false
     };
     const expectedAction = {
       type: ADD_RECIPE,
-      recipe: {
-        title: 'Hamburger',
-        ingredients: 'Ground Beef, Bread, Lettuce, Tomato'
-      }
+      recipe: recipeObject,
     };
     expect(addRecipe(recipeObject)).toEqual(expectedAction);
   });

@@ -6,7 +6,8 @@ describe('Recipes', () => {
   test('Creates action to add recipe', () => {
     const testRecipe = {
       title: 'BLT',
-      ingredients: 'Bacon, Lettuce, Tomato'
+      ingredients: 'Bacon, Lettuce, Tomato',
+      open: false
     };
     const action = addRecipe(testRecipe);
     ;
@@ -21,7 +22,8 @@ describe('Recipes', () => {
   test('Creates an action to remove recipe', () => {
     const testRecipe = {
       title: 'Spaghetti',
-      ingredients: 'Noodles, Pasta Sauce, Meatballs'
+      ingredients: 'Noodles, Pasta Sauce, Meatballs',
+      open: false
     };
     const action = removeRecipe(testRecipe.title);
     const expectedState = defaultRecipes.filter(recipe => {
@@ -34,7 +36,8 @@ describe('Recipes', () => {
   test('Does nothing on an unknown action', () => {
     const testRecipe = {
       title: 'Spaghetti',
-      ingredients: 'Noodles, Pasta Sauce, Meatballs'
+      ingredients: 'Noodles, Pasta Sauce, Meatballs',
+      open: false
     };
     const unknownActionCreator = (recipe) => {
       return {
