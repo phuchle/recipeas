@@ -1,4 +1,3 @@
-import { ADD_RECIPE, REMOVE_RECIPE } from '../../actions';
 import Recipes, { defaultRecipes } from '../Recipes';
 import { addRecipe, removeRecipe } from '../../actions/index';
 
