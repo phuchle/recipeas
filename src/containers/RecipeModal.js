@@ -46,8 +46,8 @@ const RecipeModal = (props) => {
 RecipeModal.propTypes = {
   show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
-  recipeTitle: PropTypes.string,
-  recipeIngredients: PropTypes.string,
+  recipeTitle: PropTypes.string.isRequired,
+  recipeIngredients: PropTypes.string.isRequired,
   modalTitle: PropTypes.string.isRequired,
   handleTitleChange: PropTypes.func.isRequired,
   handleIngredientsChange: PropTypes.func.isRequired,

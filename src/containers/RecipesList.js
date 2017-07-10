@@ -29,10 +29,13 @@ export class RecipesList extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetState = this.resetState.bind(this);
 
+    //methods that have to do with modal visibility
     this.showAddRecipe = this.showAddRecipe.bind(this);
     this.hideAddRecipe = this.hideAddRecipe.bind(this);
     this.showEditRecipe = this.showEditRecipe.bind(this);
     this.hideEditRecipe = this.hideEditRecipe.bind(this);
+
+    // Makes a list of Recipe components
     this.renderList = this.renderList.bind(this);
 
 
@@ -55,7 +58,6 @@ export class RecipesList extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.activeRecipe);
 
     if (this.state.displayAddRecipe) {
       this.props.addRecipe(this.state.activeRecipe);
@@ -126,9 +128,9 @@ export class RecipesList extends Component {
         </ListGroup>
         <Button bsStyle="primary" onClick={this.showAddRecipe}>Add Recipe</Button>
          <RecipeModal
+           modalTitle="Add Recipe"
            show={this.state.displayAddRecipe}
            onHide={this.hideAddRecipe}
-           modalTitle="Add Recipe"
            recipeTitle={this.state.activeRecipe.title}
            recipeIngredients={this.state.activeRecipe.ingredients}
            handleTitleChange={this.handleTitleChange}
@@ -136,9 +138,11 @@ export class RecipesList extends Component {
            handleSubmit={this.handleSubmit}
          />
          <RecipeModal
+           modalTitle="Edit Recipe"
            show={this.state.displayEditRecipe}
            onHide={this.hideEditRecipe}
-           modalTitle="Edit Recipe"
+           recipeTitle={this.state.activeRecipe.title}
+           recipeIngredients={this.state.activeRecipe.ingredients}
            handleTitleChange={this.handleTitleChange}
            handleIngredientsChange={this.handleIngredientsChange}
            handleSubmit={this.handleSubmit}
