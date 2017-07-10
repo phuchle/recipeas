@@ -16,7 +16,9 @@ const ingredientsList = 'Bread, Bacon, Lettuce, Tomato'.split(',').map(ingredien
 const props = {
   title: title,
   ingredients: ingredientsList,
-  removeRecipe: jest.fn()
+  removeRecipe: jest.fn(),
+  showEditRecipe: jest.fn(),
+  fillEditRecipeModal: jest.fn()
 };
 
 const setup = () => {
@@ -41,10 +43,5 @@ describe('Recipe', () => {
 
     expect(enzymeWrapper.find('ul').contains(ingredientsList)).toEqual(true);
 
-  });
-  test('clicks delete correctly', () => {
-    const { enzymeWrapper } = setup();
-    enzymeWrapper.find('button').simulate('click');
-    expect(enzymeWrapper.unrendered.props.removeRecipe.mock.calls.length).toBe(1);
   });
 });
