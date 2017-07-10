@@ -1,4 +1,4 @@
-import { ADD_RECIPE, REMOVE_RECIPE } from '../actions';
+import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE } from '../actions';
 
 export const defaultRecipes = [
   {
@@ -24,6 +24,16 @@ const Recipes = (state = defaultRecipes, action) => {
         ...state,
         action.recipe
       ]
+    case EDIT_RECIPE:
+      return state.map(recipe => {
+        if (recipe.title === action.recipe.title) {
+          return {
+            title: action.recipe.title,
+            ingredients: action.recipe.ingredients
+          }
+        }
+        return recipe;
+      });
     case REMOVE_RECIPE:
       return state.filter(recipe => recipe.title !== action.recipeTitle);
     default:
