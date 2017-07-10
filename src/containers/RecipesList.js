@@ -3,13 +3,13 @@ import { addRecipe, removeRecipe } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
+import RecipeModal from '../components/RecipeModal';
 import {
   Button,
   ListGroup,
   ListGroupItem,
   Collapse
 } from 'react-bootstrap';
-import RecipeModal from './RecipeModal';
 
 export class RecipesList extends Component {
   constructor(props) {
@@ -91,7 +91,16 @@ export class RecipesList extends Component {
     this.setState({ displayEditRecipe: false });
   }
   fillEditRecipeModal(title) {
+    const targetRecipe = this.props.recipes.filter(recipe => {
+      return recipe ? recipe.title = title: null;
+    });
 
+    this.setState({
+      activeRecipe: {
+        title: targetRecipe.title,
+        ingredients: targetRecipe.ingredients
+      }
+    });
   }
   renderList() {
     const { removeRecipe } = this.props;
