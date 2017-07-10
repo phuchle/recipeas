@@ -31,7 +31,10 @@ const RecipeModal = (props) => {
       <Modal.Footer>
         <Button
           bsStyle="primary"
-          onClick={props.handleSubmit}>
+          onClick={(event) => {
+            props.handleSubmit(event);
+            props.onHide();
+          }}>
           Submit
         </Button>
         <Button onClick={props.onHide}>

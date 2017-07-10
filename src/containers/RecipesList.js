@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addRecipe, removeRecipe } from '../actions/index';
+import { addRecipe, editRecipe, removeRecipe } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
@@ -28,6 +28,7 @@ export class RecipesList extends Component {
     this.handleIngredientsChange = this.handleIngredientsChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetState = this.resetState.bind(this);
+    this.fillEditRecipeModal = this.fillEditRecipeModal.bind(this);
 
     //methods that have to do with modal visibility
     this.showAddRecipe = this.showAddRecipe.bind(this);
@@ -42,6 +43,7 @@ export class RecipesList extends Component {
   }
   handleTitleChange(event) {
     this.setState({
+      ...this.state,
       activeRecipe: {
         ...this.state.activeRecipe,
         title: event.target.value
@@ -50,28 +52,16 @@ export class RecipesList extends Component {
   }
   handleIngredientsChange(event) {
     this.setState({
+      ...this.state,
       activeRecipe: {
         ...this.state.activeRecipe,
         ingredients: event.target.value
       }
     });
   }
-  handleSubmit(event) {
-    event.preventDefault();
-
-    if (this.state.displayAddRecipe) {
-      this.props.addRecipe(this.state.activeRecipe);
-      this.hideAddRecipe();
-    }
-    else if (this.state.displayEditRecipe) {
-      this.props.editRecipe(this.state.activeRecipe);
-      this.hideEditRecipe();
-    }
-
-    this.resetState();
-  }
   resetState() {
     this.setState({
+      ...this.state,
       activeRecipe: {
         title: '',
         ingredients: ''
@@ -79,28 +69,39 @@ export class RecipesList extends Component {
     });
   }
   showAddRecipe() {
-    this.setState({ displayAddRecipe: true });
+    this.setState({ ...this.state, displayAddRecipe: true });
   }
   hideAddRecipe() {
-    this.setState({ displayAddRecipe: false });
+    this.setState({ ...this.state, displayAddRecipe: false }, () => this.resetState());
   }
-  showEditRecipe(title) {
-    this.setState({ displayEditRecipe: true });
+  showEditRecipe() {
+    this.setState({ ...this.state, displayEditRecipe: true });
   }
-  hideEditRecipe(title) {
-    this.setState({ displayEditRecipe: false });
+  hideEditRecipe() {
+    this.setState({ ...this.state, displayEditRecipe: false }, () => this.resetState());
   }
   fillEditRecipeModal(title) {
-    const targetRecipe = this.props.recipes.filter(recipe => {
-      return recipe ? recipe.title = title: null;
+    const targetRecipe = this.props.recipes.find(recipe => {
+      return recipe.title === title;
     });
 
     this.setState({
+      ...this.state,
       activeRecipe: {
         title: targetRecipe.title,
         ingredients: targetRecipe.ingredients
       }
-    });
+    }, () => this.showEditRecipe());
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+
+    if (this.state.displayAddRecipe) {
+      this.props.addRecipe(this.state.activeRecipe);
+    }
+    else if (this.state.displayEditRecipe) {
+      this.props.editRecipe(this.state.activeRecipe);
+    }
   }
   renderList() {
     const { removeRecipe } = this.props;
@@ -120,8 +121,9 @@ export class RecipesList extends Component {
             <Recipe
               title={recipe.title}
               ingredients={ingredientsList}
-              showEditRecipe={() => this.showEditRecipe(recipe.title)}
+              showEditRecipe={this.showEditRecipe}
               removeRecipe={removeRecipe}
+              fillEditRecipeModal={this.fillEditRecipeModal}
             />
         </Collapse>
         </ListGroupItem>
@@ -168,7 +170,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ addRecipe, removeRecipe }, dispatch);
+  return bindActionCreators({ addRecipe, editRecipe, removeRecipe }, dispatch);
 
 }
 export default connect(
