@@ -21,7 +21,8 @@ export class RecipesList extends Component {
       activeRecipe: {
         title: '',
         ingredients: ''
-      }
+      },
+      targetTitle: ''
     }
     // methods that affect modal state
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -90,7 +91,8 @@ export class RecipesList extends Component {
       activeRecipe: {
         title: targetRecipe.title,
         ingredients: targetRecipe.ingredients
-      }
+      },
+      targetTitle: targetRecipe.title
     }, () => this.showEditRecipe());
   }
   handleSubmit(event) {
@@ -100,7 +102,7 @@ export class RecipesList extends Component {
       this.props.addRecipe(this.state.activeRecipe);
     }
     else if (this.state.displayEditRecipe) {
-      this.props.editRecipe(this.state.activeRecipe);
+      this.props.editRecipe(this.state.targetTitle, this.state.activeRecipe);
     }
   }
   renderList() {
