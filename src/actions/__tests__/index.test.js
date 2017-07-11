@@ -1,4 +1,4 @@
-import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE, addRecipe, editRecipe, removeRecipe } from '../../actions';
+import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE, addRecipe, editRecipe, removeRecipe } from '../index';
 
 describe('Actions', () => {
   test('creates an action to add a recipe', () => {
@@ -20,11 +20,13 @@ describe('Actions', () => {
       ingredients: 'Noodles, Pasta Sauce, Meatballs',
       open: false
     };
+    const targetTitle = 'Spaghetti';
     const expectedAction = {
       type: EDIT_RECIPE,
+      targetTitle: targetTitle,
       recipe: recipeObject
     };
-    expect(editRecipe(recipeObject)).toEqual(expectedAction);
+    expect(editRecipe(targetTitle, recipeObject)).toEqual(expectedAction);
   });
 
   test('creates an action to remove a recipe', () => {

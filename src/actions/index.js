@@ -9,9 +9,10 @@ export const addRecipe = recipe => {
   }
 }
 
-export const editRecipe = recipe => {
+export const editRecipe = (targetTitle, recipe) => {
   return {
     type: EDIT_RECIPE,
+    targetTitle: targetTitle,
     recipe: recipe
   }
 }

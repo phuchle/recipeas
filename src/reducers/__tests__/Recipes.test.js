@@ -1,9 +1,9 @@
 import Recipes, { defaultRecipes } from '../Recipes';
-import { addRecipe, removeRecipe } from '../../actions/index';
+import { addRecipe, editRecipe, removeRecipe } from '../../actions/index';
 
 
 describe('Recipes', () => {
-  test('Creates action to add recipe', () => {
+  test('Adds a new recipe to state', () => {
     const testRecipe = {
       title: 'BLT',
       ingredients: 'Bacon, Lettuce, Tomato',
@@ -19,7 +19,37 @@ describe('Recipes', () => {
     expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
   });
 
-  test('Creates an action to remove recipe', () => {
+  test('Edits target recipe with new ingredients', () => {
+    const newRecipe = {
+      title: 'Spaghetti',
+      ingredients: 'Noodles, Parmesean, Chicken',
+      open: false
+    };
+    const targetTitle = 'Spahgetti';
+    const action = editRecipe(targetTitle, newRecipe);
+    const expectedState = defaultRecipes.map(recipe => {
+      return recipe.title === targetTitle ? newRecipe : recipe;
+    });
+
+    expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
+  });
+
+  test('Edits existing recipe with new title', () => {
+    const newRecipe = {
+        title: 'Parm',
+        ingredients: 'Noodles, Parmesean, Chicken',
+        open: false
+      };
+    const targetTitle = 'Spaghetti';
+    const action = editRecipe(targetTitle, newRecipe);
+    const expectedState = defaultRecipes.map(recipe => {
+      return recipe.title === targetTitle ? newRecipe : recipe;
+    });
+
+    expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
+  });
+
+  test('Removes target recipe from state', () => {
     const testRecipe = {
       title: 'Spaghetti',
       ingredients: 'Noodles, Pasta Sauce, Meatballs',

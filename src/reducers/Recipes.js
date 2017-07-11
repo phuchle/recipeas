@@ -26,13 +26,9 @@ const Recipes = (state = defaultRecipes, action) => {
       ]
     case EDIT_RECIPE:
       return state.map(recipe => {
-        if (recipe.title === action.recipe.title) {
-          return {
-            title: action.recipe.title,
-            ingredients: action.recipe.ingredients
-          }
-        }
-        return recipe;
+        return recipe.title === action.targetTitle ?
+          action.recipe
+          : recipe;
       });
     case REMOVE_RECIPE:
       return state.filter(recipe => recipe.title !== action.recipeTitle);
