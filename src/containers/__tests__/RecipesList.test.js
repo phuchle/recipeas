@@ -1,11 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { RecipesList } from '../RecipesList';
 import { defaultRecipes } from '../../reducers/Recipes';
 import { removeRecipe } from '../../actions/index';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
 describe('Recipes List', () => {
   test('Renders without crashing', () => {
@@ -39,11 +40,22 @@ describe('Recipes List', () => {
 
   test('Add recipe button shows AddRecipe modal', () => {
     const wrapper = shallow(
-        <RecipesList recipes={defaultRecipes} removeRecipe={removeRecipe} />
+      <RecipesList recipes={defaultRecipes} removeRecipe={removeRecipe} />
     );
-    wrapper.find('.btn-primary').simulate('click');
+    wrapper.find(Button).simulate('click');
 
     // showAddRecipe controls visibility of AddRecipe modal
-    expect(wrapper.state().showAddRecipe).toEqual(true);
+    expect(wrapper.state().displayAddRecipe).toEqual(true);
   });
+
+  test('Edit button shows EditRecipe modal', () => {
+    const wrapper = mount(
+      <RecipesList recipes={defaultRecipes} removeRecipe={removeRecipe} />
+    );
+    wrapper.find('.edit-recipe').first().simulate('click');
+
+    expect(wrapper.state().displayEditRecipe).toEqual(true);
+  });
+
+  // TODO: maybe a delete button test is necessary?
 });

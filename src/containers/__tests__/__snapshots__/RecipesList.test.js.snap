@@ -47,7 +47,7 @@ exports[`Recipes List Renders without crashing 1`] = `
           </span>
         </ul>
         <button
-          className="btn btn-default btn btn-default"
+          className="edit-recipe btn btn-default"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -55,7 +55,7 @@ exports[`Recipes List Renders without crashing 1`] = `
           Edit
         </button>
         <button
-          className="btn btn-danger"
+          className="delete-recipe btn btn-danger"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -91,7 +91,7 @@ exports[`Recipes List Renders without crashing 1`] = `
           </span>
         </ul>
         <button
-          className="btn btn-default btn btn-default"
+          className="edit-recipe btn btn-default"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -99,7 +99,7 @@ exports[`Recipes List Renders without crashing 1`] = `
           Edit
         </button>
         <button
-          className="btn btn-danger"
+          className="delete-recipe btn btn-danger"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -140,7 +140,7 @@ exports[`Recipes List Renders without crashing 1`] = `
           </span>
         </ul>
         <button
-          className="btn btn-default btn btn-default"
+          className="edit-recipe btn btn-default"
           disabled={false}
           onClick={[Function]}
           type="button"
@@ -148,7 +148,7 @@ exports[`Recipes List Renders without crashing 1`] = `
           Edit
         </button>
         <button
-          className="btn btn-danger"
+          className="delete-recipe btn btn-danger"
           disabled={false}
           onClick={[Function]}
           type="button"

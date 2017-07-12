@@ -40,7 +40,6 @@ export class RecipesList extends Component {
     // Makes a list of Recipe components
     this.renderList = this.renderList.bind(this);
 
-
   }
   handleTitleChange(event) {
     this.setState({
@@ -85,6 +84,8 @@ export class RecipesList extends Component {
     const targetRecipe = this.props.recipes.find(recipe => {
       return recipe.title === title;
     });
+
+    // TODO: search for recipe by ID
 
     this.setState({
       ...this.state,
