@@ -5,12 +5,12 @@ import { Button } from 'react-bootstrap';
 const Recipe = ({ title, ingredients, showEditRecipe, removeRecipe, fillEditRecipeModal }) => {
   return (
     <div className='recipe-container'>
-        <h4>{title}</h4>
-        <ul>{ingredients}</ul>
-        <Button onClick={() => {
-          fillEditRecipeModal(title);
-        }} className="btn btn-default">Edit</Button>
-        <Button bsStyle="danger" onClick={() => removeRecipe(title)}>Delete</Button>
+      <h4>{title}</h4>
+      <ul>{ingredients}</ul>
+      <Button className="edit-recipe" onClick={() => {
+        fillEditRecipeModal(title);
+      }}>Edit</Button>
+      <Button className="delete-recipe" bsStyle="danger" onClick={() => removeRecipe(title)}>Delete</Button>
     </div>
   );
 }

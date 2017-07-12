@@ -30,7 +30,7 @@ exports[`Recipe renders without errors 1`] = `
     </li>
   </ul>
   <button
-    className="btn btn-default btn btn-default"
+    className="edit-recipe btn btn-default"
     disabled={false}
     onClick={[Function]}
     type="button"
@@ -38,7 +38,7 @@ exports[`Recipe renders without errors 1`] = `
     Edit
   </button>
   <button
-    className="btn btn-danger"
+    className="delete-recipe btn btn-danger"
     disabled={false}
     onClick={[Function]}
     type="button"
