@@ -13,6 +13,11 @@ html, body {
   padding-bottom: 10px;
 }
 
-button {
-  margin: 5px !important;
+button.btn {
+  margin: 5px;
+}
+
+.recipe-title:hover {
+  cursor: pointer;
+  color: #55dfb6;
 }
