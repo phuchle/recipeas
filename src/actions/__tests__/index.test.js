@@ -1,4 +1,5 @@
 import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE, addRecipe, editRecipe, removeRecipe } from '../index';
+import { v4 } from 'uuid';
 
 describe('Actions', () => {
   test('creates an action to add a recipe', () => {
@@ -6,11 +7,11 @@ describe('Actions', () => {
       title: 'Hamburger',
       ingredients: 'Ground Beef, Bread, Lettuce, Tomato'
     };
-    const expectedAction = {
-      type: ADD_RECIPE,
-      recipe: recipeObject
-    };
-    expect(addRecipe(recipeObject)).toEqual(expectedAction);
+
+    expect(addRecipe(recipeObject)).toHaveProperty('type', ADD_RECIPE);
+    expect(addRecipe(recipeObject)).toHaveProperty('recipe', recipeObject);
+    expect(addRecipe(recipeObject)).toHaveProperty('id');
+    expect(Object.keys(addRecipe(recipeObject)).length).toBe(3);
   });
 
   test('creates an action to edit a recipe', () => {
@@ -18,21 +19,21 @@ describe('Actions', () => {
       title: 'Spaghetti',
       ingredients: 'Noodles, Pasta Sauce, Meatballs'
     };
-    const targetTitle = 'Spaghetti';
+    const targetId = v4();
     const expectedAction = {
       type: EDIT_RECIPE,
-      targetTitle: targetTitle,
+      id: targetId,
       recipe: recipeObject
     };
-    expect(editRecipe(targetTitle, recipeObject)).toEqual(expectedAction);
+    expect(editRecipe(targetId, recipeObject)).toEqual(expectedAction);
   });
 
   test('creates an action to remove a recipe', () => {
-    const recipeTitle = 'Spaghetti';
+    const targetId = v4();
     const expectedAction = {
       type: REMOVE_RECIPE,
-      recipeTitle: recipeTitle
+      id: targetId
     };
-    expect(removeRecipe(recipeTitle)).toEqual(expectedAction);
+    expect(removeRecipe(targetId)).toEqual(expectedAction);
   });
 });
