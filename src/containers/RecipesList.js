@@ -7,8 +7,7 @@ import RecipeModal from '../components/RecipeModal';
 import {
   Button,
   ListGroup,
-  ListGroupItem,
-  Collapse
+  ListGroupItem
 } from 'react-bootstrap';
 
 export class RecipesList extends Component {
