@@ -5,7 +5,8 @@ import Recipe from '../Recipe';
 
 const title = 'BLT';
 
-const ingredientsList = 'Bread, Bacon, Lettuce, Tomato'.split(',').map(ingredient => {
+const ingredientsList = 'Bread, Bacon, Lettuce, Tomato'.split(',')
+.map(ingredient => {
   return (
     <li className="list-group-item" key={title + ingredient}>
       { ingredient }

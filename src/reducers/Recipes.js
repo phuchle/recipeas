@@ -3,17 +3,15 @@ import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE } from '../actions';
 export const defaultRecipes = [
   {
     title: 'Pumpkin Pie',
-    ingredients: 'Pumpkin Puree, Sweetened Condensed Milk, Eggs, Pumpkin Pie Spice, Pie Crust',
-    open: false
+    ingredients: 'Pumpkin Puree, Sweetened Condensed Milk, Eggs, Pumpkin Pie Spice, Pie Crust'
   },
   {
     title: 'Spaghetti',
-    ingredients: 'Noodles, Pasta Sauce, Meatballs',
-    open: false
+    ingredients: 'Noodles, Pasta Sauce, Meatballs'
   },
   {
     title: 'Peanut Butter Mug Cake',
-    ingredients: 'Peanut Butter, Eggs, Baking Powder, Sugar', open: false
+    ingredients: 'Peanut Butter, Eggs, Baking Powder, Sugar'
   }
 ];
 

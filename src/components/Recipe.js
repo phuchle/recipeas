@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Button, Collapse, Well } from 'react-bootstrap';
 
-const Recipe = ({ title, ingredients, showEditRecipe, removeRecipe, fillEditRecipeModal }) => {
-  return (
-    <div className='recipe-container'>
-      <h4>{title}</h4>
-      <ul>{ingredients}</ul>
-      <Button className="edit-recipe" onClick={() => {
-        fillEditRecipeModal(title);
-      }}>Edit</Button>
-      <Button className="delete-recipe" bsStyle="danger" onClick={() => removeRecipe(title)}>Delete</Button>
-    </div>
-  );
+class Recipe extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+    this.toggleRecipe = this.toggleRecipe.bind(this);
+  }
+  toggleRecipe() {
+    this.setState({ open: !this.state.open });
+  }
+  render() {
+    return (
+      <div className='recipe-container'>
+        <h4 className="recipe-title" onClick={this.toggleRecipe}>{this.props.title}</h4>
+        <Collapse in={this.state.open}>
+          <div> {/* this div exists for smooth collapse animation */}
+            <Well>
+              <ul>{this.props.ingredients}</ul>
+              <Button className="edit-recipe" onClick={() => {
+                this.props.fillEditRecipeModal(this.props.title);
+              }}>Edit</Button>
+              <Button className="delete-recipe" bsStyle="danger" onClick={() => this.props.removeRecipe(this.props.title)}>Delete</Button>
+            </Well>
+          </div>
+        </Collapse>
+      </div>
+    );
+  }
 }
 
 Recipe.propTypes = {

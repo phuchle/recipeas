@@ -4,46 +4,59 @@ exports[`Recipe renders without errors 1`] = `
 <div
   className="recipe-container"
 >
-  <h4>
+  <h4
+    className="recipe-title"
+    onClick={[Function]}
+  >
     BLT
   </h4>
-  <ul>
-    <li
-      className="list-group-item"
-    >
-      Bread
-    </li>
-    <li
-      className="list-group-item"
-    >
-       Bacon
-    </li>
-    <li
-      className="list-group-item"
-    >
-       Lettuce
-    </li>
-    <li
-      className="list-group-item"
-    >
-       Tomato
-    </li>
-  </ul>
-  <button
-    className="edit-recipe btn btn-default"
-    disabled={false}
-    onClick={[Function]}
-    type="button"
+  <div
+    aria-expanded={null}
+    className="collapse"
   >
-    Edit
-  </button>
-  <button
-    className="delete-recipe btn btn-danger"
-    disabled={false}
-    onClick={[Function]}
-    type="button"
-  >
-    Delete
-  </button>
+     
+    <div
+      className="well"
+    >
+      <ul>
+        <li
+          className="list-group-item"
+        >
+          Bread
+        </li>
+        <li
+          className="list-group-item"
+        >
+           Bacon
+        </li>
+        <li
+          className="list-group-item"
+        >
+           Lettuce
+        </li>
+        <li
+          className="list-group-item"
+        >
+           Tomato
+        </li>
+      </ul>
+      <button
+        className="edit-recipe btn btn-default"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Edit
+      </button>
+      <button
+        className="delete-recipe btn btn-danger"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
 </div>
 `;

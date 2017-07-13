@@ -44,52 +44,65 @@ exports[`App renders without crashing 1`] = `
         <div
           className="recipe-container"
         >
-          <h4>
+          <h4
+            className="recipe-title"
+            onClick={[Function]}
+          >
             Pumpkin Pie
           </h4>
-          <ul>
-            <span
-              className="list-group-item"
-            >
-              Pumpkin Puree
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Sweetened Condensed Milk
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Eggs
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Pumpkin Pie Spice
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Pie Crust
-            </span>
-          </ul>
-          <button
-            className="edit-recipe btn btn-default"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
+          <div
+            aria-expanded={null}
+            className="collapse"
           >
-            Edit
-          </button>
-          <button
-            className="delete-recipe btn btn-danger"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            Delete
-          </button>
+             
+            <div
+              className="well"
+            >
+              <ul>
+                <span
+                  className="list-group-item"
+                >
+                  Pumpkin Puree
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Sweetened Condensed Milk
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Eggs
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Pumpkin Pie Spice
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Pie Crust
+                </span>
+              </ul>
+              <button
+                className="edit-recipe btn btn-default"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Edit
+              </button>
+              <button
+                className="delete-recipe btn btn-danger"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
       </li>
       <li
@@ -98,42 +111,55 @@ exports[`App renders without crashing 1`] = `
         <div
           className="recipe-container"
         >
-          <h4>
+          <h4
+            className="recipe-title"
+            onClick={[Function]}
+          >
             Spaghetti
           </h4>
-          <ul>
-            <span
-              className="list-group-item"
-            >
-              Noodles
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Pasta Sauce
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Meatballs
-            </span>
-          </ul>
-          <button
-            className="edit-recipe btn btn-default"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
+          <div
+            aria-expanded={null}
+            className="collapse"
           >
-            Edit
-          </button>
-          <button
-            className="delete-recipe btn btn-danger"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            Delete
-          </button>
+             
+            <div
+              className="well"
+            >
+              <ul>
+                <span
+                  className="list-group-item"
+                >
+                  Noodles
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Pasta Sauce
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Meatballs
+                </span>
+              </ul>
+              <button
+                className="edit-recipe btn btn-default"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Edit
+              </button>
+              <button
+                className="delete-recipe btn btn-danger"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
       </li>
       <li
@@ -142,47 +168,60 @@ exports[`App renders without crashing 1`] = `
         <div
           className="recipe-container"
         >
-          <h4>
+          <h4
+            className="recipe-title"
+            onClick={[Function]}
+          >
             Peanut Butter Mug Cake
           </h4>
-          <ul>
-            <span
-              className="list-group-item"
-            >
-              Peanut Butter
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Eggs
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Baking Powder
-            </span>
-            <span
-              className="list-group-item"
-            >
-               Sugar
-            </span>
-          </ul>
-          <button
-            className="edit-recipe btn btn-default"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
+          <div
+            aria-expanded={null}
+            className="collapse"
           >
-            Edit
-          </button>
-          <button
-            className="delete-recipe btn btn-danger"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            Delete
-          </button>
+             
+            <div
+              className="well"
+            >
+              <ul>
+                <span
+                  className="list-group-item"
+                >
+                  Peanut Butter
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Eggs
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Baking Powder
+                </span>
+                <span
+                  className="list-group-item"
+                >
+                   Sugar
+                </span>
+              </ul>
+              <button
+                className="edit-recipe btn btn-default"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Edit
+              </button>
+              <button
+                className="delete-recipe btn btn-danger"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
       </li>
     </ul>

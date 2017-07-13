@@ -120,15 +120,13 @@ export class RecipesList extends Component {
 
       return (
         <ListGroupItem key={recipe.title}>
-          <Collapse in={recipe.open}>
-            <Recipe
-              title={recipe.title}
-              ingredients={ingredientsList}
-              showEditRecipe={this.showEditRecipe}
-              removeRecipe={removeRecipe}
-              fillEditRecipeModal={this.fillEditRecipeModal}
-            />
-        </Collapse>
+          <Recipe
+            title={recipe.title}
+            ingredients={ingredientsList}
+            showEditRecipe={this.showEditRecipe}
+            removeRecipe={removeRecipe}
+            fillEditRecipeModal={this.fillEditRecipeModal}
+          />
         </ListGroupItem>
       );
     });

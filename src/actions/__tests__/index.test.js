@@ -4,8 +4,7 @@ describe('Actions', () => {
   test('creates an action to add a recipe', () => {
     const recipeObject = {
       title: 'Hamburger',
-      ingredients: 'Ground Beef, Bread, Lettuce, Tomato',
-      open: false
+      ingredients: 'Ground Beef, Bread, Lettuce, Tomato'
     };
     const expectedAction = {
       type: ADD_RECIPE,
@@ -17,8 +16,7 @@ describe('Actions', () => {
   test('creates an action to edit a recipe', () => {
     const recipeObject =   {
       title: 'Spaghetti',
-      ingredients: 'Noodles, Pasta Sauce, Meatballs',
-      open: false
+      ingredients: 'Noodles, Pasta Sauce, Meatballs'
     };
     const targetTitle = 'Spaghetti';
     const expectedAction = {
