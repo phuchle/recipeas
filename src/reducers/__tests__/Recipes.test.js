@@ -23,10 +23,12 @@ describe('Recipes', () => {
       title: 'Spaghetti',
       ingredients: 'Noodles, Parmesean, Chicken'
     };
-    const targetTitle = 'Spahgetti';
-    const action = editRecipe(targetTitle, newRecipe);
+    const targetId = defaultRecipes[1].id;
+    const action = editRecipe(targetId, newRecipe);
     const expectedState = defaultRecipes.map(recipe => {
-      return recipe.title === targetTitle ? newRecipe : recipe;
+      return recipe.id === targetId ?
+        { id: recipe.id, ...newRecipe }
+        : recipe;
     });
 
     expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
@@ -37,23 +39,22 @@ describe('Recipes', () => {
         title: 'Parm',
         ingredients: 'Noodles, Parmesean, Chicken'
       };
-    const targetTitle = 'Spaghetti';
-    const action = editRecipe(targetTitle, newRecipe);
+    const targetId = defaultRecipes[1].id;
+    const action = editRecipe(targetId, newRecipe);
     const expectedState = defaultRecipes.map(recipe => {
-      return recipe.title === targetTitle ? newRecipe : recipe;
+      return recipe.id === targetId ?
+        { id: recipe.id, ...newRecipe }
+        : recipe;
     });
 
     expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
   });
 
   test('Removes target recipe from state', () => {
-    const testRecipe = {
-      title: 'Spaghetti',
-      ingredients: 'Noodles, Pasta Sauce, Meatballs'
-    };
-    const action = removeRecipe(testRecipe.title);
+    const targetId = defaultRecipes[1].id;
+    const action = removeRecipe(targetId);
     const expectedState = defaultRecipes.filter(recipe => {
-      return recipe.title !== testRecipe.title;
+      return recipe.id !== targetId;
     });
 
     expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
