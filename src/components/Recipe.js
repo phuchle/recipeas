@@ -21,9 +21,9 @@ class Recipe extends Component {
             <Well>
               <ul>{this.props.ingredients}</ul>
               <Button className="edit-recipe" onClick={() => {
-                this.props.fillEditRecipeModal(this.props.title);
+                this.props.fillEditRecipeModal(this.props.id);
               }}>Edit</Button>
-              <Button className="delete-recipe" bsStyle="danger" onClick={() => this.props.removeRecipe(this.props.title)}>Delete</Button>
+              <Button className="delete-recipe" bsStyle="danger" onClick={() => this.props.removeRecipe(this.props.id)}>Delete</Button>
             </Well>
           </div>
         </Collapse>
@@ -35,6 +35,7 @@ class Recipe extends Component {
 Recipe.propTypes = {
   title: PropTypes.string.isRequired,
   ingredients: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired,
   showEditRecipe: PropTypes.func.isRequired,
   removeRecipe: PropTypes.func.isRequired,
   fillEditRecipeModal: PropTypes.func.isRequired

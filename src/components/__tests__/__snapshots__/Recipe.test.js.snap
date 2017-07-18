@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipe renders without errors 1`] = `
+exports[`Recipe Renders without errors 1`] = `
 <div
   className="recipe-container"
 >
