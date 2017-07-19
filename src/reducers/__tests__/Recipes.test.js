@@ -13,8 +13,8 @@ describe('Recipes', () => {
     const expectedState = [
       ...defaultRecipes,
       action.recipe
-    ]
-
+    ];
+    
     expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
   });
 
