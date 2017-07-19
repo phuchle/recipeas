@@ -9,6 +9,7 @@ import {
   ListGroup,
   ListGroupItem
 } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 export class RecipesList extends Component {
   constructor(props) {
@@ -21,8 +22,8 @@ export class RecipesList extends Component {
         title: '',
         ingredients: ''
       },
-      targetTitle: ''
-    }
+      targetId: ''
+    };
     // methods that affect modal state
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleIngredientsChange = this.handleIngredientsChange.bind(this);
@@ -64,7 +65,8 @@ export class RecipesList extends Component {
       activeRecipe: {
         title: '',
         ingredients: ''
-      }
+      },
+      targetId: ''
     });
   }
   showAddRecipe() {
@@ -79,12 +81,10 @@ export class RecipesList extends Component {
   hideEditRecipe() {
     this.setState({ ...this.state, displayEditRecipe: false }, () => this.resetState());
   }
-  fillEditRecipeModal(title) {
+  fillEditRecipeModal(id) {
     const targetRecipe = this.props.recipes.find(recipe => {
-      return recipe.title === title;
+      return recipe.id === id;
     });
-
-    // TODO: search for recipe by ID
 
     this.setState({
       ...this.state,
@@ -92,7 +92,7 @@ export class RecipesList extends Component {
         title: targetRecipe.title,
         ingredients: targetRecipe.ingredients
       },
-      targetTitle: targetRecipe.title
+      targetId: id
     }, () => this.showEditRecipe());
   }
   handleSubmit(event) {
@@ -102,7 +102,7 @@ export class RecipesList extends Component {
       this.props.addRecipe(this.state.activeRecipe);
     }
     else if (this.state.displayEditRecipe) {
-      this.props.editRecipe(this.state.targetTitle, this.state.activeRecipe);
+      this.props.editRecipe(this.state.targetId, this.state.activeRecipe);
     }
   }
   renderList() {
@@ -125,6 +125,7 @@ export class RecipesList extends Component {
             showEditRecipe={this.showEditRecipe}
             removeRecipe={removeRecipe}
             fillEditRecipeModal={this.fillEditRecipeModal}
+            id={recipe.id}
           />
         </ListGroupItem>
       );
@@ -163,6 +164,13 @@ export class RecipesList extends Component {
   }
 }
 
+RecipesList.PropTypes = {
+  recipes: PropTypes.array.isRequired,
+  addRecipe: PropTypes.func.isRequired,
+  editRecipe: PropTypes.func.isRequired,
+  removeRecipe: PropTypes.func.isRequired
+}
+
 const mapStateToProps = state => {
   return {
     recipes: state.recipes
@@ -171,8 +179,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ addRecipe, editRecipe, removeRecipe }, dispatch);
-
 }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
