@@ -7,8 +7,7 @@ export const REMOVE_RECIPE =  'REMOVE_RECIPE';
 export const addRecipe = recipe => {
   return {
     type: ADD_RECIPE,
-    recipe: recipe,
-    id: v4()
+    recipe: { ...recipe, id: v4() }
   }
 }
 

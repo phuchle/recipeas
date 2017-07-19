@@ -9,9 +9,9 @@ describe('Actions', () => {
     };
 
     expect(addRecipe(recipeObject)).toHaveProperty('type', ADD_RECIPE);
-    expect(addRecipe(recipeObject)).toHaveProperty('recipe', recipeObject);
-    expect(addRecipe(recipeObject)).toHaveProperty('id');
-    expect(Object.keys(addRecipe(recipeObject)).length).toBe(3);
+    expect(addRecipe(recipeObject)).toHaveProperty('recipe');
+    expect(addRecipe(recipeObject)).toHaveProperty('recipe.id');
+    expect(Object.keys(addRecipe(recipeObject)).length).toBe(2);
   });
 
   test('creates an action to edit a recipe', () => {
