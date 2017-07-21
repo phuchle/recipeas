@@ -5,3 +5,6 @@ This app allows the user to create and store recipes.  The ultimate goal is to a
 ## Upcoming Features
 - Improved way to add ingredients
 - Ingredients will show nutrition facts
+
+## Known bugs
+- Unreplicated: Sometimes the edit modal will delete all the other recipes except the one you are editing. 
