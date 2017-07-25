@@ -38,6 +38,9 @@ class Main extends Component {
     });
     console.log(this.state);
   }
+  handleIngredientsNextButton(ingredients) {
+
+  }
   render() {
     return (
       <Switch>
@@ -50,10 +53,27 @@ class Main extends Component {
             handleTitleChange={this.handleTitleChange}
             handleServingsChange={this.handleServingsChange}
             handleAllergensChange={this.handleAllergensChange}
+            nextButton={true}
+            buttonStyle={{
+              marginTop: '5px'
+            }}
           />)}
         />
-        <Route path="/add-ingredients" component={ModifyIngredients} />
-        <Route path="/review" component={ReviewRecipe} />
+        <Route path="/add-ingredients" render={() => (
+          <ModifyIngredients
+            handleClick={this.handleIngredientsNextButton}
+            nextButton={true}
+            buttonStyle={{
+              marginTop: '5px'
+            }}
+          />
+        )} />
+        <Route path="/review" render={() => (
+          <ReviewRecipe buttonStyle={{
+            marginTop: '5px'
+          }} />
+        )}
+        />
       </Switch>
     )
   }

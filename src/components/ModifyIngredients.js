@@ -19,6 +19,7 @@ class ModifyIngredients extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.renderNextButton = this.renderNextButton.bind(this);
   }
   handleChange(event) {
     this.setState({
@@ -29,7 +30,22 @@ class ModifyIngredients extends Component {
           name: event.target.value
         }
       }
-    }, console.log(this.state.ingredients.default));
+    });
+  }
+  renderNextButton() {
+    return this.props.nextButton ?
+      (
+        <Link to="/review">
+        <Button
+          bsStyle="primary"
+          onClick={this.props.handleClick}
+          style={this.props.buttonStyle}
+        >
+          Next
+        </Button>
+      </Link>
+      )
+      : null;
   }
   render() {
     return (
@@ -43,16 +59,18 @@ class ModifyIngredients extends Component {
               placeholder="Your first ingredient goes here!"
               onChange={this.handleChange}
             />
-            <Link to="/review">
-              <Button bsStyle="primary" onClick={this.props.handleClick}>
-                Next
-              </Button>
-            </Link>
+            { this.renderNextButton() }
           </Col>
         </Row>
       </Grid>
   );
   }
+}
+
+ModifyIngredients.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  nextButton: PropTypes.bool.isRequired,
+  buttonStyle: PropTypes.object.isRequired,
 }
 
 export default ModifyIngredients;

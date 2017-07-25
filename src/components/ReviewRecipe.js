@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Grid, Row, Col, ControlLabel, FormControl, Button
+  Grid, Row, Col, ControlLabel, Button
 } from 'react-bootstrap';
 import ModifyTitle from './ModifyTitle';
 import ModifyIngredients from './ModifyIngredients';
+import PropTypes from 'prop-types';
 
 const ReviewRecipe = (props) => {
   return (
@@ -19,10 +20,14 @@ const ReviewRecipe = (props) => {
             handleTitleChange={props.handleTitleChange}
             handleServingsChange={props.handleServingsChange}
             handleAllergensChange={props.handleAllergensChange}
+            nextButton={false}
           />
-          <ModifyIngredients />
+          <ModifyIngredients
+            handleClick={()=>{}}
+            nextButton={false}
+          />
           <Link to="/">
-            <Button bsStyle="primary">
+            <Button bsStyle="primary" style={props.buttonStyle}>
               Submit
             </Button>
           </Link>
@@ -30,6 +35,10 @@ const ReviewRecipe = (props) => {
       </Row>
     </Grid>
   );
+}
+
+ReviewRecipe.propTypes = {
+  buttonStyle: PropTypes.object.isRequired,
 }
 
 export default ReviewRecipe;

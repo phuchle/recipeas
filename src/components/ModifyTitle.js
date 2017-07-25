@@ -5,6 +5,16 @@ import {
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+const renderNextButton = (props) => {
+  return props.nextButton ?
+    (
+      <Link to="/add-ingredients">
+        <Button bsStyle="primary" style={props.buttonStyle}>Next</Button>
+      </Link>
+    )
+    : null;
+}
+
 const ModifyTitle = (props) => {
   return (
     <Grid>
@@ -31,9 +41,7 @@ const ModifyTitle = (props) => {
             placeholder="What allergens does this food contain?"
             onChange={props.handleAllergensChange}
           />
-          <Link to="/add-ingredients">
-            <Button bsStyle="primary">Next</Button>
-          </Link>
+          { renderNextButton(props) }
         </Col>
       </Row>
     </Grid>
@@ -47,6 +55,8 @@ ModifyTitle.propTypes = {
   handleTitleChange: PropTypes.func.isRequired,
   handleServingsChange: PropTypes.func.isRequired,
   handleAllergensChange: PropTypes.func.isRequired,
+  nextButton: PropTypes.bool.isRequired,
+  buttonStyle: PropTypes.object.isRequired,
 }
 
 export default ModifyTitle;

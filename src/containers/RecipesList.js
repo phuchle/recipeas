@@ -139,7 +139,10 @@ export class RecipesList extends Component {
           <h1>
             Recipes
             <Link to="/add-recipe">
-            <Button bsStyle="primary" className="glyphicon glyphicon-plus" />
+            <Button
+              bsStyle="primary"
+              style={{ marginLeft: '5px' }}
+              className="glyphicon glyphicon-plus" />
           </Link>
           </h1>
         </span>
