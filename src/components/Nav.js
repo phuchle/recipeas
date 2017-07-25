@@ -1,20 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 const Navigation = (props) => {
   return (
-    <nav className="navbar navbar-default navbar-fixed-top">
-      <div className="container-fluid">
-        <Link to="/">
-          <p className="navbar-brand">Recipeas</p>
-        </Link>
-        <ul className="nav navbar-nav">
-          <li>
-            <a href="https://github.com/phuchle/recipeas">Source Code</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <Navbar fixedTop={true}>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <Link to="/">
+            Recipeas
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem>
+            <a href="https://github.com/phuchle/recipeas">
+            Source Code
+          </a>
+          </NavItem>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
