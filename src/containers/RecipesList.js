@@ -3,7 +3,8 @@ import { addRecipe, editRecipe, removeRecipe } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
-import RecipeModal from '../components/RecipeModal';
+// import RecipeModal from '../components/RecipeModal';
+import { Link } from 'react-router-dom';
 import {
   Button,
   ListGroup,
@@ -134,12 +135,19 @@ export class RecipesList extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Recipes</h1>
+        <span>
+          <h1>
+            Recipes
+            <Link to="/add-recipe">
+            <Button bsStyle="primary" className="glyphicon glyphicon-plus" />
+          </Link>
+          </h1>
+        </span>
+
         <ListGroup>
           { this.renderList() }
         </ListGroup>
-        <Button bsStyle="primary" onClick={this.showAddRecipe}>Add Recipe</Button>
-         <RecipeModal
+         {/* <RecipeModal
            modalTitle="Add Recipe"
            show={this.state.displayAddRecipe}
            onHide={this.hideAddRecipe}
@@ -158,7 +166,7 @@ export class RecipesList extends Component {
            handleTitleChange={this.handleTitleChange}
            handleIngredientsChange={this.handleIngredientsChange}
            handleSubmit={this.handleSubmit}
-         />
+         /> */}
       </div>
     );
   }

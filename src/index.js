@@ -6,6 +6,7 @@ import RootReducer from './reducers/RootReducer';
 import App from './components/App';
 import { loadState, saveState } from './utils/localStorage';
 import throttle from 'lodash/throttle';
+import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
@@ -22,8 +23,10 @@ store.subscribe(throttle(() => {
 }, 1000));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();
