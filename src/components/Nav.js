@@ -4,7 +4,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 const Navigation = (props) => {
   return (
-    <Navbar fixedTop={true}>
+    <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
