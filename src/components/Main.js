@@ -69,9 +69,7 @@ class Main extends Component {
             marginBottom: '10px'
           }} />
         )} />
-        <Route path="/search-ingredient" render={() => (
-          <SearchIngredient />
-        )} />
+        <Route path="/search-ingredient" component={SearchIngredient} />
       </Switch>
     )
   }
