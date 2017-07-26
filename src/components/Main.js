@@ -4,6 +4,7 @@ import RecipesList from '../containers/RecipesList';
 import ModifyTitle from './ModifyTitle';
 import ModifyIngredients from './ModifyIngredients';
 import ReviewRecipe from './ReviewRecipe';
+import SearchIngredient from './SearchIngredient';
 
 class Main extends Component {
   constructor(props) {
@@ -24,19 +25,16 @@ class Main extends Component {
     this.setState({
       title: event.target.value
     });
-    console.log(this.state);
   }
   handleServingsChange(event) {
     this.setState({
       servings: event.target.value
     });
-    console.log(this.state);
   }
   handleAllergensChange(event) {
     this.setState({
       allergens: event.target.value
     });
-    console.log(this.state);
   }
   handleIngredientsNextButton(ingredients) {
 
@@ -54,26 +52,26 @@ class Main extends Component {
             handleServingsChange={this.handleServingsChange}
             handleAllergensChange={this.handleAllergensChange}
             nextButton={true}
-            buttonStyle={{
-              marginTop: '5px'
-            }}
+            nextButtonStyle={{ marginBottom: '10px', marginTop: '10px' }}
           />)}
         />
         <Route path="/add-ingredients" render={() => (
           <ModifyIngredients
             handleClick={this.handleIngredientsNextButton}
             nextButton={true}
-            buttonStyle={{
-              marginTop: '5px'
-            }}
+            plusButton={true}
+            nextButtonStyle={{ marginBottom: '10px' }}
           />
         )} />
         <Route path="/review" render={() => (
           <ReviewRecipe buttonStyle={{
-            marginTop: '5px'
+            marginTop: '20px',
+            marginBottom: '10px'
           }} />
-        )}
-        />
+        )} />
+        <Route path="/search-ingredient" render={() => (
+          <SearchIngredient />
+        )} />
       </Switch>
     )
   }

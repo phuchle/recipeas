@@ -2,18 +2,11 @@ html, body {
   color: #333;
 }
 
-.recipe-modal-content {
-  border: 1px solid #f2f2f2;
-  background-color: #fff;
-  padding: 20px;
-}
-
-.myModal-header {
-  border-bottom: 1px solid #c3c3c3;
-  padding-bottom: 10px;
-}
-
 .recipe-title:hover {
   cursor: pointer;
   color: #55dfb6;
+}
+
+.glyphicon {
+  top: 0;
 }

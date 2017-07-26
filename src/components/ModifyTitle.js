@@ -8,9 +8,21 @@ import PropTypes from 'prop-types';
 const renderNextButton = (props) => {
   return props.nextButton ?
     (
-      <Link to="/add-ingredients">
-        <Button bsStyle="primary" style={props.buttonStyle}>Next</Button>
-      </Link>
+      <div>
+        <Link to="/add-ingredients">
+          <Button
+            bsSize="large"
+            bsStyle="primary"
+            block
+            style={props.nextButtonStyle}
+          >
+            Next
+          </Button>
+        </Link>
+        <Link to="/">
+          <Button bsSize="large" block>Back</Button>
+        </Link>
+      </div>
     )
     : null;
 }
@@ -19,7 +31,8 @@ const ModifyTitle = (props) => {
   return (
     <Grid>
       <Row>
-        <Col sm={12} lg={8}>
+        <Col sm={12} lg={8} lgOffset={2}>
+          <h4>Recipe Information</h4>
           <ControlLabel>Title</ControlLabel>
           <FormControl
             type="text"
@@ -56,7 +69,7 @@ ModifyTitle.propTypes = {
   handleServingsChange: PropTypes.func.isRequired,
   handleAllergensChange: PropTypes.func.isRequired,
   nextButton: PropTypes.bool.isRequired,
-  buttonStyle: PropTypes.object.isRequired,
+  nextButtonStyle: PropTypes.object.isRequired,
 }
 
 export default ModifyTitle;

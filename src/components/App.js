@@ -1,8 +1,8 @@
 import React from 'react';
 import Navigation from './Nav';
 import Main from './Main';
-import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../App.css';
 
 const App = (props) => {
   return (

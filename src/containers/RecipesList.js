@@ -3,10 +3,12 @@ import { addRecipe, editRecipe, removeRecipe } from '../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
-// import RecipeModal from '../components/RecipeModal';
+import PlusButton from '../components/PlusButton';
 import { Link } from 'react-router-dom';
 import {
-  Button,
+  Grid,
+  Row,
+  Col,
   ListGroup,
   ListGroupItem
 } from 'react-bootstrap';
@@ -134,43 +136,24 @@ export class RecipesList extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <span>
-          <h1>
-            Recipes
-            <Link to="/add-recipe">
-            <Button
-              bsStyle="primary"
-              style={{ marginLeft: '5px' }}
-              className="glyphicon glyphicon-plus" />
-          </Link>
-          </h1>
-        </span>
+      <Grid>
+        <Row>
+          <Col sm={12} lg={8} lgOffset={2}>
+            <span>
+              <h1>
+                Recipes
+                <Link to="/add-recipe">
+                <PlusButton />
+              </Link>
+            </h1>
+          </span>
 
-        <ListGroup>
-          { this.renderList() }
-        </ListGroup>
-         {/* <RecipeModal
-           modalTitle="Add Recipe"
-           show={this.state.displayAddRecipe}
-           onHide={this.hideAddRecipe}
-           recipeTitle={this.state.activeRecipe.title}
-           recipeIngredients={this.state.activeRecipe.ingredients}
-           handleTitleChange={this.handleTitleChange}
-           handleIngredientsChange={this.handleIngredientsChange}
-           handleSubmit={this.handleSubmit}
-         />
-         <RecipeModal
-           modalTitle="Edit Recipe"
-           show={this.state.displayEditRecipe}
-           onHide={this.hideEditRecipe}
-           recipeTitle={this.state.activeRecipe.title}
-           recipeIngredients={this.state.activeRecipe.ingredients}
-           handleTitleChange={this.handleTitleChange}
-           handleIngredientsChange={this.handleIngredientsChange}
-           handleSubmit={this.handleSubmit}
-         /> */}
-      </div>
+          <ListGroup>
+            { this.renderList() }
+          </ListGroup>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

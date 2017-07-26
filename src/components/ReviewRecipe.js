@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Grid, Row, Col, ControlLabel, Button
+  Grid, Row, Col, Button
 } from 'react-bootstrap';
 import ModifyTitle from './ModifyTitle';
 import ModifyIngredients from './ModifyIngredients';
@@ -11,8 +11,8 @@ const ReviewRecipe = (props) => {
   return (
     <Grid>
       <Row>
-        <Col sm={12} lg={8}>
-          <ControlLabel>Review Recipe</ControlLabel>
+        <Col sm={12} lg={8} lgOffset={2}>
+          <h4>Review Recipe</h4>
           <ModifyTitle
             title={props.title}
             servings={props.servings}
@@ -25,11 +25,20 @@ const ReviewRecipe = (props) => {
           <ModifyIngredients
             handleClick={()=>{}}
             nextButton={false}
+            plusButton={false}
           />
           <Link to="/">
-            <Button bsStyle="primary" style={props.buttonStyle}>
+            <Button
+              bsStyle="primary"
+              bsSize="large"
+              style={props.buttonStyle}
+              block
+            >
               Submit
             </Button>
+          </Link>
+          <Link to="/add-ingredients">
+            <Button bsSize="large" block>Back</Button>
           </Link>
         </Col>
       </Row>
