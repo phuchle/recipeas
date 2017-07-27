@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
 import {
-  Grid, Row, Col, InputGroup, FormControl, Button
+  Grid, Row, Col, InputGroup, FormControl, Button, ListGroup, ListGroupItem
 } from 'react-bootstrap';
-import { searchIngredient } from '../utils/api';
+import { searchFoodDescription } from '../utils/api';
 
 class SearchIngredient extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      query: ''
+      query: '',
+      searchResults: []
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleIngredientSearch = this.handleIngredientSearch.bind(this);
+    this.renderSearchResults = this.renderSearchResults.bind(this);
+  }
+  renderSearchResults(foodArray) {
+    const resultsList = foodArray.map((foodObj) => {
+      return (
+        <ListGroupItem key={foodObj.ndbno}>
+          {foodObj.name}
+        </ListGroupItem>
+      );
+    });
+
+    this.setState({
+      searchResults: resultsList
+    });
   }
   handleIngredientSearch(event) {
     event.preventDefault();
-    searchIngredient(this.state.query);
+    searchFoodDescription(this.state.query)
+    .then(results => this.renderSearchResults(results));
   }
   handleChange(event) {
     this.setState({
@@ -25,7 +41,6 @@ class SearchIngredient extends Component {
     });
   }
   render() {
-    console.log('rendering');
     return (
       <Grid>
         <Row>
@@ -45,7 +60,9 @@ class SearchIngredient extends Component {
               </InputGroup>
             </form>
 
-            {/* results go here */}
+            <ListGroup>
+              {this.state.searchResults}
+            </ListGroup>
           </Col>
         </Row>
       </Grid>

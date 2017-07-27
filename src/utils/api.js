@@ -11,13 +11,18 @@ const params = {
   api_key: apiKey
 };
 
-export const searchIngredient = (query) => {
-  axios.get(searchURL, {
+export const searchFoodDescription = (query) => {
+  return axios.get(searchURL, {
     params: {
       ...params,
-      query: query
+      q: query
     }
   })
-  .then(response => console.log(response))
+  .then(response => response.data.list.item)
   .catch(error => console.log(error));
+
+};
+
+const searchNutrientInfo = (foodKey) => {
+
 };
