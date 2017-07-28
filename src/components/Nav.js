@@ -15,10 +15,8 @@ const Navigation = (props) => {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <NavItem>
-            <a href="https://github.com/phuchle/recipeas">
+          <NavItem href="https://github.com/phuchle/recipeas">
             Source Code
-          </a>
           </NavItem>
         </Nav>
       </Navbar.Collapse>
