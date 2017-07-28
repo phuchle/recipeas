@@ -5,6 +5,7 @@ import ModifyTitle from './ModifyTitle';
 import ModifyIngredients from './ModifyIngredients';
 import ReviewRecipe from './ReviewRecipe';
 import SearchIngredient from './SearchIngredient';
+import IngredientDetails from './IngredientDetails';
 
 class Main extends Component {
   constructor(props) {
@@ -70,6 +71,7 @@ class Main extends Component {
           }} />
         )} />
         <Route path="/search-ingredient" component={SearchIngredient} />
+        <Route path="/ingredient-details" component={IngredientDetails} />
       </Switch>
     )
   }

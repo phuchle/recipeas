@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Grid, Row, Col, InputGroup, FormControl, Button, ListGroup, ListGroupItem
+  Grid, Row, Col, InputGroup, FormControl, Button, ListGroup
 } from 'react-bootstrap';
 import { searchFoodDescription } from '../utils/api';
+import SearchResultItem from './SearchResultItem';
 
 class SearchIngredient extends Component {
   constructor(props) {
@@ -20,9 +21,11 @@ class SearchIngredient extends Component {
   renderSearchResults(foodArray) {
     const resultsList = foodArray.map((foodObj) => {
       return (
-        <ListGroupItem key={foodObj.ndbno}>
-          {foodObj.name}
-        </ListGroupItem>
+        <SearchResultItem
+          dbNumber={foodObj.ndbno}
+          key={foodObj.ndbno}
+          name={foodObj.name}
+        />
       );
     });
 
