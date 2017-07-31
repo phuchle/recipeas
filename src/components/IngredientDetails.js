@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Grid, Row, Col, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { searchNutrientInfo } from '../utils/api';
 
 //gets dbNumber from props.location.state.dbNumber in the form of:
@@ -130,6 +131,29 @@ class IngredientDetails extends Component {
         <h4>{this.state.details.name}</h4>
         <p><em>Serving Size: {this.state.details.measure}</em></p>
         {this.parseNutrients()}
+        <Link to="/search-ingredients">
+          <Button
+            bsSize="large"
+            bsStyle="primary"
+            block
+            style={{
+              marginBottom: '10px'
+            }}
+          >
+            Next
+          </Button>
+        </Link>
+        <Link to="/search-ingredient">
+          <Button
+            bsSize="large"
+            block
+            style={{
+              marginBottom: '20px'
+            }}
+          >
+            Back
+          </Button>
+        </Link>
       </div>
     );
   }
