@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Grid, Row, Col, InputGroup, FormControl, Button, ListGroup
+  Grid, Row, Col, InputGroup, FormControl, Button, ListGroup, ListGroupItem
 } from 'react-bootstrap';
 import { searchFoodDescription } from '../utils/api';
 import SearchResultItem from './SearchResultItem';
@@ -18,16 +18,27 @@ class SearchIngredient extends Component {
     this.handleIngredientSearch = this.handleIngredientSearch.bind(this);
     this.renderSearchResults = this.renderSearchResults.bind(this);
   }
-  renderSearchResults(foodArray) {
-    const resultsList = foodArray.map((foodObj) => {
-      return (
-        <SearchResultItem
-          dbNumber={foodObj.ndbno}
-          key={foodObj.ndbno}
-          name={foodObj.name}
-        />
+  renderSearchResults(results) {
+    console.log(results);
+    let resultsList;
+    if (results.type === 'success') {
+      resultsList = results.response.map((foodObj) => {
+        return (
+          <SearchResultItem
+            dbNumber={foodObj.ndbno}
+            key={foodObj.ndbno}
+            name={foodObj.name}
+          />
+        );
+      });
+    } else if (results.type === 'error') {
+      resultsList = (
+        <ListGroupItem>
+          Oh no! There was an error:
+          {results.response}
+        </ListGroupItem>
       );
-    });
+    }
 
     this.setState({
       searchResults: resultsList

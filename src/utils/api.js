@@ -18,7 +18,21 @@ export const searchFoodDescription = (query) => {
       q: query
     }
   })
-  .then(response => response.data.list.item)
+  .then(response => {
+    // TODO: set up a flow for error responses
+    if (response.data.errors) {
+      return {
+        type: 'error',
+        response: response.data.errors.error[0].message
+      }
+    }
+    if (response.data.list.item) {
+      return {
+        type: 'success',
+        response: response.data.list.item
+      }
+    }
+  })
   .catch(error => console.log(error));
 
 };
