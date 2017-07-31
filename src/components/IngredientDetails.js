@@ -61,7 +61,11 @@ class IngredientDetails extends Component {
       return (
         <ListGroupItem key={nutrObj.nutrient_id}>
           <strong>{nutrObj.nutrient}: </strong>
-          {nutrObj.value + nutrObj.unit}
+          {
+            nutrObj.value === '--' ?
+              0 + nutrObj.unit
+              : nutrObj.value + nutrObj.unit
+          }
         </ListGroupItem>
       );
     });
