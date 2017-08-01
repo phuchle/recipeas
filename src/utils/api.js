@@ -105,8 +105,27 @@ const formatMacronutrients = (nutrients) => {
   });
 
   const macros = [kcal, protein, fat, carbohydrate].map(macro => {
+    let name;
+    switch(macro.nutrient_id) {
+      case '208':
+        name = 'Calories';
+        break;
+      case '203':
+        name = 'Protein'
+        break;
+      case '204':
+        name = 'Fat'
+        break;
+      case '205':
+        name = 'Carbohydrate'
+        break;
+      default:
+        name = macro.nutrient_id;
+        break;
+    }
+    
     return {
-      name: macro.nutrient,
+      name: name,
       value: macro.value,
       unit: macro.unit
     }
