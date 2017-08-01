@@ -75,7 +75,7 @@ class IngredientDetails extends Component {
               marginBottom: '10px'
             }}
           >
-            Next
+            Add Ingredient
           </Button>
         </Link>
 
