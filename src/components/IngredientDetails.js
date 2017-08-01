@@ -120,7 +120,8 @@ class IngredientDetails extends Component {
       });
     } else {
       this.setState({
-        servings: newServing
+        servings: newServing,
+        updatedDetails: this.state.originalDetails
       });
     }
   }
