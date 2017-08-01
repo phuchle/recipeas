@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const apiKey = 'KKw8ffPvdVzSenGfPq7BdBi9SlwohNzj4PAtl3uT';
 
+export const roundToTwo = (num) => {
+  return +(Math.round(num + "e+2")  + "e-2");
+};
+
 export const searchFoodDescription = (query) => {
   const searchURL = 'https://api.nal.usda.gov/ndb/search/';
 
@@ -19,7 +23,6 @@ export const searchFoodDescription = (query) => {
     }
   })
   .then(response => {
-    // TODO: set up a flow for error responses
     if (response.data.errors) {
       return {
         type: 'error',
@@ -48,7 +51,7 @@ const sumOmega3 = (nutrients) => {
     return nutrObj.nutrient_id === '621';
   });
 
-  const omega3 = parseFloat(epa.value) + parseFloat(ala.value) + parseFloat(dha.value);
+  const omega3 = roundToTwo(parseFloat(epa.value) + parseFloat(ala.value) + parseFloat(dha.value));
 
   return {
     name: 'Omega-3 Fatty Acids',
@@ -78,7 +81,7 @@ const formatMicronutrients = (nutrients) => {
     // formatting the micronutrient list items
     return {
       name: nutrObj.nutrient,
-      value: nutrObj.value,
+      value: roundToTwo(nutrObj.value),
       unit: nutrObj.unit
     }
   })
@@ -123,10 +126,10 @@ const formatMacronutrients = (nutrients) => {
         name = macro.nutrient_id;
         break;
     }
-    
+
     return {
       name: name,
-      value: macro.value,
+      value: roundToTwo(macro.value),
       unit: macro.unit
     }
   });
