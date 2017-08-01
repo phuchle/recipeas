@@ -69,7 +69,7 @@ ModifyTitle.propTypes = {
   handleServingsChange: PropTypes.func.isRequired,
   handleAllergensChange: PropTypes.func.isRequired,
   nextButton: PropTypes.bool.isRequired,
-  nextButtonStyle: PropTypes.object.isRequired,
+  nextButtonStyle: PropTypes.object,
 }
 
 export default ModifyTitle;

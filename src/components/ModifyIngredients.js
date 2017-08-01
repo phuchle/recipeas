@@ -75,8 +75,9 @@ class ModifyIngredients extends Component {
 
 ModifyIngredients.propTypes = {
   nextButton: PropTypes.bool.isRequired,
-  nextButtonStyle: PropTypes.object.isRequired,
+  nextButtonStyle: PropTypes.object,
   plusButton: PropTypes.bool.isRequired,
+  ingredientList: PropTypes.array.isRequired
 }
 
 export default ModifyIngredients;

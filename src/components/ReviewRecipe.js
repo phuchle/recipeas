@@ -24,6 +24,7 @@ const ReviewRecipe = (props) => {
           />
           <ModifyIngredients
             handleClick={()=>{}}
+            ingredientList={props.ingredientList}
             nextButton={false}
             plusButton={false}
           />
@@ -48,6 +49,7 @@ const ReviewRecipe = (props) => {
 
 ReviewRecipe.propTypes = {
   buttonStyle: PropTypes.object.isRequired,
+  ingredientList: PropTypes.array.isRequired
 }
 
 export default ReviewRecipe;

@@ -78,7 +78,15 @@ class Main extends Component {
         )} />
 
         <Route path="/review" render={() => (
-          <ReviewRecipe buttonStyle={{
+          <ReviewRecipe
+            title={this.state.title}
+            servings={this.state.servings}
+            allergens={this.state.allergens}
+            handleTitleChange={this.handleTitleChange}
+            handleServingsChange={this.handleServingsChange}
+            handleAllergensChange={this.handleAllergensChange}
+            ingredientList={this.state.ingredients}
+            buttonStyle={{
             marginTop: '20px',
             marginBottom: '10px'
           }} />

@@ -4,6 +4,7 @@ import {
 } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { searchNutrientInfo, roundToTwo } from '../utils/api';
+import PropTypes from 'prop-types';
 
 //gets dbNumber from props.location.state.dbNumber in the form of:
 // {
@@ -152,5 +153,9 @@ class IngredientDetails extends Component {
     );
   }
 };
+
+IngredientDetails.propTypes = {
+  handleAddIngredient: PropTypes.func.isRequired,
+}
 
 export default IngredientDetails;
