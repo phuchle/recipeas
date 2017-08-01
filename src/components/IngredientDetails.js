@@ -3,7 +3,7 @@ import {
   Grid, Row, Col, ListGroup, ListGroupItem, Button, FormControl, ControlLabel
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { searchNutrientInfo } from '../utils/api';
+import { searchNutrientInfo, roundToTwo } from '../utils/api';
 
 //gets dbNumber from props.location.state.dbNumber in the form of:
 // {
@@ -100,13 +100,13 @@ class IngredientDetails extends Component {
       const newMacronutrients = this.state.originalDetails.macronutrients.map(macro => {
         return {
           ...macro,
-          value: parseFloat(macro.value) * parseInt(newServing, 10)
+          value: roundToTwo(parseFloat(macro.value) * parseInt(newServing, 10))
         };
       });
       const newMicronutrients = this.state.originalDetails.micronutrients.map(micro => {
         return {
           ...micro,
-          value: parseFloat(micro.value) * parseInt(newServing, 10)
+          value: roundToTwo(parseFloat(micro.value) * parseInt(newServing, 10))
         };
       });
 

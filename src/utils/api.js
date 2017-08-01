@@ -3,7 +3,10 @@ import axios from 'axios';
 const apiKey = 'KKw8ffPvdVzSenGfPq7BdBi9SlwohNzj4PAtl3uT';
 
 export const roundToTwo = (num) => {
-  return +(Math.round(num + "e+2")  + "e-2");
+  if (typeof num === 'number') {
+    return +num.toFixed(2);
+  }
+  return +parseFloat(num).toFixed(2);
 };
 
 export const searchFoodDescription = (query) => {
@@ -81,7 +84,7 @@ const formatMicronutrients = (nutrients) => {
     // formatting the micronutrient list items
     return {
       name: nutrObj.nutrient,
-      value: roundToTwo(nutrObj.value),
+      value: roundToTwo(parseFloat(nutrObj.value)),
       unit: nutrObj.unit
     }
   })
@@ -129,7 +132,7 @@ const formatMacronutrients = (nutrients) => {
 
     return {
       name: name,
-      value: roundToTwo(macro.value),
+      value: roundToTwo(parseInt(macro.value, 10)),
       unit: macro.unit
     }
   });
