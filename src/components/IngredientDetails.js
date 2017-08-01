@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
+import {
+  Grid, Row, Col, ListGroup, ListGroupItem, Button, FormControl, ControlLabel
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { searchNutrientInfo } from '../utils/api';
 
@@ -13,124 +15,57 @@ class IngredientDetails extends Component {
     super(props);
 
     this.state = {
-      details: null
+      details: null,
+      servings: 1
     };
 
     this.renderNutrientDetails = this.renderNutrientDetails.bind(this);
-    this.parseNutrients = this.parseNutrients.bind(this);
-
+    this.handleServingsChange = this.handleServingsChange.bind(this);
   }
-  sumOmega3() {
-    const nutrients = this.state.details.nutrients;
-    const epa = nutrients.find(nutrObj => {
-      return nutrObj.nutrient_id === '629';
-    });
-    const ala = nutrients.find(nutrObj => {
-      return nutrObj.nutrient_id === '851';
-    });
-    const dha = nutrients.find(nutrObj => {
-      return nutrObj.nutrient_id === '621';
-    });
 
-    if (epa.value === '--') epa.value = 0;
-    if (ala.value === '--') ala.value = 0;
-    if (dha.value === '--') dha.value = 0;
-
-    const omega3 = parseFloat(epa.value) + parseFloat(ala.value) + parseFloat(dha.value);
-
-    return omega3;
-  }
   makeMicronutrientsList() {
-    const nutrients = this.state.details.nutrients;
-    const omega3 = this.sumOmega3();
-    const nutrientList = nutrients.filter(nutrObj => {
-      // filtering out the omega 3s, calories, macronutrients
-      if (
-        nutrObj.nutrient_id !== '629' // epa
-        && nutrObj.nutrient_id !== '851' // ala
-        && nutrObj.nutrient_id !== '621' // dha
-        && nutrObj.nutrient_id !== '208' // kcal
-        && nutrObj.nutrient_id !== '203' // protein
-        && nutrObj.nutrient_id !== '204' // fat
-        && nutrObj.nutrient_id !== '205' // carbs
-      ) {
-        return nutrObj;
-      }
-      return null;
-    }).map(nutrObj => {
-      // formatting the micronutrient list items
+    const micros = this.state.details.micronutrients;
+
+    return micros.map(micro => {
       return (
-        <ListGroupItem key={nutrObj.nutrient_id}>
-          <strong>{nutrObj.nutrient}: </strong>
-          {
-            nutrObj.value === '--' ?
-              0 + nutrObj.unit
-              : nutrObj.value + nutrObj.unit
-          }
+        <ListGroupItem key={micro.name}>
+          <strong>{micro.name}: </strong>
+          {micro.value + micro.unit}
         </ListGroupItem>
       );
     });
-
-    return [
-      (<ListGroupItem key='omega-3'>
-        <strong>Omega-3 Fatty Acids: </strong>
-        { omega3 }
-      </ListGroupItem>),
-      ...nutrientList
-    ];
   }
   makeMacronutrientList() {
-    const nutrients = this.state.details.nutrients;
-    const kcal = nutrients.find(nutrObj => {
-      return nutrObj.nutrient_id === '208';
-    });
-    const protein = nutrients.find(nutrObj => {
-      return nutrObj.nutrient_id === '203';
-    });
-    const fat = nutrients.find(nutrObj => {
-      return nutrObj.nutrient_id === '204';
-    });
-    const carbohydrate = nutrients.find(nutrObj => {
-      return nutrObj.nutrient_id === '205';
-    });
-
-    return (
-      <div>
-        <ListGroupItem>
-          <strong>Calories: </strong>
-          { kcal.value }
+    const macros = this.state.details.macronutrients;
+    return macros.map(macro => {
+      return (
+        <ListGroupItem key={macro.name}>
+          <strong>{macro.name}: </strong>
+          { macro.value + macro.unit}
         </ListGroupItem>
-        <ListGroupItem>
-          <strong>Protein: </strong>
-          { protein.value + protein.unit}
-        </ListGroupItem>
-        <ListGroupItem>
-          <strong>Fat: </strong>
-          { fat.value + fat.unit}
-        </ListGroupItem>
-        <ListGroupItem>
-          <strong>Carbohydrate: </strong>
-          { carbohydrate.value + carbohydrate.unit}
-        </ListGroupItem>
-      </div>
-    );
-  }
-  parseNutrients() {
-    return (
-      <ListGroup>
-        <h4>Macronutrients</h4>
-        {this.makeMacronutrientList()}
-        <h4>Micronutrients</h4>
-        {this.makeMicronutrientsList()}
-      </ListGroup>
-    );
+      );
+    })
   }
   renderNutrientDetails() {
     return (
       <div>
         <h4>{this.state.details.name}</h4>
-        <p><em>Serving Size: {this.state.details.measure}</em></p>
-        {this.parseNutrients()}
+        <ControlLabel>Servings</ControlLabel>
+        <FormControl
+          type="number"
+          placeholder="1"
+          value={this.state.servings}
+          onChange={this.handleServingsChange}
+        />
+        <p><strong>Serving Size:</strong> {this.state.details.measure}</p>
+
+        <ListGroup>
+          <h4>Macronutrients</h4>
+          {this.makeMacronutrientList()}
+          <h4>Micronutrients</h4>
+          {this.makeMicronutrientsList()}
+        </ListGroup>
+
         <Link to="/search-ingredients">
           <Button
             bsSize="large"
@@ -143,6 +78,7 @@ class IngredientDetails extends Component {
             Next
           </Button>
         </Link>
+
         <Link to="/search-ingredient">
           <Button
             bsSize="large"
@@ -156,6 +92,11 @@ class IngredientDetails extends Component {
         </Link>
       </div>
     );
+  }
+  handleServingsChange(event) {
+    this.setState({
+      servings: event.target.value
+    });
   }
   componentDidMount() {
     searchNutrientInfo(this.props.location.state.dbNumber)

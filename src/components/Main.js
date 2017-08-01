@@ -13,23 +13,16 @@ class Main extends Component {
 
     this.state = {
       title: '',
-      servings: '',
       allergens: '',
       ingredients: {},
     }
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleServingsChange = this.handleServingsChange.bind(this);
     this.handleAllergensChange = this.handleAllergensChange.bind(this);
   }
   handleTitleChange(event) {
     this.setState({
       title: event.target.value
-    });
-  }
-  handleServingsChange(event) {
-    this.setState({
-      servings: event.target.value
     });
   }
   handleAllergensChange(event) {

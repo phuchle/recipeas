@@ -37,6 +37,104 @@ export const searchFoodDescription = (query) => {
 
 };
 
+const sumOmega3 = (nutrients) => {
+  const epa = nutrients.find(nutrObj => {
+    return nutrObj.nutrient_id === '629';
+  });
+  const ala = nutrients.find(nutrObj => {
+    return nutrObj.nutrient_id === '851';
+  });
+  const dha = nutrients.find(nutrObj => {
+    return nutrObj.nutrient_id === '621';
+  });
+
+  const omega3 = parseFloat(epa.value) + parseFloat(ala.value) + parseFloat(dha.value);
+
+  return {
+    name: 'Omega-3 Fatty Acids',
+    value: omega3,
+    unit: 'g'
+  };
+};
+
+// returns an array of objects
+const formatMicronutrients = (nutrients) => {
+  const omega3= sumOmega3(nutrients);
+  const nutrientList = nutrients.filter(nutrObj => {
+    // filtering out the omega 3s, calories, macronutrients
+    if (
+      nutrObj.nutrient_id !== '629' // epa
+      && nutrObj.nutrient_id !== '851' // ala
+      && nutrObj.nutrient_id !== '621' // dha
+      && nutrObj.nutrient_id !== '208' // kcal
+      && nutrObj.nutrient_id !== '203' // protein
+      && nutrObj.nutrient_id !== '204' // fat
+      && nutrObj.nutrient_id !== '205' // carbs
+    ) {
+      return nutrObj;
+    }
+    return null;
+  }).map(nutrObj => {
+    // formatting the micronutrient list items
+    return {
+      name: nutrObj.nutrient,
+      value: nutrObj.value,
+      unit: nutrObj.unit
+    }
+  })
+
+  return [
+    omega3,
+    ...nutrientList
+  ];
+};
+
+// returns an array
+const formatMacronutrients = (nutrients) => {
+  const kcal = nutrients.find(nutrObj => {
+    return nutrObj.nutrient_id === '208';
+  });
+  const protein = nutrients.find(nutrObj => {
+    return nutrObj.nutrient_id === '203';
+  });
+  const fat = nutrients.find(nutrObj => {
+    return nutrObj.nutrient_id === '204';
+  });
+  const carbohydrate = nutrients.find(nutrObj => {
+    return nutrObj.nutrient_id === '205';
+  });
+
+  const macros = [kcal, protein, fat, carbohydrate].map(macro => {
+    return {
+      name: macro.nutrient,
+      value: macro.value,
+      unit: macro.unit
+    }
+  });
+
+  return macros;
+};
+
+// returns an object
+const formatNutrientResponse = (response) => {
+  const nutrients = response.nutrients.map(nutrObj => {
+    if (nutrObj.value === '--') {
+      nutrObj.value = 0
+    }
+    return nutrObj;
+  });
+
+  const macronutrients = formatMacronutrients(nutrients);
+  const micronutrients = formatMicronutrients(nutrients);
+
+  return {
+    name: response.name,
+    measure: response.measure,
+    macronutrients: macronutrients,
+    micronutrients: micronutrients
+  };
+}
+
 export const searchNutrientInfo = (foodKey) => {
   const nutrients = [
     '208', // kcal
@@ -68,6 +166,6 @@ export const searchNutrientInfo = (foodKey) => {
     + '&nutrients=' + nutrients[11]
     + '&ndbno=' + foodKey
   return axios.get(searchURL)
-  .then(response => response.data.report.foods[0])
+  .then(response => formatNutrientResponse(response.data.report.foods[0]))
   .catch(error => console.log(error));
 };
