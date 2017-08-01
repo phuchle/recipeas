@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Grid, Row, Col, ListGroup, ListGroupItem, Button, FormControl, ControlLabel
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { searchNutrientInfo, roundToTwo } from '../utils/api';
 
 //gets dbNumber from props.location.state.dbNumber in the form of:
@@ -17,7 +17,8 @@ class IngredientDetails extends Component {
     this.state = {
       originalDetails: null,
       updatedDetails: null,
-      servings: 1
+      servings: 1,
+      redirect: false
     };
 
     this.renderNutrientDetails = this.renderNutrientDetails.bind(this);
@@ -67,18 +68,20 @@ class IngredientDetails extends Component {
           {this.makeMicronutrientsList()}
         </ListGroup>
 
-        <Link to="/search-ingredients">
-          <Button
-            bsSize="large"
-            bsStyle="primary"
-            block
-            style={{
-              marginBottom: '10px'
-            }}
-          >
-            Add Ingredient
-          </Button>
-        </Link>
+        <Button
+          bsSize="large"
+          bsStyle="primary"
+          block
+          style={{
+            marginBottom: '10px'
+          }}
+          onClick={() => {
+            this.props.handleAddIngredient(this.state.updatedDetails);
+            this.setState({ redirect: true });
+          }}
+        >
+          Add Ingredient
+        </Button>
 
         <Link to="/search-ingredient">
           <Button
@@ -91,6 +94,9 @@ class IngredientDetails extends Component {
             Back
           </Button>
         </Link>
+        {this.state.redirect && (
+          <Redirect to="/add-ingredients" />
+        )}
       </div>
     );
   }

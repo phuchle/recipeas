@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Grid, Row, Col, InputGroup, FormControl, Button, ListGroup, ListGroupItem
+  Grid, Row, Col, InputGroup, FormControl,
+  Button, ListGroup, ListGroupItem
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { searchFoodDescription } from '../utils/api';
 import SearchResultItem from './SearchResultItem';
 
@@ -19,7 +21,6 @@ class SearchIngredient extends Component {
     this.renderSearchResults = this.renderSearchResults.bind(this);
   }
   renderSearchResults(results) {
-    console.log(results);
     let resultsList;
     if (results.type === 'success') {
       resultsList = results.response.map((foodObj) => {
@@ -73,6 +74,19 @@ class SearchIngredient extends Component {
                 </InputGroup.Button>
               </InputGroup>
             </form>
+
+            <Link to="/add-ingredients">
+              <Button
+                bsSize="large"
+                block
+                style={{
+                  marginTop: '10px',
+                  marginBottom: '10px'
+                }}
+              >
+                Back
+              </Button>
+            </Link>
 
             <ListGroup>
               {this.state.searchResults}

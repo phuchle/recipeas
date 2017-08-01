@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PlusButton from './PlusButton';
 import {
-  Grid, Row, Col, Button, Pager
+  Grid, Row, Col, Button, Pager, ListGroup, ListGroupItem
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -10,29 +10,9 @@ class ModifyIngredients extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      ingredients: {
-        default: {
-          name: '',
-          data: {}
-        }
-      }
-    }
-
-    this.handleChange = this.handleChange.bind(this);
     this.renderNextButton = this.renderNextButton.bind(this);
     this.renderPlusButton = this.renderPlusButton.bind(this);
-  }
-  handleChange(event) {
-    this.setState({
-      ...this.state.ingredients,
-      ingredients: {
-        default: {
-          ...this.state.ingredients.default,
-          name: event.target.value
-        }
-      }
-    });
+    this.renderIngredients = this.renderIngredients.bind(this);
   }
   renderNextButton() {
     return this.props.nextButton ?
@@ -42,7 +22,6 @@ class ModifyIngredients extends Component {
             <Button
               bsSize="large"
               bsStyle="primary"
-              onClick={() =>  this.props.handleClick(this.state.ingredients) }
               style={this.props.nextButtonStyle}
               block
             >
@@ -63,6 +42,19 @@ class ModifyIngredients extends Component {
       </Link>
     ) : null;
   }
+  renderIngredients() {
+    return (
+      <ListGroup>
+        {this.props.ingredientList.map(ingredient => {
+          return (
+            <ListGroupItem key={ingredient.name}>
+              {`${ingredient.name}, ${ingredient.measure}`}
+            </ListGroupItem>
+          )
+        })}
+      </ListGroup>
+    )
+  }
   render() {
     return (
       <Grid>
@@ -72,6 +64,7 @@ class ModifyIngredients extends Component {
               Ingredients
               { this.renderPlusButton() }
             </h4>
+            { this.renderIngredients() }
             { this.renderNextButton() }
           </Col>
         </Row>
@@ -81,7 +74,6 @@ class ModifyIngredients extends Component {
 }
 
 ModifyIngredients.propTypes = {
-  handleClick: PropTypes.func.isRequired,
   nextButton: PropTypes.bool.isRequired,
   nextButtonStyle: PropTypes.object.isRequired,
   plusButton: PropTypes.bool.isRequired,

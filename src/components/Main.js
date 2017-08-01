@@ -14,11 +14,14 @@ class Main extends Component {
     this.state = {
       title: '',
       allergens: '',
-      ingredients: {},
+      servings: '',
+      ingredients: [],
     }
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleAllergensChange = this.handleAllergensChange.bind(this);
+    this.handleServingsChange = this.handleServingsChange.bind(this);
+    this.handleIngredientDetailNextButton = this.handleIngredientDetailNextButton.bind(this);
   }
   handleTitleChange(event) {
     this.setState({
@@ -30,13 +33,25 @@ class Main extends Component {
       allergens: event.target.value
     });
   }
-  handleIngredientsNextButton(ingredients) {
-
+  handleServingsChange(event) {
+    this.setState({
+      servings: event.target.value
+    });
+  }
+  handleIngredientDetailNextButton(newIngredient) {
+    this.setState({
+      ...this.state,
+      ingredients: [
+        ...this.state.ingredients,
+        newIngredient
+      ]
+    });
   }
   render() {
     return (
       <Switch>
         <Route exact path="/" component={RecipesList} />
+
         <Route path="/add-recipe" render={() => (
           <ModifyTitle
             title={this.state.title}
@@ -46,25 +61,37 @@ class Main extends Component {
             handleServingsChange={this.handleServingsChange}
             handleAllergensChange={this.handleAllergensChange}
             nextButton={true}
-            nextButtonStyle={{ marginBottom: '10px', marginTop: '10px' }}
-          />)}
-        />
+            nextButtonStyle={{
+              marginBottom: '10px',
+              marginTop: '10px'
+            }}
+          />
+        )} />
+
         <Route path="/add-ingredients" render={() => (
           <ModifyIngredients
-            handleClick={this.handleIngredientsNextButton}
             nextButton={true}
             plusButton={true}
             nextButtonStyle={{ marginBottom: '10px' }}
+            ingredientList={this.state.ingredients}
           />
         )} />
+
         <Route path="/review" render={() => (
           <ReviewRecipe buttonStyle={{
             marginTop: '20px',
             marginBottom: '10px'
           }} />
         )} />
+
         <Route path="/search-ingredient" component={SearchIngredient} />
-        <Route path="/ingredient-details" component={IngredientDetails} />
+
+        <Route path="/ingredient-details" render={({ location }) => (
+          <IngredientDetails
+            location={location}
+            handleAddIngredient={this.handleIngredientDetailNextButton}
+          />
+        )} />
       </Switch>
     )
   }
