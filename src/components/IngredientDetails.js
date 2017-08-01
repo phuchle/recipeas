@@ -15,7 +15,8 @@ class IngredientDetails extends Component {
     super(props);
 
     this.state = {
-      details: null,
+      originalDetails: null,
+      updatedDetails: null,
       servings: 1
     };
 
@@ -24,7 +25,7 @@ class IngredientDetails extends Component {
   }
 
   makeMicronutrientsList() {
-    const micros = this.state.details.micronutrients;
+    const micros = this.state.updatedDetails.micronutrients;
 
     return micros.map(micro => {
       return (
@@ -36,7 +37,7 @@ class IngredientDetails extends Component {
     });
   }
   makeMacronutrientList() {
-    const macros = this.state.details.macronutrients;
+    const macros = this.state.updatedDetails.macronutrients;
     return macros.map(macro => {
       return (
         <ListGroupItem key={macro.name}>
@@ -49,7 +50,7 @@ class IngredientDetails extends Component {
   renderNutrientDetails() {
     return (
       <div>
-        <h4>{this.state.details.name}</h4>
+        <h4>{this.state.updatedDetails.name}</h4>
         <ControlLabel>Servings</ControlLabel>
         <FormControl
           type="number"
@@ -57,7 +58,7 @@ class IngredientDetails extends Component {
           value={this.state.servings}
           onChange={this.handleServingsChange}
         />
-        <p><strong>Serving Size:</strong> {this.state.details.measure}</p>
+        <p><strong>Serving Size:</strong> {this.state.updatedDetails.measure}</p>
 
         <ListGroup>
           <h4>Macronutrients</h4>
@@ -94,14 +95,42 @@ class IngredientDetails extends Component {
     );
   }
   handleServingsChange(event) {
-    this.setState({
-      servings: event.target.value
-    });
+    const newServing = event.target.value;
+    if (!isNaN(parseInt(newServing, 10))) {
+      const newMacronutrients = this.state.originalDetails.macronutrients.map(macro => {
+        return {
+          ...macro,
+          value: parseFloat(macro.value) * parseInt(newServing, 10)
+        };
+      });
+      const newMicronutrients = this.state.originalDetails.micronutrients.map(micro => {
+        return {
+          ...micro,
+          value: parseFloat(micro.value) * parseInt(newServing, 10)
+        };
+      });
+
+      this.setState({
+        servings: newServing,
+        updatedDetails: {
+          ...this.state.updatedDetails,
+          macronutrients: newMacronutrients,
+          micronutrients: newMicronutrients
+        }
+      });
+    } else {
+      this.setState({
+        servings: newServing
+      });
+    }
   }
   componentDidMount() {
     searchNutrientInfo(this.props.location.state.dbNumber)
     .then(
-      details => this.setState({ details: details })
+      details => this.setState({
+        originalDetails: details,
+        updatedDetails: details
+      })
     );
   }
   render() {
@@ -109,7 +138,7 @@ class IngredientDetails extends Component {
       <Grid>
         <Row>
           <Col sm={12} lg={8} lgOffset={2}>
-            {this.state.details ? this.renderNutrientDetails() : 'Loading...'}
+            {this.state.updatedDetails ? this.renderNutrientDetails() : 'Loading...'}
           </Col>
         </Row>
       </Grid>
