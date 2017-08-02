@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PlusButton from './PlusButton';
+import MinusButton from './MinusButton';
 import {
   Grid, Row, Col, Button, Pager, ListGroup, ListGroupItem
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import v4 from 'uuid';
 
 class ModifyIngredients extends Component {
   constructor(props) {
@@ -47,9 +49,20 @@ class ModifyIngredients extends Component {
       <ListGroup>
         {this.props.ingredientList.map(ingredient => {
           return (
-            <ListGroupItem key={ingredient.name}>
+            <ListGroupItem key={v4()}>
+            <Link to={{
+                pathname: '/ingredient-details',
+                state: {
+                  ingredient: ingredient
+                }
+              }}
+              >
               {`${ingredient.name}, ${ingredient.measure}`}
-            </ListGroupItem>
+            </Link>
+            <MinusButton
+              // onClick delete the ingredient
+            />
+          </ListGroupItem>
           )
         })}
       </ListGroup>

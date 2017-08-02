@@ -73,9 +73,7 @@ class IngredientDetails extends Component {
           bsSize="large"
           bsStyle="primary"
           block
-          style={{
-            marginBottom: '10px'
-          }}
+          style={{ marginBottom: '10px' }}
           onClick={() => {
             this.props.handleAddIngredient(this.state.updatedDetails);
             this.setState({ redirect: true });
@@ -133,13 +131,20 @@ class IngredientDetails extends Component {
     }
   }
   componentDidMount() {
-    searchNutrientInfo(this.props.location.state.dbNumber)
-    .then(
-      details => this.setState({
-        originalDetails: details,
-        updatedDetails: details
+    if (this.props.location.state.dbNumber) {
+      searchNutrientInfo(this.props.location.state.dbNumber)
+      .then(
+        details => this.setState({
+          originalDetails: details,
+          updatedDetails: details
+        })
+      );
+    } else if (this.props.location.state.ingredient) {
+      this.setState({
+        originalDetails: this.props.location.state.ingredient,
+        updatedDetails: this.props.location.state.ingredient
       })
-    );
+    }
   }
   render() {
     return (
