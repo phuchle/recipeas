@@ -1,13 +1,13 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const PlusButton = () => (
+const MinusButton = () => (
   <Button
     bsSize="small"
-    bsStyle="primary"
+    bsStyle="danger"
     style={{ marginLeft: '5px' }}
-    className="glyphicon glyphicon-plus"
+    className="glyphicon glyphicon-minus"
   />
 );
 
-export default PlusButton;
+export default MinusButton;
