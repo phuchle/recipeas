@@ -40,7 +40,7 @@ class ModifyIngredients extends Component {
   renderPlusButton() {
     return this.props.plusButton ? (
       <Link to="/search-ingredient">
-        <PlusButton />
+        <PlusButton className="pull-right" />
       </Link>
     ) : null;
   }

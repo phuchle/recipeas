@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 
 const PlusButton = (props) => (
   <Button
-    bsSize="small"
     bsStyle="primary"
-    style={{ marginLeft: '5px' }}
+    style={{
+      marginLeft: '5px',
+      marginBottom: '10px'
+   }}
     className={`${props.className} glyphicon glyphicon-plus`}
   />
 );
