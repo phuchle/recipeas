@@ -47,6 +47,14 @@ class Main extends Component {
       ]
     });
   }
+  resetState() {
+    this.setState({
+      title: '',
+      allergens: '',
+      servings: '',
+      ingredients: []
+    });
+  }
   render() {
     return (
       <Switch>
