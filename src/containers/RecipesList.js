@@ -138,12 +138,12 @@ export class RecipesList extends Component {
     return (
       <Grid>
         <Row>
-          <Col sm={12} lg={8} lgOffset={2}>
+          <Col sm={12} md={6} lg={6} lgOffset={3}>
             <span>
               <h1>
                 Recipes
                 <Link to="/add-recipe">
-                <PlusButton />
+                <PlusButton className="pull-right"/>
               </Link>
             </h1>
           </span>
