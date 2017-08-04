@@ -7,9 +7,11 @@ import {
 } from '../actions';
 
 const initialTempRecipe = {
-  title: '',
-  allergens: '',
-  servings: '',
+  titleDetails: {
+    title: '',
+    allergens: '',
+    servings: ''
+  },
   ingredients: []
 };
 
@@ -17,11 +19,7 @@ const TempRecipe = (state = initialTempRecipe, action) => {
   switch(action.type) {
     // works for adding or editing
     case MODIFY_TEMP_TITLE:
-    return Object.assign({}, state, {
-      title: action.title,
-      allergens: action.allergens,
-      servings: action.servings
-    });
+      return Object.assign({}, state, action.titleDetails);
     case ADD_TEMP_INGREDIENT:
       return Object.assign({}, state, {
         ingredients: [

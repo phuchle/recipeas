@@ -39,9 +39,7 @@ export const removeRecipe = id => {
 export const modifyTempTitle = (details) => {
   return {
     type: MODIFY_TEMP_TITLE,
-    title: details.title,
-    allergens: details.allergens,
-    servings: details.servings
+    titleDetails: details
   };
 };
 
