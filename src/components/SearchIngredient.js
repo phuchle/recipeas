@@ -48,12 +48,20 @@ class SearchIngredient extends Component {
   handleIngredientSearch(event) {
     event.preventDefault();
     searchFoodDescription(this.state.query)
-    .then(results => this.renderSearchResults(results));
+    .then(results => {
+      results.type === 'success' &&
+      this.props.addSearchIngredientResults(results);
+      this.renderSearchResults(results);
+    });
   }
   handleChange(event) {
     this.setState({
       query: event.target.value
     });
+  }
+  componentWillMount() {
+    this.props.results &&
+    this.renderSearchResults(this.props.results);
   }
   render() {
     return (

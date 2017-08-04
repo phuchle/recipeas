@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import RecipesList from '../containers/RecipesList';
 import ModifyTitle from './ModifyTitle';
-import ModifyIngredients from './ModifyIngredients';
+import ModifyIngredients from '../containers/ModifyIngredients';
 import ReviewRecipe from './ReviewRecipe';
-import SearchIngredient from './SearchIngredient';
+import SearchIngredient from '../containers/SearchIngredient';
 import IngredientDetails from './IngredientDetails';
 
 class Main extends Component {

@@ -14,7 +14,7 @@ describe('Recipes', () => {
       ...defaultRecipes,
       action.recipe
     ];
-    
+
     expect(Recipes(defaultRecipes, action)).toEqual(expectedState);
   });
 
