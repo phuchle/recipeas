@@ -16,7 +16,7 @@ class Main extends Component {
       allergens: '',
       servings: '',
       ingredients: [],
-    }
+    };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleAllergensChange = this.handleAllergensChange.bind(this);
@@ -93,23 +93,14 @@ class Main extends Component {
             handleTitleChange={this.handleTitleChange}
             handleServingsChange={this.handleServingsChange}
             handleAllergensChange={this.handleAllergensChange}
-            ingredientList={this.state.ingredients}
+            // ingredientList={this.state.ingredients}
             buttonStyle={{
             marginTop: '20px',
             marginBottom: '10px'
           }} />
         )} />
-
-        <Route path="/search-ingredient" component={SearchIngredient} />
-
-        <Route path="/ingredient-details" render={({ location }) => (
-          <IngredientDetails
-            location={location}
-            handleAddIngredient={this.handleIngredientDetailNextButton}
-          />
-        )} />
       </Switch>
-    )
+    );
   }
 };
 

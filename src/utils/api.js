@@ -30,13 +30,13 @@ export const searchFoodDescription = (query) => {
       return {
         type: 'error',
         response: response.data.errors.error[0].message
-      }
+      };
     }
     if (response.data.list.item) {
       return {
         type: 'success',
         response: response.data.list.item
-      }
+      };
     }
   })
   .catch(error => console.log(error));
@@ -86,8 +86,8 @@ const formatMicronutrients = (nutrients) => {
       name: nutrObj.nutrient,
       value: roundToTwo(parseFloat(nutrObj.value)),
       unit: nutrObj.unit
-    }
-  })
+    };
+  });
 
   return [
     omega3,
@@ -117,13 +117,13 @@ const formatMacronutrients = (nutrients) => {
         name = 'Calories';
         break;
       case '203':
-        name = 'Protein'
+        name = 'Protein';
         break;
       case '204':
-        name = 'Fat'
+        name = 'Fat';
         break;
       case '205':
-        name = 'Carbohydrate'
+        name = 'Carbohydrate';
         break;
       default:
         name = macro.nutrient_id;
@@ -134,7 +134,7 @@ const formatMacronutrients = (nutrients) => {
       name: name,
       value: roundToTwo(parseInt(macro.value, 10)),
       unit: macro.unit
-    }
+    };
   });
 
   return macros;
@@ -144,7 +144,7 @@ const formatMacronutrients = (nutrients) => {
 const formatNutrientResponse = (response) => {
   const nutrients = response.nutrients.map(nutrObj => {
     if (nutrObj.value === '--') {
-      nutrObj.value = 0
+      nutrObj.value = 0;
     }
     return nutrObj;
   });
@@ -158,7 +158,7 @@ const formatNutrientResponse = (response) => {
     macronutrients: macronutrients,
     micronutrients: micronutrients
   };
-}
+};
 
 export const searchNutrientInfo = (foodKey) => {
   const nutrients = [
@@ -189,7 +189,7 @@ export const searchNutrientInfo = (foodKey) => {
     + '&nutrients=' + nutrients[9]
     + '&nutrients=' + nutrients[10]
     + '&nutrients=' + nutrients[11]
-    + '&ndbno=' + foodKey
+    + '&ndbno=' + foodKey;
   return axios.get(searchURL)
   .then(response => formatNutrientResponse(response.data.report.foods[0]))
   .catch(error => console.log(error));

@@ -63,10 +63,10 @@ class ModifyIngredients extends Component {
               // onClick delete the ingredient
             />
           </ListGroupItem>
-          )
+        );
         })}
       </ListGroup>
-    )
+    );
   }
   render() {
     return (
@@ -91,6 +91,6 @@ ModifyIngredients.propTypes = {
   nextButtonStyle: PropTypes.object,
   plusButton: PropTypes.bool.isRequired,
   ingredientList: PropTypes.array.isRequired
-}
+};
 
 export default ModifyIngredients;

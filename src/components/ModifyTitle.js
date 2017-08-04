@@ -25,7 +25,7 @@ const renderNextButton = (props) => {
       </div>
     )
     : null;
-}
+};
 
 const ModifyTitle = (props) => {
   return (
@@ -59,7 +59,7 @@ const ModifyTitle = (props) => {
       </Row>
     </Grid>
   );
-}
+};
 
 ModifyTitle.propTypes = {
   title: PropTypes.string.isRequired,
@@ -70,6 +70,6 @@ ModifyTitle.propTypes = {
   handleAllergensChange: PropTypes.func.isRequired,
   nextButton: PropTypes.bool.isRequired,
   nextButtonStyle: PropTypes.object,
-}
+};
 
 export default ModifyTitle;

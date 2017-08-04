@@ -47,7 +47,7 @@ class IngredientDetails extends Component {
           { macro.value + macro.unit}
         </ListGroupItem>
       );
-    })
+    });
   }
   renderNutrientDetails() {
     return (
@@ -143,7 +143,7 @@ class IngredientDetails extends Component {
       this.setState({
         originalDetails: this.props.location.state.ingredient,
         updatedDetails: this.props.location.state.ingredient
-      })
+      });
     }
   }
   render() {
@@ -161,6 +161,6 @@ class IngredientDetails extends Component {
 
 IngredientDetails.propTypes = {
   handleAddIngredient: PropTypes.func.isRequired,
-}
+};
 
 export default IngredientDetails;

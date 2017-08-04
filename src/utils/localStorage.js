@@ -9,7 +9,7 @@ export const loadState = () => {
   } catch (err) {
     return err;
   }
-}
+};
 
 export const saveState = (state) => {
   try {
@@ -18,4 +18,4 @@ export const saveState = (state) => {
   } catch (err) {
     return err;
   }
-}
+};

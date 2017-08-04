@@ -18,7 +18,7 @@ describe('Local storage methods', () => {
       store: {
         state: serializedState
       }
-    }
+    };
 
     expect(global.localStorage).toEqual(expectedStorage);
   });

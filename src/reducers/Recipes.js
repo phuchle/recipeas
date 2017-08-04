@@ -25,7 +25,7 @@ const Recipes = (state = defaultRecipes, action) => {
       return [
         ...state,
         action.recipe
-      ]
+      ];
     case EDIT_RECIPE:
       return state.map(recipe => {
         return recipe.id === action.id ?
@@ -37,6 +37,6 @@ const Recipes = (state = defaultRecipes, action) => {
     default:
       return state;
   }
-}
+};
 
 export default Recipes;

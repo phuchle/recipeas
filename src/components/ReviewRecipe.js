@@ -45,11 +45,11 @@ const ReviewRecipe = (props) => {
       </Row>
     </Grid>
   );
-}
+};
 
 ReviewRecipe.propTypes = {
   buttonStyle: PropTypes.object.isRequired,
   ingredientList: PropTypes.array.isRequired
-}
+};
 
 export default ReviewRecipe;

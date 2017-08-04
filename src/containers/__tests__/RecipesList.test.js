@@ -112,7 +112,7 @@ describe('Recipes List', () => {
         ingredients: ''
       },
       targetId: ''
-    }
+    };
 
     wrapper.instance().handleTitleChange(titleEvent);
     wrapper.instance().handleIngredientsChange(ingredientsEvent);
@@ -202,7 +202,7 @@ describe('Recipes List', () => {
     };
     const dispatchRemoveRecipe = (id) => {
       mockStore.dispatch(removeRecipe(id));
-    }
+    };
     const event = {
       preventDefault: jest.fn()
     };
@@ -237,7 +237,7 @@ describe('Recipes List', () => {
         displayAddRecipe: true
       });
       wrapper.instance().handleSubmit(event);
-      const storeLength = mockStore.getState().recipes.length
+      const storeLength = mockStore.getState().recipes.length;
 
       expect(mockStore.getState().recipes.length).toBe(4);
       expect(mockStore.getState().recipes[storeLength - 1]).toHaveProperty('title', recipe.title);

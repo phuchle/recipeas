@@ -35,7 +35,7 @@ const setup = () => {
     props,
     enzymeWrapper
   };
-}
+};
 
 describe('Recipe', () => {
   test('Renders without errors', () => {

@@ -69,7 +69,7 @@ describe('Recipes', () => {
       return {
         type: 'unknown',
         recipe: testRecipe
-      }
+      };
     };
     const action = unknownActionCreator(testRecipe);
     expect(Recipes(defaultRecipes, action)).toBe(defaultRecipes);

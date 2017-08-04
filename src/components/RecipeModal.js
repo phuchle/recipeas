@@ -44,7 +44,7 @@ const RecipeModal = (props) => {
       </form>
     </Modal>
   );
-}
+};
 
 RecipeModal.propTypes = {
   show: PropTypes.bool.isRequired,
@@ -55,6 +55,6 @@ RecipeModal.propTypes = {
   handleTitleChange: PropTypes.func.isRequired,
   handleIngredientsChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
-}
+};
 
 export default RecipeModal;

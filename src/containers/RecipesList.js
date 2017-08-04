@@ -117,7 +117,7 @@ export class RecipesList extends Component {
           <ListGroupItem key={recipe.title + ingredient}>
             { ingredient }
           </ListGroupItem>
-        )
+        );
       });
 
       return (
@@ -163,17 +163,17 @@ RecipesList.PropTypes = {
   addRecipe: PropTypes.func.isRequired,
   editRecipe: PropTypes.func.isRequired,
   removeRecipe: PropTypes.func.isRequired
-}
+};
 
 const mapStateToProps = state => {
   return {
     recipes: state.recipes
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ addRecipe, editRecipe, removeRecipe }, dispatch);
-}
+};
 
 export default connect(
   mapStateToProps,

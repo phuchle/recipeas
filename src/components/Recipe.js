@@ -49,6 +49,6 @@ Recipe.propTypes = {
   showEditRecipe: PropTypes.func.isRequired,
   removeRecipe: PropTypes.func.isRequired,
   fillEditRecipeModal: PropTypes.func.isRequired
-}
+};
 
 export default Recipe;
