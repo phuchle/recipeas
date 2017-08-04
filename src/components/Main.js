@@ -85,6 +85,15 @@ class Main extends Component {
           />
         )} />
 
+        <Route path="/search-ingredient" component={SearchIngredient} />
+
+        <Route path="/ingredient-details" render={({ location }) => (
+          <IngredientDetails
+            location={location}
+            handleAddIngredient={this.handleIngredientDetailNextButton}
+          />
+        )} />
+
         <Route path="/review" render={() => (
           <ReviewRecipe
             title={this.state.title}

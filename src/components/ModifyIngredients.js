@@ -46,7 +46,7 @@ class ModifyIngredients extends Component {
   }
   renderIngredients() {
     return (
-      <ListGroup>
+      <ListGroup style={{ marginTop: '25px' }}>
         {this.props.ingredientList.map(ingredient => {
           return (
             <ListGroupItem key={v4()}>
