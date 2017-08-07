@@ -7,7 +7,6 @@ import RootReducer from '../../reducers/RootReducer';
 import { removeRecipe } from '../../actions/index';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { ListGroup } from 'react-bootstrap';
 
 const title = 'BLT';
 
