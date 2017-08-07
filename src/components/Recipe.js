@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Collapse, Well } from 'react-bootstrap';
+import { Button, Collapse, Well, ListGroup } from 'react-bootstrap';
 
 class Recipe extends Component {
   constructor(props) {
@@ -19,11 +19,18 @@ class Recipe extends Component {
         <Collapse in={this.state.open}>
           <div> {/* this div exists for smooth collapse animation */}
             <Well>
-              <ul>{this.props.ingredients}</ul>
+              <ListGroup>{this.props.ingredients}</ListGroup>
               <Button className="edit-recipe" onClick={() => {
                 this.props.fillEditRecipeModal(this.props.id);
               }}>Edit</Button>
-              <Button className="delete-recipe" bsStyle="danger" onClick={() => this.props.removeRecipe(this.props.id)}>Delete</Button>
+              <Button
+                className="delete-recipe"
+                bsStyle="danger"
+                onClick={() => this.props.removeRecipe(this.props.id)}
+                style={{ marginLeft: '5px' }}
+              >
+                Delete
+              </Button>
             </Well>
           </div>
         </Collapse>

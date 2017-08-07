@@ -58,32 +58,34 @@ exports[`App renders without crashing 1`] = `
             <div
               className="well"
             >
-              <ul>
-                <span
+              <ul
+                className="list-group"
+              >
+                <li
                   className="list-group-item"
                 >
                   Pumpkin Puree
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Sweetened Condensed Milk
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Eggs
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Pumpkin Pie Spice
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Pie Crust
-                </span>
+                </li>
               </ul>
               <button
                 className="edit-recipe btn btn-default"
@@ -97,6 +99,11 @@ exports[`App renders without crashing 1`] = `
                 className="delete-recipe btn btn-danger"
                 disabled={false}
                 onClick={[Function]}
+                style={
+                  Object {
+                    "marginLeft": "5px",
+                  }
+                }
                 type="button"
               >
                 Delete
@@ -125,22 +132,24 @@ exports[`App renders without crashing 1`] = `
             <div
               className="well"
             >
-              <ul>
-                <span
+              <ul
+                className="list-group"
+              >
+                <li
                   className="list-group-item"
                 >
                   Noodles
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Pasta Sauce
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Meatballs
-                </span>
+                </li>
               </ul>
               <button
                 className="edit-recipe btn btn-default"
@@ -154,6 +163,11 @@ exports[`App renders without crashing 1`] = `
                 className="delete-recipe btn btn-danger"
                 disabled={false}
                 onClick={[Function]}
+                style={
+                  Object {
+                    "marginLeft": "5px",
+                  }
+                }
                 type="button"
               >
                 Delete
@@ -182,27 +196,29 @@ exports[`App renders without crashing 1`] = `
             <div
               className="well"
             >
-              <ul>
-                <span
+              <ul
+                className="list-group"
+              >
+                <li
                   className="list-group-item"
                 >
                   Peanut Butter
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Eggs
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Baking Powder
-                </span>
-                <span
+                </li>
+                <li
                   className="list-group-item"
                 >
                    Sugar
-                </span>
+                </li>
               </ul>
               <button
                 className="edit-recipe btn btn-default"
@@ -216,6 +232,11 @@ exports[`App renders without crashing 1`] = `
                 className="delete-recipe btn btn-danger"
                 disabled={false}
                 onClick={[Function]}
+                style={
+                  Object {
+                    "marginLeft": "5px",
+                  }
+                }
                 type="button"
               >
                 Delete

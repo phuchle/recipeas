@@ -7,6 +7,7 @@ import RootReducer from '../../reducers/RootReducer';
 import { removeRecipe } from '../../actions/index';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { ListGroup } from 'react-bootstrap';
 
 const title = 'BLT';
 
@@ -48,7 +49,7 @@ describe('Recipe', () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper.find('h4').text()).toBe(title);
 
-    expect(enzymeWrapper.find('ul').contains(ingredientsList)).toEqual(true);
+    expect(enzymeWrapper.find('ListGroup').contains(ingredientsList)).toEqual(true);
 
   });
 
