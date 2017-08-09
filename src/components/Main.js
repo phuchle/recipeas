@@ -15,7 +15,6 @@ class Main extends Component {
       title: '',
       allergens: '',
       servings: '',
-      ingredients: [],
     };
 
     this.handleIngredientDetailNextButton = this.handleIngredientDetailNextButton.bind(this);
@@ -57,7 +56,6 @@ class Main extends Component {
             nextButton={true}
             plusButton={true}
             nextButtonStyle={{ marginBottom: '10px' }}
-            ingredientList={this.state.ingredients}
           />
         )} />
 
@@ -78,7 +76,6 @@ class Main extends Component {
             handleTitleChange={this.handleTitleChange}
             handleServingsChange={this.handleServingsChange}
             handleAllergensChange={this.handleAllergensChange}
-            // ingredientList={this.state.ingredients}
             buttonStyle={{
             marginTop: '20px',
             marginBottom: '10px'

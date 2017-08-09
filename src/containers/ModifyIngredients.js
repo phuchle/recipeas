@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
   return {
-    ingredients: state.tempRecipe.ingredients
+    ingredientList: state.tempRecipe.ingredients
   };
 };
 

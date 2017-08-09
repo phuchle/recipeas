@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   Grid, Row, Col, Button
 } from 'react-bootstrap';
-import ModifyTitle from './ModifyTitle';
-import ModifyIngredients from './ModifyIngredients';
+import ModifyTitle from '../containers/ModifyTitle';
+import ModifyIngredients from '../containers/ModifyIngredients';
 import PropTypes from 'prop-types';
 
 const ReviewRecipe = (props) => {
@@ -23,8 +23,6 @@ const ReviewRecipe = (props) => {
             nextButton={false}
           />
           <ModifyIngredients
-            handleClick={()=>{}}
-            ingredientList={props.ingredientList}
             nextButton={false}
             plusButton={false}
           />
