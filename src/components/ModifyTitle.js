@@ -51,13 +51,20 @@ class ModifyTitle extends Component {
             </Button>
           </Link>
           <Link to="/">
-            <Button bsSize="large" block>Back</Button>
+            <Button
+              bsSize="large"
+              onClick={this.props.clearTempRecipe}
+              block
+            >
+              Back
+            </Button>
           </Link>
         </div>
       )
     : null;
   }
   componentDidMount() {
+    console.log(this.state);
     this.setState({
       title: this.props.titleDetails.title,
       allergens: this.props.titleDetails.allergens,

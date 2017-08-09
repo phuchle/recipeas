@@ -1,0 +1,10 @@
+import IngredientDetails from '../components/IngredientDetails';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addTempIngredient } from '../actions/index';
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ addTempIngredient }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(IngredientDetails);

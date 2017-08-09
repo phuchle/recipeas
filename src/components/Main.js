@@ -3,9 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import RecipesList from '../containers/RecipesList';
 import ModifyTitle from '../containers/ModifyTitle';
 import ModifyIngredients from '../containers/ModifyIngredients';
-import ReviewRecipe from './ReviewRecipe';
 import SearchIngredient from '../containers/SearchIngredient';
-import IngredientDetails from './IngredientDetails';
+import IngredientDetails from '../containers/IngredientDetails';
+import ReviewRecipe from './ReviewRecipe';
 
 const Main = (props) => {
   return (

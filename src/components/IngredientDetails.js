@@ -74,10 +74,7 @@ class IngredientDetails extends Component {
           bsStyle="primary"
           block
           style={{ marginBottom: '10px' }}
-          onClick={() => {
-            this.props.handleAddIngredient(this.state.updatedDetails);
-            this.setState({ redirect: true });
-          }}
+          onClick={() => this.props.addTempIngredient(this.state.updatedDetails)}
         >
           Add Ingredient
         </Button>
@@ -160,7 +157,7 @@ class IngredientDetails extends Component {
 };
 
 IngredientDetails.propTypes = {
-  handleAddIngredient: PropTypes.func.isRequired,
+  addTempIngredient: PropTypes.func.isRequired
 };
 
 export default IngredientDetails;
