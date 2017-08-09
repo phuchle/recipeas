@@ -9,10 +9,17 @@ class ModifyTitle extends Component {
   constructor(props) {
     super(props);
 
+    if (this.props.titleDetails) {
+      this.state = {
+        title: this.props.titleDetails.title,
+        allergens: this.props.titleDetails.allergens,
+        servings: this.props.titleDetails.servings
+      };
+    }
     this.state = {
       title: '',
-      servings: '',
-      allergens: ''
+      allergens: '',
+      servings: ''
     };
 
     this.renderNextButton = this.renderNextButton.bind(this);
@@ -63,14 +70,6 @@ class ModifyTitle extends Component {
       )
     : null;
   }
-  componentDidMount() {
-    console.log(this.state);
-    this.setState({
-      title: this.props.titleDetails.title,
-      allergens: this.props.titleDetails.allergens,
-      servings: this.props.titleDetails.servings
-    });
-  }
   render() {
     return (
       <Grid>
@@ -109,7 +108,7 @@ class ModifyTitle extends Component {
 ModifyTitle.propTypes = {
   nextButton: PropTypes.bool.isRequired,
   nextButtonStyle: PropTypes.object,
-  titleDetails: PropTypes.object.isRequired,
+  titleDetails: PropTypes.object,
   modifyTempTitle: PropTypes.func.isRequired
 };
 

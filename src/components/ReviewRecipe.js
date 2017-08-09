@@ -46,8 +46,7 @@ const ReviewRecipe = (props) => {
 };
 
 ReviewRecipe.propTypes = {
-  buttonStyle: PropTypes.object.isRequired,
-  ingredientList: PropTypes.array.isRequired
+  buttonStyle: PropTypes.object.isRequired
 };
 
 export default ReviewRecipe;

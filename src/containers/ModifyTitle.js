@@ -5,7 +5,7 @@ import { modifyTempTitle, clearTempRecipe } from '../actions/index';
 
 const mapStateToProps = state => {
   return {
-    titleDetails: state.tempRecipe
+    titleDetails: state.tempRecipe.titleDetails
   };
 };
 
