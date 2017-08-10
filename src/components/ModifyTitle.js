@@ -60,7 +60,10 @@ class ModifyTitle extends Component {
           <Link to="/">
             <Button
               bsSize="large"
-              onClick={this.props.clearTempRecipe}
+              onClick={() => {
+                this.props.clearTempRecipe();
+                this.props.clearSearchIngredientResults();
+              }}
               block
             >
               Back
