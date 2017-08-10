@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const MinusButton = (props) => (
   <Button
+    onClick={props.handleClick}
     bsStyle="danger"
     style={{ marginLeft: '5px' }}
     className={`${props.className} glyphicon glyphicon-minus`}

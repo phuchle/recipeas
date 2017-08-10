@@ -60,7 +60,7 @@ class ModifyIngredients extends Component {
               {`${ingredient.name}, ${ingredient.measure}`}
             </Link>
             <MinusButton
-              // onClick delete the ingredient
+              handleClick={() => this.props.removeTempIngredient(ingredient.id)}
             />
           </ListGroupItem>
         );
