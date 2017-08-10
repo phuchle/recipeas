@@ -68,7 +68,7 @@ class IngredientDetails extends Component {
           <h4>Micronutrients</h4>
           {this.makeMicronutrientsList()}
         </ListGroup>
-
+      <Link to="/search-ingredient">
         <Button
           bsSize="large"
           bsStyle="primary"
@@ -78,6 +78,7 @@ class IngredientDetails extends Component {
         >
           Add Ingredient
         </Button>
+      </Link>
 
         <Link to="/search-ingredient">
           <Button
