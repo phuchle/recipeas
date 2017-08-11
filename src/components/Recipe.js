@@ -30,7 +30,7 @@ class Recipe extends Component {
               <MinusButton
                 className="pull-right delete-recipe"
                 bsStyle="danger"
-                onClick={ () =>
+                handleClick={() =>
                   this.props.removeRecipe(this.props.id)
                 }
               />
@@ -46,9 +46,7 @@ Recipe.propTypes = {
   title: PropTypes.string.isRequired,
   ingredients: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
-  showEditRecipe: PropTypes.func.isRequired,
   removeRecipe: PropTypes.func.isRequired,
-  fillEditRecipeModal: PropTypes.func.isRequired
 };
 
 export default Recipe;

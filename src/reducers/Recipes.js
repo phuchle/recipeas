@@ -3,18 +3,30 @@ import { v4 } from 'uuid';
 
 export const defaultRecipes = [
   {
-    title: 'Pumpkin Pie',
-    ingredients: 'Pumpkin Puree, Sweetened Condensed Milk, Eggs, Pumpkin Pie Spice, Pie Crust',
+    titleDetails: {
+      title: 'Pumpkin Pie',
+      servings: '4',
+      allergens: 'Eggs, Milk'
+    },
+    ingredients: [
+      { name: 'Pumpkin Puree'},
+      { name: 'Sweetened Condensed Milk' },
+      { name: 'Eggs' },
+      { name: 'Pumpkin Pie Spice' },
+      { name: 'Pie Crust'}
+    ],
     id: v4()
   },
   {
-    title: 'Spaghetti',
-    ingredients: 'Noodles, Pasta Sauce, Meatballs',
-    id: v4()
-  },
-  {
-    title: 'Peanut Butter Mug Cake',
-    ingredients: 'Peanut Butter, Eggs, Baking Powder, Sugar',
+    titleDetails: {
+      title: 'Spaghetti',
+      ingredients: 'Noodles, Pasta Sauce, Meatballs',
+    },
+    ingredients: [
+      { name: 'Noodles' },
+      { name: 'Pasta Sauce' },
+      { name: 'Meatballs' }
+    ],
     id: v4()
   }
 ];

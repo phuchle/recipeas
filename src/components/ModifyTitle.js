@@ -15,12 +15,13 @@ class ModifyTitle extends Component {
         allergens: this.props.titleDetails.allergens,
         servings: this.props.titleDetails.servings
       };
+    } else {
+      this.state = {
+        title: '',
+        allergens: '',
+        servings: ''
+      };
     }
-    this.state = {
-      title: '',
-      allergens: '',
-      servings: ''
-    };
 
     this.renderNextButton = this.renderNextButton.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
