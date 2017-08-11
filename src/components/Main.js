@@ -5,7 +5,7 @@ import ModifyTitle from '../containers/ModifyTitle';
 import ModifyIngredients from '../containers/ModifyIngredients';
 import SearchIngredient from '../containers/SearchIngredient';
 import IngredientDetails from '../containers/IngredientDetails';
-import ReviewRecipe from './ReviewRecipe';
+import ReviewRecipe from '../containers/ReviewRecipe';
 
 const Main = (props) => {
   return (

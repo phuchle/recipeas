@@ -14,12 +14,6 @@ const ReviewRecipe = (props) => {
         <Col sm={12} lg={8} lgOffset={2}>
           <h4>Review Recipe</h4>
           <ModifyTitle
-            title={props.title}
-            servings={props.servings}
-            allergens={props.allergens}
-            handleTitleChange={props.handleTitleChange}
-            handleServingsChange={props.handleServingsChange}
-            handleAllergensChange={props.handleAllergensChange}
             nextButton={false}
           />
           <ModifyIngredients
@@ -31,6 +25,10 @@ const ReviewRecipe = (props) => {
               bsStyle="primary"
               bsSize="large"
               style={props.buttonStyle}
+              onClick={() => {
+                props.addRecipe(props.tempRecipe);
+                props.clearTempRecipe();
+              }}
               block
             >
               Submit
@@ -46,7 +44,10 @@ const ReviewRecipe = (props) => {
 };
 
 ReviewRecipe.propTypes = {
-  buttonStyle: PropTypes.object.isRequired
+  buttonStyle: PropTypes.object.isRequired,
+  addRecipe: PropTypes.func.isRequired,
+  tempRecipe: PropTypes.object.isRequired,
+  clearTempRecipe: PropTypes.func.isRequired
 };
 
 export default ReviewRecipe;
