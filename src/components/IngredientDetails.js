@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Grid, Row, Col, ListGroup, ListGroupItem, Button, FormControl, ControlLabel
+  ListGroup, ListGroupItem, Button, FormControl, ControlLabel
 } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { searchNutrientInfo, roundToTwo } from '../utils/api';
@@ -146,13 +146,9 @@ class IngredientDetails extends Component {
   }
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col sm={12} lg={8} lgOffset={2}>
-            {this.state.updatedDetails ? this.renderNutrientDetails() : 'Loading...'}
-          </Col>
-        </Row>
-      </Grid>
+      <div>
+        {this.state.updatedDetails ? this.renderNutrientDetails() : 'Loading...'}
+      </div>
     );
   }
 };

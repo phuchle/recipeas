@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Grid, Row, Col, InputGroup, FormControl,
-  Button, ListGroup, ListGroupItem
+  InputGroup, FormControl, Button, ListGroup, ListGroupItem
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { searchFoodDescription } from '../utils/api';
@@ -65,43 +64,39 @@ class SearchIngredient extends Component {
   }
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col sm={12} lg={8} lgOffset={2}>
-            <h4>Search for an ingredient</h4>
-            <form onSubmit={this.handleIngredientSearch}>
-              <InputGroup>
-                <FormControl
-                  value={this.state.query}
-                  onChange={this.handleChange}
-                  type="text"
-                  placeholder="Search"
-                />
-                <InputGroup.Button>
-                  <Button className="btn btn-default glyphicon glyphicon-search" type="submit" />
-                </InputGroup.Button>
-              </InputGroup>
-            </form>
+      <div>
+        <h4>Search for an ingredient</h4>
+        <form onSubmit={this.handleIngredientSearch}>
+          <InputGroup>
+            <FormControl
+              value={this.state.query}
+              onChange={this.handleChange}
+              type="text"
+              placeholder="Search"
+            />
+            <InputGroup.Button>
+              <Button className="btn btn-default glyphicon glyphicon-search" type="submit" />
+            </InputGroup.Button>
+          </InputGroup>
+        </form>
 
-            <Link to="/add-ingredients">
-              <Button
-                bsSize="large"
-                block
-                style={{
-                  marginTop: '10px',
-                  marginBottom: '10px'
-                }}
-              >
-                Back
-              </Button>
-            </Link>
+        <Link to="/add-ingredients">
+          <Button
+            bsSize="large"
+            block
+            style={{
+              marginTop: '10px',
+              marginBottom: '10px'
+            }}
+          >
+            Back
+          </Button>
+        </Link>
 
-            <ListGroup>
-              {this.state.searchResults}
-            </ListGroup>
-          </Col>
-        </Row>
-      </Grid>
+        <ListGroup>
+          {this.state.searchResults}
+        </ListGroup>
+      </div>
     );
   }
 }

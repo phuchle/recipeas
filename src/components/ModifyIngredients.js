@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PlusButton from './PlusButton';
 import MinusButton from './MinusButton';
 import {
-  Grid, Row, Col, Button, Pager, ListGroup, ListGroupItem
+  Button, Pager, ListGroup, ListGroupItem
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import v4 from 'uuid';
@@ -70,18 +70,20 @@ class ModifyIngredients extends Component {
   }
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col sm={12} lg={8} lgOffset={2}>
-            <h4>
-              Ingredients
-              { this.renderPlusButton() }
-            </h4>
-            { this.renderIngredients() }
-            { this.renderNextButton() }
-          </Col>
-        </Row>
-      </Grid>
+      // <Grid>
+      //   <Row>
+      //     <Col sm={12} lg={8} lgOffset={2}>
+      <div>
+        <h4>
+          Ingredients
+          { this.renderPlusButton() }
+        </h4>
+        { this.renderIngredients() }
+        { this.renderNextButton() }
+      </div>
+      //     </Col>
+      //   </Row>
+      // </Grid>
   );
   }
 }

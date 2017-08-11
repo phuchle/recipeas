@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Grid, Row, Col, ControlLabel, FormControl, Button
-} from 'react-bootstrap';
+import { ControlLabel, FormControl, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 class ModifyTitle extends Component {
@@ -76,35 +74,31 @@ class ModifyTitle extends Component {
   }
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col sm={12} lg={8} lgOffset={2}>
-            <h4>Recipe Information</h4>
-            <ControlLabel>Title</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.title}
-              placeholder="Enter an awesome title"
-              onChange={this.handleTitleChange}
-            />
-            <ControlLabel>Servings</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.servings}
-              placeholder="How many people will this recipe feed?"
-              onChange={this.handleServingsChange}
-            />
-            <ControlLabel>Allergens</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.allergens}
-              placeholder="What allergens does this food contain?"
-              onChange={this.handleAllergensChange}
-            />
-            { this.renderNextButton() }
-          </Col>
-        </Row>
-      </Grid>
+      <div>
+        <h4>Recipe Information</h4>
+        <ControlLabel>Title</ControlLabel>
+        <FormControl
+          type="text"
+          value={this.state.title}
+          placeholder="Enter an awesome title"
+          onChange={this.handleTitleChange}
+        />
+        <ControlLabel>Servings</ControlLabel>
+        <FormControl
+          type="text"
+          value={this.state.servings}
+          placeholder="How many people will this recipe feed?"
+          onChange={this.handleServingsChange}
+        />
+        <ControlLabel>Allergens</ControlLabel>
+        <FormControl
+          type="text"
+          value={this.state.allergens}
+          placeholder="What allergens does this food contain?"
+          onChange={this.handleAllergensChange}
+        />
+        { this.renderNextButton() }
+      </div>
     );
   }
 };

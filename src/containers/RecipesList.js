@@ -5,13 +5,7 @@ import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
 import PlusButton from '../components/PlusButton';
 import { Link } from 'react-router-dom';
-import {
-  Grid,
-  Row,
-  Col,
-  ListGroup,
-  ListGroupItem
-} from 'react-bootstrap';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export class RecipesList extends Component {
@@ -47,24 +41,20 @@ export class RecipesList extends Component {
   }
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col sm={12} md={6} lg={6} lgOffset={3}>
-            <span>
-              <h1>
-                Recipes
-                <Link to="/add-recipe">
-                <PlusButton className="pull-right"/>
-              </Link>
-            </h1>
-          </span>
+      <div>
+        <span>
+          <h1>
+            Recipes
+            <Link to="/add-recipe">
+              <PlusButton className="pull-right"/>
+            </Link>
+          </h1>
+        </span>
 
-          <ListGroup>
-            { this.props.recipes ? this.renderList() : 'Add a recipe!' }
-          </ListGroup>
-          </Col>
-        </Row>
-      </Grid>
+        <ListGroup>
+          { this.props.recipes ? this.renderList() : 'Add a recipe!' }
+        </ListGroup>
+      </div>
     );
   }
 }
