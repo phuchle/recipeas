@@ -37,7 +37,7 @@ export const removeRecipe = id => {
 };
 
 // works for adding or editing
-export const modifyTempTitle = (details) => {
+export const modifyTempTitle = details => {
   return {
     type: MODIFY_TEMP_TITLE,
     titleDetails: details
@@ -51,7 +51,7 @@ export const loadTempIngredientArray = ingredientArray => {
   };
 };
 
-export const addTempIngredient = (ingredient) => {
+export const addTempIngredient = ingredient => {
   return {
     type: ADD_TEMP_INGREDIENT,
     ingredient: { ...ingredient, id: v4() }
@@ -66,7 +66,7 @@ export const editTempIngredient = (id, ingredient) => {
   };
 };
 
-export const removeTempIngredient = (id) => {
+export const removeTempIngredient = id => {
   return {
     type: REMOVE_TEMP_INGREDIENT,
     id: id
@@ -79,7 +79,7 @@ export const clearTempRecipe = () => {
   };
 };
 
-export const addSearchIngredientResults = (results) => {
+export const addSearchIngredientResults = results => {
   return {
     type: ADD_SEARCH_INGREDIENT_RESULTS,
     results: results
