@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Collapse, Well, ListGroup } from 'react-bootstrap';
-import MinusButton from '../components/MinusButton';
+import { Collapse, Well, ListGroup } from 'react-bootstrap';
+import MinusButton from './MinusButton';
+import EditButton from './EditButton';
 
 class Recipe extends Component {
   constructor(props) {
@@ -21,15 +22,12 @@ class Recipe extends Component {
           <div> {/* this div exists for smooth collapse animation */}
             <Well>
               <ListGroup>{this.props.ingredients}</ListGroup>
-              <Button
-                bsSize="small"
-                className="edit-recipe glyphicon glyphicon-pencil"
-                onClick={() => {
+              <EditButton
+                handleClick={() => {
                 this.props.fillEditRecipeModal(this.props.id);
               }} />
               <MinusButton
                 className="pull-right delete-recipe"
-                bsStyle="danger"
                 handleClick={() =>
                   this.props.removeRecipe(this.props.id)
                 }
