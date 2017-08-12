@@ -5,6 +5,7 @@ export const EDIT_RECIPE = 'EDIT_RECIPE';
 export const REMOVE_RECIPE =  'REMOVE_RECIPE';
 
 export const MODIFY_TEMP_TITLE = 'EDIT_TEMP_INGREDIENT';
+export const LOAD_TEMP_INGREDIENT_ARRAY = 'LOAD_TEMP_INGREDIENT_ARRAY';
 export const ADD_TEMP_INGREDIENT = 'ADD_TEMP_INGREDIENT';
 export const EDIT_TEMP_INGREDIENT = 'EDIT_TEMP_INGREDIENT';
 export const REMOVE_TEMP_INGREDIENT = 'REMOVE_TEMP_INGREDIENT';
@@ -40,6 +41,13 @@ export const modifyTempTitle = (details) => {
   return {
     type: MODIFY_TEMP_TITLE,
     titleDetails: details
+  };
+};
+
+export const loadTempIngredientArray = ingredientArray => {
+  return {
+    type: LOAD_TEMP_INGREDIENT_ARRAY,
+    ingredientArray
   };
 };
 
