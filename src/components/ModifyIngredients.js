@@ -70,9 +70,6 @@ class ModifyIngredients extends Component {
   }
   render() {
     return (
-      // <Grid>
-      //   <Row>
-      //     <Col sm={12} lg={8} lgOffset={2}>
       <div>
         <h4>
           Ingredients
@@ -81,10 +78,7 @@ class ModifyIngredients extends Component {
         { this.renderIngredients() }
         { this.renderNextButton() }
       </div>
-      //     </Col>
-      //   </Row>
-      // </Grid>
-  );
+    );
   }
 }
 
