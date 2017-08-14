@@ -20,7 +20,8 @@ export const defaultRecipes = [
   {
     titleDetails: {
       title: 'Spaghetti',
-      ingredients: 'Noodles, Pasta Sauce, Meatballs',
+      servings: '4',
+      allergens: 'Tomatoes'
     },
     ingredients: [
       { name: 'Noodles' },
