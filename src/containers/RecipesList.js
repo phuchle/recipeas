@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {
   removeRecipe,
-  loadTempIngredientArray,
-  modifyTempTitle
+  loadStoredRecipe,
+  activateEditMode
 } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,8 +22,8 @@ export class RecipesList extends Component {
   renderList() {
     const {
       removeRecipe,
-      loadTempIngredientArray,
-      modifyTempTitle
+      loadStoredRecipe,
+      activateEditMode
     } = this.props;
 
     return this.props.recipes.map(recipe => {
@@ -42,8 +42,8 @@ export class RecipesList extends Component {
             ingredientsList={ingredientsList}
             removeRecipe={removeRecipe}
             id={recipe.id}
-            loadTempIngredientArray={() => loadTempIngredientArray(recipe.ingredients)}
-            modifyTempTitle={() => modifyTempTitle(recipe.titleDetails)}
+            loadStoredRecipe={() => loadStoredRecipe(recipe)}
+            activateEditMode={activateEditMode}
           />
         </ListGroupItem>
       );
@@ -83,8 +83,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
     removeRecipe,
-    loadTempIngredientArray,
-    modifyTempTitle
+    loadStoredRecipe,
+    activateEditMode
   }, dispatch);
 };
 

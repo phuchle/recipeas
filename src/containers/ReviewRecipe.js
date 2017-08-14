@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addRecipe, clearTempRecipe } from '../actions';
+import { addRecipe, editRecipe, clearTempRecipe } from '../actions';
 import ReviewRecipe from '../components/ReviewRecipe';
 
 const mapStateToProps = state => {
@@ -10,7 +10,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ addRecipe, clearTempRecipe }, dispatch);
+  return bindActionCreators({
+    addRecipe,
+    editRecipe,
+    clearTempRecipe
+  }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewRecipe);

@@ -22,7 +22,9 @@ const ReviewRecipe = (props) => {
         bsSize="large"
         style={props.buttonStyle}
         onClick={() => {
-          props.addRecipe(props.tempRecipe);
+          props.tempRecipe.editMode ?
+            props.editRecipe(props.tempRecipe.id, props.tempRecipe)
+            : props.addRecipe(props.tempRecipe);
           props.clearTempRecipe();
         }}
         block

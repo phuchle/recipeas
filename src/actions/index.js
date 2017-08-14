@@ -4,8 +4,10 @@ export const ADD_RECIPE =  'ADD_RECIPE';
 export const EDIT_RECIPE = 'EDIT_RECIPE';
 export const REMOVE_RECIPE =  'REMOVE_RECIPE';
 
-export const MODIFY_TEMP_TITLE = 'EDIT_TEMP_INGREDIENT';
-export const LOAD_TEMP_INGREDIENT_ARRAY = 'LOAD_TEMP_INGREDIENT_ARRAY';
+export const ACTIVATE_EDIT_MODE = 'ACTIVATE_EDIT_MODE';
+
+export const MODIFY_TEMP_TITLE = 'MODIFY_TEMP_INGREDIENT';
+export const LOAD_STORED_RECIPE = 'LOAD_STORED_RECIPE';
 export const ADD_TEMP_INGREDIENT = 'ADD_TEMP_INGREDIENT';
 export const EDIT_TEMP_INGREDIENT = 'EDIT_TEMP_INGREDIENT';
 export const REMOVE_TEMP_INGREDIENT = 'REMOVE_TEMP_INGREDIENT';
@@ -17,7 +19,7 @@ export const CLEAR_SEARCH_INGREDIENT_RESULTS = 'CLEAR_SEARCH_INGREDIENT_RESULTS'
 export const addRecipe = recipe => {
   return {
     type: ADD_RECIPE,
-    recipe: { ...recipe, id: v4() }
+    recipe
   };
 };
 
@@ -36,6 +38,12 @@ export const removeRecipe = id => {
   };
 };
 
+export const activateEditMode = () => {
+  return {
+    type: ACTIVATE_EDIT_MODE
+  };
+};
+
 // works for adding or editing
 export const modifyTempTitle = details => {
   return {
@@ -44,10 +52,10 @@ export const modifyTempTitle = details => {
   };
 };
 
-export const loadTempIngredientArray = ingredientArray => {
+export const loadStoredRecipe = recipe => {
   return {
-    type: LOAD_TEMP_INGREDIENT_ARRAY,
-    ingredientArray
+    type: LOAD_STORED_RECIPE,
+    recipe
   };
 };
 

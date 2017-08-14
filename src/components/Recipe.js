@@ -26,8 +26,8 @@ class Recipe extends Component {
               <Link to="/add-recipe">
                 <EditButton
                   handleClick={() => {
-                    this.props.loadTempIngredientArray();
-                    this.props.modifyTempTitle();
+                    this.props.loadStoredRecipe();
+                    this.props.activateEditMode();
                   }}
                 />
                 {/* Edit button takes you to modify-title */}

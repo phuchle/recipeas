@@ -1,6 +1,8 @@
+import { v4 } from 'uuid';
 import {
+  ACTIVATE_EDIT_MODE,
   MODIFY_TEMP_TITLE,
-  LOAD_TEMP_INGREDIENT_ARRAY,
+  LOAD_STORED_RECIPE,
   ADD_TEMP_INGREDIENT,
   EDIT_TEMP_INGREDIENT,
   REMOVE_TEMP_INGREDIENT,
@@ -13,20 +15,24 @@ const initialTempRecipe = {
     servings: '',
     allergens: '',
   },
-  ingredients: []
+  ingredients: [],
+  id: v4(),
+  editMode: false
 };
 
 const TempRecipe = (state = initialTempRecipe, action) => {
   switch(action.type) {
+    case ACTIVATE_EDIT_MODE:
+      return Object.assign({}, state, {
+        editMode: true
+      });
     // works for adding or editing
     case MODIFY_TEMP_TITLE:
       return Object.assign({}, state, {
         titleDetails: action.titleDetails
       });
-    case LOAD_TEMP_INGREDIENT_ARRAY:
-      return Object.assign({}, state, {
-        ingredients: action.ingredientArray
-      });
+    case LOAD_STORED_RECIPE:
+      return Object.assign({}, state, action.recipe);
     case ADD_TEMP_INGREDIENT:
       return Object.assign({}, state, {
         ingredients: [
