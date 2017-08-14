@@ -55,7 +55,7 @@ export class RecipesList extends Component {
         <span>
           <h1>
             Recipes
-            <Link to="/add-recipe">
+            <Link to="/modify-title">
               <PlusButton className="pull-right"/>
             </Link>
           </h1>

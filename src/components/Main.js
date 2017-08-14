@@ -16,7 +16,7 @@ const Main = (props) => {
           <Switch>
             <Route exact path="/" component={RecipesList} />
 
-            <Route path="/add-recipe" render={() => (
+            <Route path="/modify-title" render={() => (
               <ModifyTitle
                 nextButton={true}
                 nextButtonStyle={{
@@ -26,7 +26,7 @@ const Main = (props) => {
               />
             )} />
 
-            <Route path="/add-ingredients" render={() => (
+            <Route path="/modify-ingredients" render={() => (
               <ModifyIngredients
                 nextButton={true}
                 plusButton={true}

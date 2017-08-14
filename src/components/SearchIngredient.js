@@ -80,7 +80,7 @@ class SearchIngredient extends Component {
           </InputGroup>
         </form>
 
-        <Link to="/add-ingredients">
+        <Link to="/modify-ingredients">
           <Button
             bsSize="large"
             block

@@ -45,7 +45,7 @@ class ModifyTitle extends Component {
     return this.props.nextButton ?
       (
         <div>
-          <Link to="/add-ingredients">
+          <Link to="/modify-ingredients">
             <Button
               bsSize="large"
               bsStyle="primary"

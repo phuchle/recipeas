@@ -30,7 +30,7 @@ class ModifyIngredients extends Component {
               Next
             </Button>
           </Link>
-          <Link to="/add-recipe">
+          <Link to="/modify-title">
             <Button bsSize="large" block>Back</Button>
           </Link>
         </Pager>
