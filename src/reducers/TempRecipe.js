@@ -1,5 +1,6 @@
 import {
   MODIFY_TEMP_TITLE,
+  LOAD_TEMP_INGREDIENT_ARRAY,
   ADD_TEMP_INGREDIENT,
   EDIT_TEMP_INGREDIENT,
   REMOVE_TEMP_INGREDIENT,
@@ -21,6 +22,10 @@ const TempRecipe = (state = initialTempRecipe, action) => {
     case MODIFY_TEMP_TITLE:
       return Object.assign({}, state, {
         titleDetails: action.titleDetails
+      });
+    case LOAD_TEMP_INGREDIENT_ARRAY:
+      return Object.assign({}, state, {
+        ingredients: action.ingredientArray
       });
     case ADD_TEMP_INGREDIENT:
       return Object.assign({}, state, {

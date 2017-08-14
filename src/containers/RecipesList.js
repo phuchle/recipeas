@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { addRecipe, editRecipe, removeRecipe } from '../actions/index';
+import {
+  removeRecipe,
+  loadTempIngredientArray,
+  modifyTempTitle
+} from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
@@ -16,7 +20,11 @@ export class RecipesList extends Component {
     this.renderList = this.renderList.bind(this);
   }
   renderList() {
-    const { removeRecipe } = this.props;
+    const {
+      removeRecipe,
+      loadTempIngredientArray,
+      modifyTempTitle
+    } = this.props;
 
     return this.props.recipes.map(recipe => {
       const ingredientsList = recipe.ingredients.map(ingredient => {
@@ -31,9 +39,11 @@ export class RecipesList extends Component {
         <ListGroupItem key={recipe.title}>
           <Recipe
             title={recipe.titleDetails.title}
-            ingredients={ingredientsList}
+            ingredientsList={ingredientsList}
             removeRecipe={removeRecipe}
             id={recipe.id}
+            loadTempIngredientArray={() => loadTempIngredientArray(recipe.ingredients)}
+            modifyTempTitle={() => modifyTempTitle(recipe.titleDetails)}
           />
         </ListGroupItem>
       );
@@ -71,7 +81,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ removeRecipe }, dispatch);
+  return bindActionCreators({
+    removeRecipe,
+    loadTempIngredientArray,
+    modifyTempTitle
+  }, dispatch);
 };
 
 export default connect(

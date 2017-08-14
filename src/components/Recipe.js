@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Collapse, Well, ListGroup } from 'react-bootstrap';
 import MinusButton from './MinusButton';
 import EditButton from './EditButton';
+import { Link } from 'react-router-dom';
 
 class Recipe extends Component {
   constructor(props) {
@@ -21,11 +22,16 @@ class Recipe extends Component {
         <Collapse in={this.state.open}>
           <div> {/* this div exists for smooth collapse animation */}
             <Well>
-              <ListGroup>{this.props.ingredients}</ListGroup>
-              <EditButton
-                handleClick={() => {
-                this.props.fillEditRecipeModal(this.props.id);
-              }} />
+              <ListGroup>{this.props.ingredientsList}</ListGroup>
+              <Link to="/add-recipe">
+                <EditButton
+                  handleClick={() => {
+                    this.props.loadTempIngredientArray();
+                    this.props.modifyTempTitle();
+                  }}
+                />
+                {/* Edit button takes you to modify-title */}
+              </Link>
               <MinusButton
                 className="pull-right delete-recipe"
                 handleClick={() =>
@@ -42,9 +48,11 @@ class Recipe extends Component {
 
 Recipe.propTypes = {
   title: PropTypes.string.isRequired,
-  ingredients: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired,
+  ingredientsList: PropTypes.array.isRequired,
   removeRecipe: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  loadTempIngredientArray: PropTypes.func.isRequired,
+  modifyTempTitle: PropTypes.func.isRequired,
 };
 
 export default Recipe;

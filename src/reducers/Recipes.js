@@ -40,9 +40,7 @@ const Recipes = (state = defaultRecipes, action) => {
       ];
     case EDIT_RECIPE:
       return state.map(recipe => {
-        return recipe.id === action.id ?
-          { id: recipe.id, ...action.recipe }
-          : recipe;
+        return recipe.id === action.id ? action.recipe : recipe;
       });
     case REMOVE_RECIPE:
       return state.filter(recipe => recipe.id !== action.id);
