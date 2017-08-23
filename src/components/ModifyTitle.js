@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { ControlLabel, FormControl, Button } from 'react-bootstrap';
+import {
+  ControlLabel,
+  FormGroup,
+  FormControl,
+  HelpBlock,
+  Button
+} from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class ModifyTitle extends Component {
@@ -9,15 +16,23 @@ class ModifyTitle extends Component {
 
     if (this.props.titleDetails) {
       this.state = {
-        title: this.props.titleDetails.title,
-        allergens: this.props.titleDetails.allergens,
-        servings: this.props.titleDetails.servings
+        titleDetails: {
+          title: this.props.titleDetails.title,
+          allergens: this.props.titleDetails.allergens,
+          servings: this.props.titleDetails.servings,
+        },
+        fireRedirect: false,
+        disableSubmitButton: false
       };
     } else {
       this.state = {
-        title: '',
-        allergens: '',
-        servings: ''
+        titleDetails: {
+          title: '',
+          allergens: '',
+          servings: '',
+        },
+        fireRedirect: false,
+        disableSubmitButton: true
       };
     }
 
@@ -25,11 +40,18 @@ class ModifyTitle extends Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleAllergensChange = this.handleAllergensChange.bind(this);
     this.handleServingsChange = this.handleServingsChange.bind(this);
+    this.getValidationState = this.getValidationState.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleTitleChange(event) {
-    this.setState({
-      title: event.target.value
-    });
+    let newState = {
+      titleDetails: {
+        ...this.state.titleDetails,
+        title: event.target.value
+      },
+      disableSubmitButton: event.target.value.length > 0 ? false : true
+    };
+    this.setState(newState);
   }
   handleAllergensChange(event) {
     this.setState({
@@ -41,21 +63,36 @@ class ModifyTitle extends Component {
       servings: event.target.value
     });
   }
+  getValidationState() {
+    const length = this.state.titleDetails.title.length;
+
+    if (length > 0) return 'success';
+    else return 'error';
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    if (this.getValidationState() === 'success') {
+      this.props.modifyTempTitle(this.state.titleDetails);
+      this.setState({
+        fireRedirect: true
+      });
+    }
+  }
   renderNextButton = () => {
     return this.props.nextButton ?
       (
-        <div>
-          <Link to="/modify-ingredients">
-            <Button
-              bsSize="large"
-              bsStyle="primary"
-              block
-              style={this.props.nextButtonStyle}
-              onClick={() => this.props.modifyTempTitle(this.state)}
-            >
-              Next
-            </Button>
-          </Link>
+        <form>
+          <Button
+            type="submit"
+            bsSize="large"
+            bsStyle="primary"
+            style={this.props.nextButtonStyle}
+            onClick={this.handleSubmit}
+            disabled={this.state.disableSubmitButton}
+            block
+          >
+            Next
+          </Button>
           <Link to="/">
             <Button
               bsSize="large"
@@ -68,7 +105,7 @@ class ModifyTitle extends Component {
               Back
             </Button>
           </Link>
-        </div>
+        </form>
       )
     : null;
   }
@@ -76,28 +113,38 @@ class ModifyTitle extends Component {
     return (
       <div>
         <h4>Recipe Information</h4>
-        <ControlLabel>Title</ControlLabel>
-        <FormControl
-          type="text"
-          value={this.state.title}
-          placeholder="Enter an awesome title"
-          onChange={this.handleTitleChange}
-        />
+        <FormGroup
+          controlId="recipeTitle"
+          validationState={this.getValidationState()}
+        >
+          <ControlLabel>Title</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.titleDetails.title}
+            placeholder="Enter an awesome title"
+            onChange={this.handleTitleChange}
+          />
+          <FormControl.Feedback />
+          <HelpBlock>A title is required.</HelpBlock>
+        </FormGroup>
         <ControlLabel>Servings</ControlLabel>
         <FormControl
           type="text"
-          value={this.state.servings}
+          value={this.state.titleDetails.servings}
           placeholder="How many people will this recipe feed?"
           onChange={this.handleServingsChange}
         />
         <ControlLabel>Allergens</ControlLabel>
         <FormControl
           type="text"
-          value={this.state.allergens}
+          value={this.state.titleDetails.allergens}
           placeholder="What allergens does this food contain?"
           onChange={this.handleAllergensChange}
         />
         { this.renderNextButton() }
+        { this.state.fireRedirect && (
+          <Redirect to="/modify-ingredients" />
+        )}
       </div>
     );
   }

@@ -23,7 +23,7 @@ class Recipe extends Component {
           <div> {/* this div exists for smooth collapse animation */}
             <Well>
               <ListGroup>{this.props.ingredientsList}</ListGroup>
-              <Link to="/add-recipe">
+              <Link to="/modify-title">
                 <EditButton
                   handleClick={() => {
                     this.props.loadStoredRecipe();
