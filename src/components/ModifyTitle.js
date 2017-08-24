@@ -55,12 +55,18 @@ class ModifyTitle extends Component {
   }
   handleAllergensChange(event) {
     this.setState({
-      allergens: event.target.value
+      titleDetails: {
+        ...this.state.titleDetails,
+        allergens: event.target.value
+      }
     });
   }
   handleServingsChange(event) {
     this.setState({
-      servings: event.target.value
+      titleDetails: {
+        ...this.state.titleDetails,
+        servings: event.target.value
+      }
     });
   }
   getValidationState() {
