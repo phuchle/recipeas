@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
-  ListGroup, ListGroupItem, Button, FormControl, ControlLabel
+  ListGroup, Button, FormControl, ControlLabel
 } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { searchNutrientInfo, roundToTwo } from '../utils/api';
+import NutrientsList from './NutrientsList';
 import PropTypes from 'prop-types';
 
 //gets dbNumber from props.location.state.dbNumber in the form of:
@@ -25,30 +26,6 @@ class IngredientDetails extends Component {
     this.renderNutrientDetails = this.renderNutrientDetails.bind(this);
     this.handleServingsChange = this.handleServingsChange.bind(this);
   }
-
-  makeMicronutrientsList() {
-    const micros = this.state.updatedDetails.micronutrients;
-
-    return micros.map(micro => {
-      return (
-        <ListGroupItem key={micro.name}>
-          <strong>{micro.name}: </strong>
-          {micro.value + micro.unit}
-        </ListGroupItem>
-      );
-    });
-  }
-  makeMacronutrientList() {
-    const macros = this.state.updatedDetails.macronutrients;
-    return macros.map(macro => {
-      return (
-        <ListGroupItem key={macro.name}>
-          <strong>{macro.name}: </strong>
-          { macro.value + macro.unit}
-        </ListGroupItem>
-      );
-    });
-  }
   renderNutrientDetails() {
     return (
       <div>
@@ -64,24 +41,29 @@ class IngredientDetails extends Component {
 
         <ListGroup>
           <h4>Macronutrients</h4>
-          {this.makeMacronutrientList()}
+          <NutrientsList
+            nutrients={this.state.updatedDetails.macronutrients}
+          />
           <h4>Micronutrients</h4>
-          {this.makeMicronutrientsList()}
+          <NutrientsList
+            nutrients={this.state.updatedDetails.micronutrients}
+          />
         </ListGroup>
-      <Link to="/modify-ingredients">
-        <Button
-          bsSize="large"
-          bsStyle="primary"
-          block
-          style={{ marginBottom: '10px' }}
-          onClick={() => {
-            this.props.addTempIngredient(this.state.updatedDetails);
-            this.props.clearSearchIngredientResults();
-          }}
-        >
-          Add Ingredient
-        </Button>
-      </Link>
+
+        <Link to="/modify-ingredients">
+          <Button
+            bsSize="large"
+            bsStyle="primary"
+            block
+            style={{ marginBottom: '10px' }}
+            onClick={() => {
+              this.props.addTempIngredient(this.state.updatedDetails);
+              this.props.clearSearchIngredientResults();
+            }}
+          >
+            Add Ingredient
+          </Button>
+        </Link>
 
         <Link to="/search-ingredient">
           <Button
