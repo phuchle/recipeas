@@ -12,7 +12,7 @@ const Main = (props) => {
   return (
     <Grid>
       <Row>
-        <Col sm={12} lg={6} lgOffset={3}>
+        <Col sm={12} md={8} lg={6} mdOffset={2} lgOffset={3}>
           <Switch>
             <Route exact path="/" component={RecipesList} />
 
