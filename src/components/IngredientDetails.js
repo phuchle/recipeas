@@ -74,7 +74,10 @@ class IngredientDetails extends Component {
           bsStyle="primary"
           block
           style={{ marginBottom: '10px' }}
-          onClick={() => this.props.addTempIngredient(this.state.updatedDetails)}
+          onClick={() => {
+            this.props.addTempIngredient(this.state.updatedDetails);
+            this.props.clearSearchIngredientResults();
+          }}
         >
           Add Ingredient
         </Button>
@@ -154,7 +157,8 @@ class IngredientDetails extends Component {
 };
 
 IngredientDetails.propTypes = {
-  addTempIngredient: PropTypes.func.isRequired
+  addTempIngredient: PropTypes.func.isRequired,
+  clearSearchIngredientResults: PropTypes.func.isRequired,
 };
 
 export default IngredientDetails;
