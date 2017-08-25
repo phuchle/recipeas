@@ -58,7 +58,10 @@ class IngredientDetails extends Component {
                 const id = this.props.location.state.ingredient.id;
                 this.props.editTempIngredient(id, this.state.updatedDetails);
               } else {
-                this.props.addTempIngredient(this.state.updatedDetails);
+                this.props.addTempIngredient({
+                  ...this.state.updatedDetails,
+                  servings: this.state.servings
+                });
               }
               this.props.clearSearchIngredientResults();
             }}
@@ -125,9 +128,12 @@ class IngredientDetails extends Component {
         })
       );
     } else if (this.props.location.state.ingredient) {
+      const locationState = this.props.location.state;
+      
       this.setState({
-        originalDetails: this.props.location.state.ingredient,
-        updatedDetails: this.props.location.state.ingredient
+        originalDetails: locationState.ingredient,
+        updatedDetails: locationState.ingredient,
+        servings: locationState.ingredient.servings
       });
     }
   }
