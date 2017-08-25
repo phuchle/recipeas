@@ -1,4 +1,5 @@
-import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE, addRecipe, editRecipe, removeRecipe } from '../index';
+import { addRecipe, editRecipe, removeRecipe } from '../';
+import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE } from '../actionTypes';
 import { v4 } from 'uuid';
 
 describe('Actions', () => {
