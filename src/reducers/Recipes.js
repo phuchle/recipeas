@@ -1,4 +1,4 @@
-import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE } from '../actions';
+import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE } from '../actions/actionTypes';
 import { v4 } from 'uuid';
 
 export const defaultRecipes = [

@@ -1,7 +1,7 @@
 import {
   ADD_SEARCH_INGREDIENT_RESULTS,
   CLEAR_SEARCH_INGREDIENT_RESULTS
-} from '../actions';
+} from '../actions/actionTypes';
 
 const searchIngredientResults = (state = {}, action) => {
   switch (action.type) {

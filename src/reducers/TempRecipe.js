@@ -7,7 +7,7 @@ import {
   EDIT_TEMP_INGREDIENT,
   REMOVE_TEMP_INGREDIENT,
   CLEAR_TEMP_RECIPE
-} from '../actions';
+} from '../actions/actionTypes';
 
 const initialTempRecipe = {
   titleDetails: {
