@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   addSearchIngredientResults
-} from '../actions/index';
+} from '../actions';
 
 const mapStateToProps = state => {
   return {

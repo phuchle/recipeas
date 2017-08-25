@@ -1,7 +1,7 @@
 import ModifyTitle from '../components/ModifyTitle';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { modifyTempTitle, clearTempRecipe, clearSearchIngredientResults } from '../actions/index';
+import { modifyTempTitle, clearTempRecipe, clearSearchIngredientResults } from '../actions';
 
 const mapStateToProps = state => {
   return {

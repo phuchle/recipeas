@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   addTempIngredient, editTempIngredient, clearSearchIngredientResults
-} from '../actions/index';
+} from '../actions';
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
