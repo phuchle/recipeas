@@ -2,12 +2,13 @@ import IngredientDetails from '../components/IngredientDetails';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  addTempIngredient, clearSearchIngredientResults
+  addTempIngredient, editTempIngredient, clearSearchIngredientResults
 } from '../actions/index';
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
     addTempIngredient,
+    editTempIngredient,
     clearSearchIngredientResults
   }, dispatch);
 };

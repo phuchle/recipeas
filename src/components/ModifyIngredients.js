@@ -53,7 +53,8 @@ class ModifyIngredients extends Component {
             <Link to={{
                 pathname: '/ingredient-details',
                 state: {
-                  ingredient: ingredient
+                  ingredient: ingredient,
+                  edit: true
                 }
               }}
               >

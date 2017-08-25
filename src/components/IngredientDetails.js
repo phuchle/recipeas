@@ -57,7 +57,12 @@ class IngredientDetails extends Component {
             block
             style={{ marginBottom: '10px' }}
             onClick={() => {
-              this.props.addTempIngredient(this.state.updatedDetails);
+              if (this.props.location.state.edit) {
+                const id = this.props.location.state.ingredient.id;
+                this.props.editTempIngredient(id, this.state.updatedDetails);
+              } else {
+                this.props.addTempIngredient(this.state.updatedDetails);
+              }
               this.props.clearSearchIngredientResults();
             }}
           >
