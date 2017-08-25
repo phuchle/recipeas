@@ -6,6 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { searchNutrientInfo, roundToTwo } from '../utils/api';
 import NutrientsList from './NutrientsList';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 
 //gets dbNumber from props.location.state.dbNumber
 
@@ -60,7 +61,8 @@ class IngredientDetails extends Component {
               } else {
                 this.props.addTempIngredient({
                   ...this.state.updatedDetails,
-                  servings: this.state.servings
+                  servings: this.state.servings,
+                  id: v4()
                 });
               }
               this.props.clearSearchIngredientResults();
@@ -129,7 +131,7 @@ class IngredientDetails extends Component {
       );
     } else if (this.props.location.state.ingredient) {
       const locationState = this.props.location.state;
-      
+
       this.setState({
         originalDetails: locationState.ingredient,
         updatedDetails: locationState.ingredient,
