@@ -1,4 +1,3 @@
-import { v4 } from 'uuid';
 import * as actionTypes from './actionTypes';
 
 export const addRecipe = recipe => {
@@ -11,15 +10,15 @@ export const addRecipe = recipe => {
 export const editRecipe = (id, recipe) => {
   return {
     type: actionTypes.EDIT_RECIPE,
-    recipe: recipe,
-    id: id
+    recipe,
+    id
   };
 };
 
 export const removeRecipe = id => {
   return {
     type: actionTypes.REMOVE_RECIPE,
-    id: id
+    id
   };
 };
 
@@ -30,10 +29,10 @@ export const activateEditMode = () => {
 };
 
 // works for adding or editing
-export const modifyTempTitle = details => {
+export const modifyTempTitle = titleDetails => {
   return {
     type: actionTypes.MODIFY_TEMP_TITLE,
-    titleDetails: details
+    titleDetails,
   };
 };
 
@@ -47,22 +46,22 @@ export const loadStoredRecipe = recipe => {
 export const addTempIngredient = ingredient => {
   return {
     type: actionTypes.ADD_TEMP_INGREDIENT,
-    ingredient: { ...ingredient, id: v4() }
+    ingredient
   };
 };
 
 export const editTempIngredient = (id, ingredient) => {
   return {
     type: actionTypes.EDIT_TEMP_INGREDIENT,
-    ingredient: ingredient,
-    id: id
+    ingredient,
+    id
   };
 };
 
 export const removeTempIngredient = id => {
   return {
     type: actionTypes.REMOVE_TEMP_INGREDIENT,
-    id: id
+    id
   };
 };
 
@@ -75,7 +74,7 @@ export const clearTempRecipe = () => {
 export const addSearchIngredientResults = results => {
   return {
     type: actionTypes.ADD_SEARCH_INGREDIENT_RESULTS,
-    results: results
+    results
   };
 };
 

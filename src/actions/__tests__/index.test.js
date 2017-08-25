@@ -1,40 +1,143 @@
-import { addRecipe, editRecipe, removeRecipe } from '../';
-import { ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE } from '../actionTypes';
+import * as actionCreators from '../';
+import * as actionTypes from '../actionTypes';
 import { v4 } from 'uuid';
 
-describe('Actions', () => {
-  test('creates an action to add a recipe', () => {
+describe('Creates an action to...', () => {
+  test('add a recipe', () => {
     const recipeObject = {
       title: 'Hamburger',
       ingredients: 'Ground Beef, Bread, Lettuce, Tomato'
     };
 
-    expect(addRecipe(recipeObject)).toHaveProperty('type', ADD_RECIPE);
-    expect(addRecipe(recipeObject)).toHaveProperty('recipe');
-    expect(addRecipe(recipeObject)).toHaveProperty('recipe.id');
-    expect(Object.keys(addRecipe(recipeObject)).length).toBe(2);
+    expect(actionCreators.addRecipe(recipeObject)).toHaveProperty('type', actionTypes.ADD_RECIPE);
+    expect(actionCreators.addRecipe(recipeObject)).toHaveProperty('recipe');
+    expect(Object.keys(actionCreators.addRecipe(recipeObject)).length).toBe(2);
   });
 
-  test('creates an action to edit a recipe', () => {
-    const recipeObject =   {
+  test('edit a recipe', () => {
+    const id = v4();
+    const recipe = {
       title: 'Spaghetti',
-      ingredients: 'Noodles, Pasta Sauce, Meatballs'
+      ingredients: 'Noodles, Pasta Sauce, Meatballs',
     };
-    const targetId = v4();
     const expectedAction = {
-      type: EDIT_RECIPE,
-      id: targetId,
-      recipe: recipeObject
+      type: actionTypes.EDIT_RECIPE,
+      recipe: recipe,
+      id
     };
-    expect(editRecipe(targetId, recipeObject)).toEqual(expectedAction);
+    expect(actionCreators.editRecipe(id, recipe)).toEqual(expectedAction);
   });
 
-  test('creates an action to remove a recipe', () => {
+  test('remove a recipe', () => {
     const targetId = v4();
     const expectedAction = {
-      type: REMOVE_RECIPE,
+      type: actionTypes.REMOVE_RECIPE,
       id: targetId
     };
-    expect(removeRecipe(targetId)).toEqual(expectedAction);
+    expect(actionCreators.removeRecipe(targetId)).toEqual(expectedAction);
+  });
+
+  test('activate edit mode', () => {
+    expect(actionCreators.activateEditMode()).toEqual({
+      type: actionTypes.ACTIVATE_EDIT_MODE
+    });
+  });
+
+  test('modify the temp title', () => {
+    const titleDetails = {
+      title: 'Test1',
+      servings: '1',
+      allergens: 'Nuts'
+    };
+    const expectedAction = {
+      type: actionTypes.MODIFY_TEMP_TITLE,
+      titleDetails
+    };
+
+    expect(actionCreators.modifyTempTitle(titleDetails)).toEqual(expectedAction);
+  });
+
+  test('load a stored recipe', () => {
+    const recipe = {
+      title: 'Hamburger',
+      ingredients: 'Ground Beef, Bread, Lettuce, Tomato',
+      id: v4()
+    };
+    const expectedAction = {
+      type: actionTypes.LOAD_STORED_RECIPE,
+      recipe
+    };
+
+    expect(actionCreators.loadStoredRecipe(recipe)).toEqual(expectedAction);
+  });
+
+  test('add temp ingredient', () => {
+    const ingredient = {
+      name: 'Skippy Extra Crunchy Peanut Butter',
+      measure: '2.0 Tbsp',
+      macronutrients: [],
+      micronutrients: [],
+      servings: 1,
+      id: v4()
+    };
+    const expectedAction = {
+      type: actionTypes.ADD_TEMP_INGREDIENT,
+      ingredient
+    };
+
+    expect(actionCreators.addTempIngredient(ingredient)).toEqual(expectedAction);
+  });
+
+  test('edit a temp ingredient', () => {
+    const id = v4();
+    const ingredient = {
+      name: 'Skippy Extra Crunchy Peanut Butter',
+      measure: '2.0 Tbsp',
+      macronutrients: [],
+      micronutrients: [],
+      servings: 1,
+      id: v4()
+    };
+    const expectedAction = {
+      type: actionTypes.EDIT_TEMP_INGREDIENT,
+      ingredient,
+      id
+    };
+
+    expect(actionCreators.editTempIngredient(id, ingredient))
+      .toEqual(expectedAction);
+  });
+
+  test('remove a temp ingredient', () => {
+    const id = v4();
+    const expectedAction = {
+      type: actionTypes.REMOVE_TEMP_INGREDIENT,
+      id
+    };
+
+    expect(actionCreators.removeTempIngredient(id)).toEqual(expectedAction);
+  });
+
+  test('clear the temp recipe', () => {
+    expect(actionCreators.clearTempRecipe())
+      .toEqual({ type: actionTypes.CLEAR_TEMP_RECIPE});
+  });
+
+  test('add a search ingredient result', () => {
+    const results = [{name: 'testRestult'}];
+    const expectedAction = {
+      type: actionTypes.ADD_SEARCH_INGREDIENT_RESULTS,
+      results
+    };
+
+    expect(actionCreators.addSearchIngredientResults(results)).toEqual(expectedAction);
+  });
+
+  test('clear search ingredient results', () => {
+    const expectedAction = {
+      type: actionTypes.CLEAR_SEARCH_INGREDIENT_RESULTS
+    };
+    expect(actionCreators.clearSearchIngredientResults())
+      .toEqual(expectedAction);
   });
 });
