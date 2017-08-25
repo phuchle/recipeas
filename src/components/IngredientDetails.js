@@ -7,10 +7,7 @@ import { searchNutrientInfo, roundToTwo } from '../utils/api';
 import NutrientsList from './NutrientsList';
 import PropTypes from 'prop-types';
 
-//gets dbNumber from props.location.state.dbNumber in the form of:
-// {
-//   dbNumber: '1234567'
-// }
+//gets dbNumber from props.location.state.dbNumber
 
 class IngredientDetails extends Component {
   constructor(props) {
