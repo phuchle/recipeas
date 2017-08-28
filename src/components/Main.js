@@ -6,6 +6,7 @@ import ModifyIngredients from '../containers/ModifyIngredients';
 import SearchIngredient from '../containers/SearchIngredient';
 import IngredientDetails from '../containers/IngredientDetails';
 import ReviewRecipe from '../containers/ReviewRecipe';
+import { searchNutrientInfo } from '../utils/api';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 const Main = (props) => {
@@ -39,6 +40,7 @@ const Main = (props) => {
             <Route path="/ingredient-details" render={({ location }) => (
               <IngredientDetails
                 location={location}
+                searchNutrientInfo={searchNutrientInfo}
               />
             )} />
 

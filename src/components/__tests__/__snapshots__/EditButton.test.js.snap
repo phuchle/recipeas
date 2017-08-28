@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Edit Button Snapshot test 1`] = `
+<button
+  className="edit-recipe glyphicon glyphicon-pencil btn btn-sm btn-default"
+  disabled={false}
+  onClick={undefined}
+  type="button"
+/>
+`;

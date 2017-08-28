@@ -3,7 +3,7 @@ import {
   ListGroup, Button, FormControl, ControlLabel
 } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
-import { searchNutrientInfo, roundToTwo } from '../utils/api';
+import { roundToTwo } from '../utils/api';
 import NutrientsList from './NutrientsList';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
@@ -122,13 +122,14 @@ class IngredientDetails extends Component {
   }
   componentDidMount() {
     if (this.props.location.state.dbNumber) {
-      searchNutrientInfo(this.props.location.state.dbNumber)
+      this.props.searchNutrientInfo(this.props.location.state.dbNumber)
       .then(
-        details => this.setState({
+        details => {
+          this.setState({
           originalDetails: details,
           updatedDetails: details
-        })
-      );
+        });
+      });
     } else if (this.props.location.state.ingredient) {
       const locationState = this.props.location.state;
 
@@ -151,6 +152,7 @@ class IngredientDetails extends Component {
 IngredientDetails.propTypes = {
   addTempIngredient: PropTypes.func.isRequired,
   clearSearchIngredientResults: PropTypes.func.isRequired,
+  searchNutrientInfo: PropTypes.func.isRequired
 };
 
 export default IngredientDetails;
