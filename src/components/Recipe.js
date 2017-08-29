@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Collapse, Well } from 'react-bootstrap';
+import { Collapse, Well, ListGroup } from 'react-bootstrap';
+import MinusButton from './MinusButton';
+import EditButton from './EditButton';
+import { Link } from 'react-router-dom';
 
 class Recipe extends Component {
   constructor(props) {
@@ -19,11 +22,22 @@ class Recipe extends Component {
         <Collapse in={this.state.open}>
           <div> {/* this div exists for smooth collapse animation */}
             <Well>
-              <ul>{this.props.ingredients}</ul>
-              <Button className="edit-recipe" onClick={() => {
-                this.props.fillEditRecipeModal(this.props.id);
-              }}>Edit</Button>
-              <Button className="delete-recipe" bsStyle="danger" onClick={() => this.props.removeRecipe(this.props.id)}>Delete</Button>
+              <ListGroup>{this.props.ingredientsList}</ListGroup>
+              <Link to="/modify-title">
+                <EditButton
+                  handleClick={() => {
+                    this.props.loadStoredRecipe();
+                    this.props.activateEditMode();
+                  }}
+                />
+                {/* Edit button takes you to modify-title */}
+              </Link>
+              <MinusButton
+                className="pull-right delete-recipe"
+                handleClick={() =>
+                  this.props.removeRecipe(this.props.id)
+                }
+              />
             </Well>
           </div>
         </Collapse>
@@ -34,11 +48,11 @@ class Recipe extends Component {
 
 Recipe.propTypes = {
   title: PropTypes.string.isRequired,
-  ingredients: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired,
-  showEditRecipe: PropTypes.func.isRequired,
+  ingredientsList: PropTypes.array.isRequired,
   removeRecipe: PropTypes.func.isRequired,
-  fillEditRecipeModal: PropTypes.func.isRequired
-}
+  id: PropTypes.string.isRequired,
+  loadTempIngredientArray: PropTypes.func.isRequired,
+  modifyTempTitle: PropTypes.func.isRequired,
+};
 
 export default Recipe;

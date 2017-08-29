@@ -1,16 +1,16 @@
 import React from 'react';
 import Navigation from './Nav';
-import RecipesList from '../containers/RecipesList';
-import '../App.css';
+import Main from './Main';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../App.css';
 
 const App = (props) => {
   return (
     <div className="App">
       <Navigation />
-      <RecipesList />
+      <Main />
     </div>
   );
-}
+};
 
 export default App;

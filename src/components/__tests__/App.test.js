@@ -4,6 +4,9 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { defaultRecipes } from '../../reducers/Recipes';
+import { MemoryRouter } from 'react-router-dom';
+import toJson from 'enzyme-to-json';
+import { shallow } from 'enzyme';
 
 const store = configureStore()({
   recipes: defaultRecipes
@@ -11,12 +14,14 @@ const store = configureStore()({
 
 describe ('App', () => {
   test('renders without crashing', () => {
-    const component = renderer.create(
+    const wrapper = shallow(
       <Provider store={store}>
-        <App />
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
       </Provider>
     );
-    const tree = component.toJSON();
+    const tree = toJson(wrapper);
 
     expect(tree).toMatchSnapshot();
   });

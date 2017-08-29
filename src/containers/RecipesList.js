@@ -1,131 +1,49 @@
 import React, { Component } from 'react';
-import { addRecipe, editRecipe, removeRecipe } from '../actions/index';
+import {
+  removeRecipe,
+  loadStoredRecipe,
+  activateEditMode
+} from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Recipe from '../components/Recipe';
-import RecipeModal from '../components/RecipeModal';
-import {
-  Button,
-  ListGroup,
-  ListGroupItem
-} from 'react-bootstrap';
+import PlusButton from '../components/PlusButton';
+import { Link } from 'react-router-dom';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export class RecipesList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      displayAddRecipe: false,
-      displayEditRecipe: false,
-      activeRecipe: {
-        title: '',
-        ingredients: ''
-      },
-      targetId: ''
-    };
-    // methods that affect modal state
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handleIngredientsChange = this.handleIngredientsChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.resetState = this.resetState.bind(this);
-    this.fillEditRecipeModal = this.fillEditRecipeModal.bind(this);
-
-    //methods that have to do with modal visibility
-    this.showAddRecipe = this.showAddRecipe.bind(this);
-    this.hideAddRecipe = this.hideAddRecipe.bind(this);
-    this.showEditRecipe = this.showEditRecipe.bind(this);
-    this.hideEditRecipe = this.hideEditRecipe.bind(this);
-
     // Makes a list of Recipe components
     this.renderList = this.renderList.bind(this);
-
-  }
-  handleTitleChange(event) {
-    this.setState({
-      ...this.state,
-      activeRecipe: {
-        ...this.state.activeRecipe,
-        title: event.target.value
-      }
-    });
-  }
-  handleIngredientsChange(event) {
-    this.setState({
-      ...this.state,
-      activeRecipe: {
-        ...this.state.activeRecipe,
-        ingredients: event.target.value
-      }
-    });
-  }
-  resetState() {
-    this.setState({
-      ...this.state,
-      activeRecipe: {
-        title: '',
-        ingredients: ''
-      },
-      targetId: ''
-    });
-  }
-  showAddRecipe() {
-    this.setState({ ...this.state, displayAddRecipe: true });
-  }
-  hideAddRecipe() {
-    this.setState({ ...this.state, displayAddRecipe: false }, () => this.resetState());
-  }
-  showEditRecipe() {
-    this.setState({ ...this.state, displayEditRecipe: true });
-  }
-  hideEditRecipe() {
-    this.setState({ ...this.state, displayEditRecipe: false }, () => this.resetState());
-  }
-  fillEditRecipeModal(id) {
-    const targetRecipe = this.props.recipes.find(recipe => {
-      return recipe.id === id;
-    });
-
-    this.setState({
-      ...this.state,
-      activeRecipe: {
-        title: targetRecipe.title,
-        ingredients: targetRecipe.ingredients
-      },
-      targetId: id
-    }, () => this.showEditRecipe());
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-
-    if (this.state.displayAddRecipe) {
-      this.props.addRecipe(this.state.activeRecipe);
-    }
-    else if (this.state.displayEditRecipe) {
-      this.props.editRecipe(this.state.targetId, this.state.activeRecipe);
-    }
   }
   renderList() {
-    const { removeRecipe } = this.props;
+    const {
+      removeRecipe,
+      loadStoredRecipe,
+      activateEditMode
+    } = this.props;
 
     return this.props.recipes.map(recipe => {
-      const ingredientsList = recipe.ingredients.split(',').map(ingredient => {
+      const ingredientsList = recipe.ingredients.map(ingredient => {
         return (
-          <ListGroupItem key={recipe.title + ingredient}>
-            { ingredient }
+          <ListGroupItem key={ingredient.id}>
+            { ingredient.name }
           </ListGroupItem>
-        )
+        );
       });
 
       return (
         <ListGroupItem key={recipe.title}>
           <Recipe
-            title={recipe.title}
-            ingredients={ingredientsList}
-            showEditRecipe={this.showEditRecipe}
+            title={recipe.titleDetails.title}
+            ingredientsList={ingredientsList}
             removeRecipe={removeRecipe}
-            fillEditRecipeModal={this.fillEditRecipeModal}
             id={recipe.id}
+            loadStoredRecipe={() => loadStoredRecipe(recipe)}
+            activateEditMode={activateEditMode}
           />
         </ListGroupItem>
       );
@@ -133,32 +51,19 @@ export class RecipesList extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <h1>Recipes</h1>
+      <div>
+        <span>
+          <h1>
+            Recipes
+            <Link to="/modify-title">
+              <PlusButton className="pull-right"/>
+            </Link>
+          </h1>
+        </span>
+
         <ListGroup>
-          { this.renderList() }
+          { this.props.recipes ? this.renderList() : 'Add a recipe!' }
         </ListGroup>
-        <Button bsStyle="primary" onClick={this.showAddRecipe}>Add Recipe</Button>
-         <RecipeModal
-           modalTitle="Add Recipe"
-           show={this.state.displayAddRecipe}
-           onHide={this.hideAddRecipe}
-           recipeTitle={this.state.activeRecipe.title}
-           recipeIngredients={this.state.activeRecipe.ingredients}
-           handleTitleChange={this.handleTitleChange}
-           handleIngredientsChange={this.handleIngredientsChange}
-           handleSubmit={this.handleSubmit}
-         />
-         <RecipeModal
-           modalTitle="Edit Recipe"
-           show={this.state.displayEditRecipe}
-           onHide={this.hideEditRecipe}
-           recipeTitle={this.state.activeRecipe.title}
-           recipeIngredients={this.state.activeRecipe.ingredients}
-           handleTitleChange={this.handleTitleChange}
-           handleIngredientsChange={this.handleIngredientsChange}
-           handleSubmit={this.handleSubmit}
-         />
       </div>
     );
   }
@@ -166,20 +71,22 @@ export class RecipesList extends Component {
 
 RecipesList.PropTypes = {
   recipes: PropTypes.array.isRequired,
-  addRecipe: PropTypes.func.isRequired,
-  editRecipe: PropTypes.func.isRequired,
   removeRecipe: PropTypes.func.isRequired
-}
+};
 
 const mapStateToProps = state => {
   return {
     recipes: state.recipes
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ addRecipe, editRecipe, removeRecipe }, dispatch);
-}
+  return bindActionCreators({
+    removeRecipe,
+    loadStoredRecipe,
+    activateEditMode
+  }, dispatch);
+};
 
 export default connect(
   mapStateToProps,
