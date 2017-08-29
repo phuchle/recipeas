@@ -48,7 +48,7 @@ describe('Recipe', () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper.find('h4').text()).toBe(title);
 
-    expect(enzymeWrapper.find('ul').contains(ingredientsList)).toEqual(true);
+    expect(enzymeWrapper.find('ListGroup').contains(ingredientsList)).toEqual(true);
 
   });
 

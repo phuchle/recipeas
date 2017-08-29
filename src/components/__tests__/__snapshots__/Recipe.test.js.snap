@@ -18,7 +18,9 @@ exports[`Recipe Renders without errors 1`] = `
     <div
       className="well"
     >
-      <ul>
+      <div
+        className="list-group"
+      >
         <li
           className="list-group-item"
         >
@@ -39,7 +41,7 @@ exports[`Recipe Renders without errors 1`] = `
         >
            Tomato
         </li>
-      </ul>
+      </div>
       <button
         className="edit-recipe btn btn-default"
         disabled={false}
@@ -52,6 +54,11 @@ exports[`Recipe Renders without errors 1`] = `
         className="delete-recipe btn btn-danger"
         disabled={false}
         onClick={[Function]}
+        style={
+          Object {
+            "marginLeft": "5px",
+          }
+        }
         type="button"
       >
         Delete
