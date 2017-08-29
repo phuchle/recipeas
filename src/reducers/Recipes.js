@@ -11,11 +11,11 @@ export const defaultRecipes = [
       allergens: 'Eggs, Milk'
     },
     ingredients: [
-      { name: 'Pumpkin Puree'},
-      { name: 'Sweetened Condensed Milk' },
-      { name: 'Eggs' },
-      { name: 'Pumpkin Pie Spice' },
-      { name: 'Pie Crust'}
+      { name: 'Pumpkin Puree', id: v4() },
+      { name: 'Sweetened Condensed Milk', id: v4() },
+      { name: 'Eggs', id: v4() },
+      { name: 'Pumpkin Pie Spice', id: v4() },
+      { name: 'Pie Crust', id: v4() }
     ],
     id: v4()
   },
@@ -26,9 +26,9 @@ export const defaultRecipes = [
       allergens: 'Tomatoes'
     },
     ingredients: [
-      { name: 'Noodles' },
-      { name: 'Pasta Sauce' },
-      { name: 'Meatballs' }
+      { name: 'Noodles', id: v4() },
+      { name: 'Pasta Sauce', id: v4() },
+      { name: 'Meatballs', id: v4() }
     ],
     id: v4()
   },

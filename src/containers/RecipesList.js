@@ -36,7 +36,7 @@ export class RecipesList extends Component {
       });
 
       return (
-        <ListGroupItem key={recipe.title}>
+        <ListGroupItem key={recipe.id}>
           <Recipe
             title={recipe.titleDetails.title}
             ingredientsList={ingredientsList}

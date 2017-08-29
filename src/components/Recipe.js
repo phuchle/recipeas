@@ -51,8 +51,6 @@ Recipe.propTypes = {
   ingredientsList: PropTypes.array.isRequired,
   removeRecipe: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  loadTempIngredientArray: PropTypes.func.isRequired,
-  modifyTempTitle: PropTypes.func.isRequired,
 };
 
 export default Recipe;
