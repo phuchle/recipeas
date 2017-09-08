@@ -1,6 +1,7 @@
  import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import RecipesList from '../containers/RecipesList';
+import RecipeDetails from '../containers/RecipeDetails';
 import ModifyTitle from '../containers/ModifyTitle';
 import ModifyIngredients from '../containers/ModifyIngredients';
 import SearchIngredient from '../containers/SearchIngredient';
@@ -16,6 +17,8 @@ const Main = (props) => {
         <Col sm={12} md={8} lg={6} mdOffset={2} lgOffset={3}>
           <Switch>
             <Route exact path="/" component={RecipesList} />
+
+            <Route path ="/show/:id" component={RecipeDetails} />
 
             <Route path="/modify-title" render={() => (
               <ModifyTitle

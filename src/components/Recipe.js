@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Collapse, Well, ListGroup } from 'react-bootstrap';
+import { Collapse, Well, ListGroup, Button } from 'react-bootstrap';
 import MinusButton from './MinusButton';
 import EditButton from './EditButton';
 import { Link } from 'react-router-dom';
@@ -23,6 +23,9 @@ class Recipe extends Component {
           <div> {/* this div exists for smooth collapse animation */}
             <Well>
               <ListGroup>{this.props.ingredientsList}</ListGroup>
+              <Link to={`/show/${this.props.id}`}>
+                <Button bsStyle="primary" bsSize="small" style={{ marginRight: '5px'}}>More Details</Button>
+              </Link>
               <Link to="/modify-title">
                 <EditButton
                   handleClick={() => {
