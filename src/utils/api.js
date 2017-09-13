@@ -43,6 +43,7 @@ export const searchFoodDescription = (query) => {
 
 };
 
+// returns an object
 const sumOmega3 = (nutrients) => {
   const epa = nutrients.find(nutrObj => {
     return nutrObj.nutrient_id === '629';
@@ -57,13 +58,14 @@ const sumOmega3 = (nutrients) => {
   const omega3 = roundToTwo(parseFloat(epa.value) + parseFloat(ala.value) + parseFloat(dha.value));
 
   return {
+    id: '003', // this is a pun on 007
     name: 'Omega-3 Fatty Acids',
     value: omega3,
     unit: 'g'
   };
 };
 
-// returns an array of objects
+// returns an object of objects
 const formatMicronutrients = (nutrients) => {
   const omega3= sumOmega3(nutrients);
   const nutrientList = nutrients.filter(nutrObj => {
@@ -83,19 +85,20 @@ const formatMicronutrients = (nutrients) => {
   }).map(nutrObj => {
     // formatting the micronutrient list items
     return {
+      id: nutrObj.nutrient_id,
       name: nutrObj.nutrient,
       value: roundToTwo(parseFloat(nutrObj.value)),
       unit: nutrObj.unit
     };
   });
 
-  return [
+  return {
     omega3,
     ...nutrientList
-  ];
+  };
 };
 
-// returns an array
+// returns an Obj of Objects
 const formatMacronutrients = (nutrients) => {
   const kcal = nutrients.find(nutrObj => {
     return nutrObj.nutrient_id === '208';
@@ -110,32 +113,32 @@ const formatMacronutrients = (nutrients) => {
     return nutrObj.nutrient_id === '205';
   });
 
-  const macros = [kcal, protein, fat, carbohydrate].map(macro => {
-    let name;
-    switch(macro.nutrient_id) {
-      case '208':
-        name = 'Calories';
-        break;
-      case '203':
-        name = 'Protein';
-        break;
-      case '204':
-        name = 'Fat';
-        break;
-      case '205':
-        name = 'Carbohydrate';
-        break;
-      default:
-        name = macro.nutrient_id;
-        break;
+  const macros = {
+    kcal: {
+      id: kcal.nutrient_id,
+      name: 'Calories',
+      value: roundToTwo(parseInt(kcal.value, 10)),
+      unit: kcal.unit
+    },
+    protein: {
+      id: protein.nutrient_id,
+      name: 'Protein',
+      value: roundToTwo(parseInt(protein.value, 10)),
+      unit: protein.unit
+    },
+    fat: {
+      id: fat.nutrient_id,
+      name: 'Fat',
+      value: roundToTwo(parseInt(fat.value, 10)),
+      unit: fat.unit
+    },
+    carbohydrate: {
+      id: carbohydrate.nutrient_id,
+      name: 'Carbohydrate',
+      value: roundToTwo(parseInt(carbohydrate.value, 10)),
+      unit: carbohydrate.unit
     }
-
-    return {
-      name: name,
-      value: roundToTwo(parseInt(macro.value, 10)),
-      unit: macro.unit
-    };
-  });
+  };
 
   return macros;
 };
@@ -160,6 +163,16 @@ const formatNutrientResponse = (response) => {
   };
 };
 
+
+// returns data in the form of
+/*
+  {
+    name: String,
+    measure: String,
+    macronutrients: Obj of Objects,
+    micronutrients: Obj of Objects
+  }
+*/
 export const searchNutrientInfo = (foodKey) => {
   const nutrients = [
     '208', // kcal

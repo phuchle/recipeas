@@ -42,263 +42,307 @@ export const defaultRecipes = [
       {
         name: 'Skippy Extra Crunchy Peanut Butter',
         measure: '2.0 Tbsp',
-        macronutrients: [
-          {
+        macronutrients: {
+          kcal: {
+            id: '208',
             name: 'Calories',
             value: 190,
             unit: 'kcal'
           },
-          {
+          protein: {
+            id: '203',
             name: 'Protein',
             value: 7,
             unit: 'g'
           },
-          {
+          fat: {
+            id: '204',
             name: 'Fat',
             value: 16,
             unit: 'g'
           },
-          {
+          carbohydrate: {
+            id: '205',
             name: 'Carbohydrate',
             value: 6,
             unit: 'g'
           }
-        ],
-        micronutrients: [
-          {
-            name: 'Omega-3 Fatty Acids',
-            value: 0,
-            unit: 'g'
-          },
-          {
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
             name: 'Calcium, Ca',
             value: 0,
             unit: 'mg'
           },
-          {
+          '1': {
+            id: '303',
             name: 'Iron, Fe',
             value: 0.36,
             unit: 'mg'
           },
-          {
+          '2': {
+            id: '328',
             name: 'Vitamin D (D2 + D3)',
             value: 0,
             unit: 'µg'
           },
-          {
+          '3': {
+            id: '418',
             name: 'Vitamin B-12',
             value: 0,
             unit: 'µg'
           },
-          {
+          '4': {
+            id: '309',
             name: 'Zinc, Zn',
             value: 0,
             unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
           }
-        ],
+        },
         servings: 1,
-        id: 'cd21d967-c79f-465b-aa25-c7c52893ee80'
+        id: 'c55e1b4a-226c-410a-becf-5a7695dcb3f6'
       },
       {
         name: 'Egg',
         measure: '1.0 large',
-        macronutrients: [
-          {
+        macronutrients: {
+          kcal: {
+            id: '208',
             name: 'Calories',
             value: 72,
             unit: 'kcal'
           },
-          {
+          protein: {
+            id: '203',
             name: 'Protein',
             value: 6,
             unit: 'g'
           },
-          {
+          fat: {
+            id: '204',
             name: 'Fat',
             value: 4,
             unit: 'g'
           },
-          {
+          carbohydrate: {
+            id: '205',
             name: 'Carbohydrate',
             value: 0,
             unit: 'g'
           }
-        ],
-        micronutrients: [
-          {
-            name: 'Omega-3 Fatty Acids',
-            value: 0.05,
-            unit: 'g'
-          },
-          {
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
             name: 'Calcium, Ca',
             value: 28,
             unit: 'mg'
           },
-          {
+          '1': {
+            id: '303',
             name: 'Iron, Fe',
             value: 0.88,
             unit: 'mg'
           },
-          {
+          '2': {
+            id: '328',
             name: 'Vitamin D (D2 + D3)',
             value: 1,
             unit: 'µg'
           },
-          {
+          '3': {
+            id: '418',
             name: 'Vitamin B-12',
             value: 0.45,
             unit: 'µg'
           },
-          {
+          '4': {
+            id: '309',
             name: 'Zinc, Zn',
             value: 0.65,
             unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0.05,
+            unit: 'g'
           }
-        ],
+        },
         servings: 1,
-        id: '2d734363-a8f6-447d-801f-26e6c408fe01'
+        id: '4ff4fa3e-3058-4001-987a-25022a944a9d'
       },
       {
         name: 'Heavy Whipping Cream',
         measure: '1.0 Tbsp',
-        macronutrients: [
-          {
+        macronutrients: {
+          kcal: {
+            id: '208',
             name: 'Calories',
             value: 50,
             unit: 'kcal'
           },
-          {
+          protein: {
+            id: '203',
             name: 'Protein',
             value: 0,
             unit: 'g'
           },
-          {
+          fat: {
+            id: '204',
             name: 'Fat',
             value: 5,
             unit: 'g'
           },
-          {
+          carbohydrate: {
+            id: '205',
             name: 'Carbohydrate',
             value: 1,
             unit: 'g'
           }
-        ],
-        micronutrients: [
-          {
-            name: 'Omega-3 Fatty Acids',
-            value: 0,
-            unit: 'g'
-          },
-          {
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
             name: 'Calcium, Ca',
             value: 20,
             unit: 'mg'
           },
-          {
+          '1': {
+            id: '303',
             name: 'Iron, Fe',
             value: 0,
             unit: 'mg'
           },
-          {
+          '2': {
+            id: '328',
             name: 'Vitamin D (D2 + D3)',
             value: 0,
             unit: 'µg'
           },
-          {
+          '3': {
+            id: '418',
             name: 'Vitamin B-12',
             value: 0,
             unit: 'µg'
           },
-          {
+          '4': {
+            id: '309',
             name: 'Zinc, Zn',
             value: 0,
             unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
           }
-        ],
+        },
         servings: 1,
-        id: '62996d34-098a-4826-a795-7e55b780e260'
+        id: '67239d28-2974-4c22-aece-d454384b9ca7'
       },
       {
         name: 'Baking Powder',
         measure: '1.0 tsp',
-        macronutrients: [
-          {
+        macronutrients: {
+          kcal: {
+            id: '208',
             name: 'Calories',
-            value: 2,
+            value: 5,
             unit: 'kcal'
           },
-          {
+          protein: {
+            id: '203',
             name: 'Protein',
             value: 0,
             unit: 'g'
           },
-          {
+          fat: {
+            id: '204',
             name: 'Fat',
             value: 0,
             unit: 'g'
           },
-          {
+          carbohydrate: {
+            id: '205',
             name: 'Carbohydrate',
-            value: 1,
+            value: 2,
             unit: 'g'
           }
-        ],
-        micronutrients: [
-          {
-            name: 'Omega-3 Fatty Acids',
-            value: 0,
-            unit: 'g'
-          },
-          {
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
             name: 'Calcium, Ca',
-            value: 270,
+            value: 217,
             unit: 'mg'
           },
-          {
+          '1': {
+            id: '303',
             name: 'Iron, Fe',
-            value: 0.51,
+            value: 0.41,
             unit: 'mg'
           },
-          {
+          '2': {
+            id: '328',
             name: 'Vitamin D (D2 + D3)',
             value: 0,
             unit: 'µg'
           },
-          {
+          '3': {
+            id: '418',
             name: 'Vitamin B-12',
             value: 0,
             unit: 'µg'
           },
-          {
+          '4': {
+            id: '309',
             name: 'Zinc, Zn',
-            value: 0,
+            value: 0.04,
             unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
           }
-        ],
+        },
         servings: 1,
-        id: 'ad253ef3-dcb8-420a-93ec-ba13a788046c'
+        id: 'e8905927-dd23-465b-a112-b21b2d0168b7'
       },
       {
         name: 'Sugar',
-        measure: '1.0 tsp',
+        measure: '4.0 g',
         macronutrients: [
           {
+            id: '208',
             name: 'Calories',
             value: 60,
             unit: 'kcal'
           },
           {
+            id: '203',
             name: 'Protein',
             value: 0,
             unit: 'g'
           },
           {
+            id: '204',
             name: 'Fat',
             value: 0,
             unit: 'g'
           },
           {
+            id: '205',
             name: 'Carbohydrate',
             value: 16,
             unit: 'g'
@@ -306,41 +350,47 @@ export const defaultRecipes = [
         ],
         micronutrients: [
           {
-            name: 'Omega-3 Fatty Acids',
-            value: 0,
-            unit: 'g'
-          },
-          {
+            id: '301',
             name: 'Calcium, Ca',
             value: 0,
             unit: 'mg'
           },
           {
+            id: '303',
             name: 'Iron, Fe',
             value: 0,
             unit: 'mg'
           },
           {
+            id: '328',
             name: 'Vitamin D (D2 + D3)',
             value: 0,
             unit: 'µg'
           },
           {
+            id: '418',
             name: 'Vitamin B-12',
             value: 0,
             unit: 'µg'
           },
           {
+            id: '309',
             name: 'Zinc, Zn',
             value: 0,
             unit: 'mg'
+          },
+          {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
           }
         ],
         servings: '4',
-        id: '16075d8f-ecea-49c8-a02f-b8499f085362'
+        id: '7b365d9a-04ad-43e1-a738-5284c858847f'
       }
     ],
-    id: '93a0988d-66ef-456c-b72a-67cb0f89c98f',
+    id: '8ed88d04-11a1-4922-8c03-4bdf6cb6c084',
     editMode: false
   }
 ];

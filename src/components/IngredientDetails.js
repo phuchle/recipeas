@@ -92,16 +92,22 @@ class IngredientDetails extends Component {
   handleServingsChange(event) {
     const newServing = event.target.value;
     if (!isNaN(parseInt(newServing, 10))) {
-      const newMacronutrients = this.state.originalDetails.macronutrients.map(macro => {
-        return {
-          ...macro,
-          value: roundToTwo(parseFloat(macro.value) * parseInt(newServing, 10))
+      // deep copy the macros and micros objects
+      const newMacros = JSON.parse(JSON.stringify(this.state.originalDetails.macronutrients));
+      const newMicros = JSON.parse(JSON.stringify(this.state.originalDetails.micronutrients));
+      const macroKeys = Object.keys(newMacros);
+      const microKeys = Object.keys(newMicros);
+
+      macroKeys.forEach(key => {
+        newMacros[key] = {
+          ...newMacros[key],
+          value: roundToTwo(parseFloat(newMacros[key].value) * parseInt(newServing, 10))
         };
       });
-      const newMicronutrients = this.state.originalDetails.micronutrients.map(micro => {
-        return {
-          ...micro,
-          value: roundToTwo(parseFloat(micro.value) * parseInt(newServing, 10))
+      microKeys.forEach(key => {
+        newMicros[key] = {
+          ...newMicros[key],
+          value: roundToTwo(parseFloat(newMicros[key].value) * parseInt(newServing, 10))
         };
       });
 
@@ -109,8 +115,8 @@ class IngredientDetails extends Component {
         servings: newServing,
         updatedDetails: {
           ...this.state.updatedDetails,
-          macronutrients: newMacronutrients,
-          micronutrients: newMicronutrients
+          macronutrients: newMacros,
+          micronutrients: newMicros
         }
       });
     } else {

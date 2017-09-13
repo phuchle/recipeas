@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ListGroupItem } from 'react-bootstrap';
 
-const NutrientsList = props => {
+const NutrientsList = ({ nutrients }) => {
+  const nutrientKeys = Object.keys(nutrients);
   return (
     <div>
-      {props.nutrients.map(nutr => {
+      {nutrientKeys.map(key => {
         return (
-          <ListGroupItem key={nutr.name}>
-            <strong>{nutr.name}: </strong>
-            {nutr.value + nutr.unit}
+          <ListGroupItem key={nutrients[key].id}>
+            <strong>{nutrients[key].name}: </strong>
+            {nutrients[key].value + nutrients[key].unit}
           </ListGroupItem>
         );
       })}
@@ -18,7 +19,7 @@ const NutrientsList = props => {
 };
 
 NutrientsList.propTypes = {
-  nutrients: PropTypes.array.isRequired,
+  nutrients: PropTypes.object.isRequired,
 };
 
 export default NutrientsList;
