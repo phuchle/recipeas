@@ -61,7 +61,7 @@ const RecipeDetails = props => {
             {macroKeys.map(macro => {
               const target = foundRecipe.ingredients[0].macronutrients[macro];
               return (
-                <th>{`${target.name} (${target.unit})`}</th>
+                <th key={macro}>{`${target.name} (${target.unit})`}</th>
               );
             })}
             </tr>
@@ -70,7 +70,7 @@ const RecipeDetails = props => {
             <tr>
               {macroKeys.map(macro => {
                 return (
-                  <td>{totalMacronutrientValue(foundRecipe.ingredients, macro)}</td>
+                  <td key={`${macro}Total`}>{totalMacronutrientValue(foundRecipe.ingredients, macro)}</td>
                 );
               })}
             </tr>
@@ -85,7 +85,7 @@ const RecipeDetails = props => {
               {microKeys.map(micro => {
                 const target = foundRecipe.ingredients[0].micronutrients[micro];
                 return (
-                  <th>{`
+                  <th key={micro}>{`
                     ${target.name} (${target.unit})
                   `}</th>
                 );
@@ -96,7 +96,7 @@ const RecipeDetails = props => {
             <tr className="text-center">
               {microKeys.map(micro => {
                 return (
-                  <td>{totalMicronutrientValue(foundRecipe.ingredients, micro)}</td>
+                  <td key={`${micro}Total`}>{totalMicronutrientValue(foundRecipe.ingredients, micro)}</td>
                 );
               })}
             </tr>
