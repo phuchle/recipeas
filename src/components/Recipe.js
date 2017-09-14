@@ -17,7 +17,7 @@ class Recipe extends Component {
   }
   render() {
     return (
-      <div className='recipe-container'>
+      <div className="recipe-container">
         <h4 className="recipe-title" onClick={this.toggleRecipe}>{this.props.title}</h4>
         <Collapse in={this.state.open}>
           <div> {/* this div exists for smooth collapse animation */}
