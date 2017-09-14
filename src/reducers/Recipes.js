@@ -1,36 +1,589 @@
 import {
   ADD_RECIPE, EDIT_RECIPE, REMOVE_RECIPE
 } from '../actions/actionTypes';
-import { v4 } from 'uuid';
 
 export const defaultRecipes = [
   {
     titleDetails: {
       title: 'Pumpkin Pie',
-      servings: '4',
-      allergens: 'Eggs, Milk'
+      allergens: 'Pumpkin, Eggs, Milk',
+      servings: '4'
     },
     ingredients: [
-      { name: 'Pumpkin Puree', id: v4(), measure: '1 can' },
-      { name: 'Sweetened Condensed Milk', id: v4(), measure: '4 tbsp' },
-      { name: 'Eggs', id: v4(), measure: '2 Eggs' },
-      { name: 'Pumpkin Pie Spice', id: v4(), measure: '2 tbsp' },
-      { name: 'Pie Crust', id: v4(), measure: '1 crust' }
+      {
+        name: 'Pumpkin Puree',
+        measure: '0.5 cup',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 0,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 2,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 0,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 20,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 82,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 3.82,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 0,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 0,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 0,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        servings: '2',
+        id: '9785e869-d859-446e-86de-d663729d7b2d'
+      },
+      {
+        name: 'Sweetened Condensed Milk',
+        measure: '2.0 Tbsp',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 780,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 18,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 0,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 132,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 600,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 0,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 0,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 0,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 0,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        servings: '6',
+        id: '2f767646-ae9d-442f-a838-7a1b4ccb2855'
+      },
+      {
+        name: 'Eggs',
+        measure: '3.0 large',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 216,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 18,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 12,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 84,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 2.64,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 3,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 1.35,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 1.95,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0.15,
+            unit: 'g'
+          }
+        },
+        servings: '3',
+        id: 'c4ea7b7f-a150-4b2c-a9f2-d4382e6bdeb4'
+      },
+      {
+        name: 'Pumpkin Pie Spice',
+        measure: '1.0 tsp',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 18,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 0,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 0,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 3,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 36,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 1.02,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 0,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 0,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 0.12,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        servings: '3',
+        id: 'ef64d00c-a197-418d-aef0-1b4b02865fc4'
+      },
+      {
+        name: 'Flaky Pie Crust',
+        measure: '1 pie whole crust',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 2480,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 32,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 96,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 376,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 800,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 5.76,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 0,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 0,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 0,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        servings: '8',
+        id: 'b9bca07c-03b2-44dc-8e51-aa8a459abb4f'
+      }
     ],
-    id: v4()
+    id: 'c9c5dfa3-4c1c-4c09-846e-9443a4e62d30',
+    editMode: false
   },
   {
     titleDetails: {
       title: 'Spaghetti',
-      servings: '4',
-      allergens: 'Tomatoes'
+      allergens: 'Tomatoes',
+      servings: '2'
     },
     ingredients: [
-      { name: 'Noodles', id: v4(), measure: '8oz' },
-      { name: 'Pasta Sauce', id: v4(), measure: 'Half a jar' },
-      { name: 'Meatballs', id: v4(), measure: 'As many as you want' }
+      {
+        name: 'Spaghetti Pasta',
+        measure: '2.0 oz',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 800,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 28,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 4,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 164,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 0,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 7.2,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 0,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 0,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 0,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        servings: '4',
+        id: '8feffcb2-8fd5-4b09-a613-03778a96ce3f'
+      },
+      {
+        name: 'Beef Meatballs',
+        measure: '12 Meatballs',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 540,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 30,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 42,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 12,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 80,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 3.6,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 0,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 0,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 0,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        servings: '2',
+        id: '68953bb7-e5da-42b0-b50e-b66020cddc15'
+      },
+      {
+        name: 'Vodka Pasta Sauce',
+        measure: '0.5 cup',
+        macronutrients: {
+          kcal: {
+            id: '208',
+            name: 'Calories',
+            value: 630,
+            unit: 'kcal'
+          },
+          protein: {
+            id: '203',
+            name: 'Protein',
+            value: 9,
+            unit: 'g'
+          },
+          fat: {
+            id: '204',
+            name: 'Fat',
+            value: 54,
+            unit: 'g'
+          },
+          carbohydrate: {
+            id: '205',
+            name: 'Carbohydrate',
+            value: 21,
+            unit: 'g'
+          }
+        },
+        micronutrients: {
+          '0': {
+            id: '301',
+            name: 'Calcium, Ca',
+            value: 300,
+            unit: 'mg'
+          },
+          '1': {
+            id: '303',
+            name: 'Iron, Fe',
+            value: 8.13,
+            unit: 'mg'
+          },
+          '2': {
+            id: '328',
+            name: 'Vitamin D (D2 + D3)',
+            value: 0,
+            unit: 'µg'
+          },
+          '3': {
+            id: '418',
+            name: 'Vitamin B-12',
+            value: 0,
+            unit: 'µg'
+          },
+          '4': {
+            id: '309',
+            name: 'Zinc, Zn',
+            value: 0,
+            unit: 'mg'
+          },
+          omega3: {
+            id: '003',
+            name: 'Omega-3 Fatty Acids',
+            value: 0,
+            unit: 'g'
+          }
+        },
+        servings: '3',
+        id: '95691df8-b176-4374-bb6a-4d0cbef9ba5c'
+      }
     ],
-    id: v4()
+    id: 'd1a683b8-38ba-42db-94c3-0ebfaa36a945',
+    editMode: false
   },
   {
     titleDetails: {
