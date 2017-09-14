@@ -322,70 +322,70 @@ export const defaultRecipes = [
       {
         name: 'Sugar',
         measure: '4.0 g',
-        macronutrients: [
-          {
+        macronutrients: {
+          kcal: {
             id: '208',
             name: 'Calories',
             value: 60,
             unit: 'kcal'
           },
-          {
+          protein: {
             id: '203',
             name: 'Protein',
             value: 0,
             unit: 'g'
           },
-          {
+          fat: {
             id: '204',
             name: 'Fat',
             value: 0,
             unit: 'g'
           },
-          {
+          carbohydrate: {
             id: '205',
             name: 'Carbohydrate',
             value: 16,
             unit: 'g'
           }
-        ],
-        micronutrients: [
-          {
+        },
+        micronutrients: {
+          '0': {
             id: '301',
             name: 'Calcium, Ca',
             value: 0,
             unit: 'mg'
           },
-          {
+          '1': {
             id: '303',
             name: 'Iron, Fe',
             value: 0,
             unit: 'mg'
           },
-          {
+          '2': {
             id: '328',
             name: 'Vitamin D (D2 + D3)',
             value: 0,
             unit: 'µg'
           },
-          {
+          '3': {
             id: '418',
             name: 'Vitamin B-12',
             value: 0,
             unit: 'µg'
           },
-          {
+          '4': {
             id: '309',
             name: 'Zinc, Zn',
             value: 0,
             unit: 'mg'
           },
-          {
+          'omega3': {
             id: '003',
             name: 'Omega-3 Fatty Acids',
             value: 0,
             unit: 'g'
           }
-        ],
+        },
         servings: '4',
         id: '7b365d9a-04ad-43e1-a738-5284c858847f'
       }
