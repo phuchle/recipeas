@@ -90,7 +90,7 @@ const RecipeDetails = props => {
             {macroKeys.map(macro => {
               const target = foundRecipe.ingredients[0].macronutrients[macro];
               return (
-                <th key={macro}>{`${target.name} (${target.unit})`}</th>
+                <th style={{ color: COLORS[target.name]}} key={macro}>{`${target.name} (${target.unit})`}</th>
               );
             })}
             </tr>
@@ -107,7 +107,6 @@ const RecipeDetails = props => {
         </Table>
         <Row className="text-center">
         <PieChart
-          labels
           size={200}
           innerHoleSize={100}
           data={macroData}
