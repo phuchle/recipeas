@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Row, Table } from 'react-bootstrap';
 import { PieChart } from 'react-easy-chart';
 import PropTypes from 'prop-types';
@@ -10,138 +10,154 @@ const COLORS = {
   Carbohydrate: '#FF8042'
 };
 
-const totalMacronutrientValue = (ingredients, macro) => {
-  const totalValue = ingredients.reduce((sum, current) => {
-    return sum += current.macronutrients[macro].value;
-  }, 0);
+class RecipeDetails extends Component {
+  constructor(props) {
+    super(props);
 
-  return roundToTwo(totalValue);
-};
+    const targetId = this.props.match.params.id;
+    const foundRecipe = this.props.recipes.find(recipe => recipe.id === targetId);
+    const macroKeys = Object.keys(foundRecipe.ingredients[0].macronutrients);
+    const microKeys = Object.keys(foundRecipe.ingredients[0].micronutrients);
+    const macroData = this.formatMacroData(foundRecipe.ingredients, macroKeys);
 
-const totalMicronutrientValue = (ingredients, micro) => {
-  const totalValue = ingredients.reduce((sum, current) => {
-    return sum += current.micronutrients[micro].value;
-  }, 0);
-
-  return roundToTwo(totalValue);
-};
-
-const findMacroName = (macronutrients, target) => {
-  return macronutrients[target].name;
-};
-
-const formatMacroData = (ingredients, macroKeys) => {
-  return macroKeys.map(macro => {
-    const macroName = findMacroName(ingredients[0].macronutrients, macro);
-    return {
-      key: macroName,
-      value: totalMacronutrientValue(ingredients, macro),
-      color: COLORS[macroName]
+    this.state = {
+      targetId,
+      foundRecipe,
+      macroKeys,
+      microKeys,
+      macroData
     };
-  }).filter(macroObj => {
-    return macroObj.key !== 'Calories';
-  });
-};
 
-const RecipeDetails = props => {
-  const targetId = props.match.params.id;
-  const foundRecipe = props.recipes.find(recipe => recipe.id === targetId);
-  const macroKeys = Object.keys(foundRecipe.ingredients[0].macronutrients);
-  const microKeys = Object.keys(foundRecipe.ingredients[0].micronutrients);
-  const macroData = formatMacroData(foundRecipe.ingredients, macroKeys);
-  console.log(macroData);
+    this.totalMacronutrientValue = this.totalMacronutrientValue.bind(this);
+    this.totalMicronutrientValue = this.totalMicronutrientValue.bind(this);
+    this.findMacroName = this.findMacroName.bind(this);
+    this.formatMacroData = this.formatMacroData.bind(this);
+  }
+  totalMacronutrientValue(ingredients, macro) {
+    const totalValue = ingredients.reduce((sum, current) => {
+      return sum += current.macronutrients[macro].value;
+    }, 0);
 
-  return (
-    <div>
-      <Row>
-        <h1>{foundRecipe.titleDetails.title}</h1>
-        <span>
-          <strong>Allergies:</strong> {foundRecipe.titleDetails.allergens}
-          <strong> | </strong>
-        </span>
-        <span> Makes enough for {foundRecipe.titleDetails.servings}</span>
-      </Row>
-      <Row>
-        <h4>Ingredients</h4>
-        <Table responsive>
-          <thead>
-            <tr>
-              <th>Measure</th>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {foundRecipe.ingredients.map(ingredient => {
-              return (
-                <tr key={ingredient.id}>
-                  <td>{ingredient.measure}</td>
-                  <td>{ingredient.name}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-      </Row>
-      <Row>
-        <h4>Macronutrients</h4>
-        <Table responsive>
-          <thead>
-            <tr>
-            {macroKeys.map(macro => {
-              const target = foundRecipe.ingredients[0].macronutrients[macro];
-              return (
-                <th style={{ color: COLORS[target.name]}} key={macro}>{`${target.name} (${target.unit})`}</th>
-              );
-            })}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {macroKeys.map(macro => {
-                return (
-                  <td key={`${macro}Total`}>{totalMacronutrientValue(foundRecipe.ingredients, macro)}</td>
-                );
-              })}
-            </tr>
-          </tbody>
-        </Table>
-        <Row className="text-center">
-        <PieChart
-          size={200}
-          innerHoleSize={100}
-          data={macroData}
-        />
+    return roundToTwo(totalValue);
+  };
 
+  totalMicronutrientValue(ingredients, micro) {
+    const totalValue = ingredients.reduce((sum, current) => {
+      return sum += current.micronutrients[micro].value;
+    }, 0);
+
+    return roundToTwo(totalValue);
+  };
+
+  findMacroName(macronutrients, target) {
+    return macronutrients[target].name;
+  };
+
+  formatMacroData(ingredients, macroKeys) {
+    return macroKeys.map(macro => {
+      const macroName = this.findMacroName(ingredients[0].macronutrients, macro);
+      return {
+        key: macroName,
+        value: this.totalMacronutrientValue(ingredients, macro),
+        color: COLORS[macroName]
+      };
+    }).filter(macroObj => {
+      return macroObj.key !== 'Calories';
+    });
+  };
+  render() {
+    return (
+      <div>
+        <Row>
+          <h1>{this.state.foundRecipe.titleDetails.title}</h1>
+          <span>
+            <strong>Allergies:</strong> {this.state.foundRecipe.titleDetails.allergens}
+            <strong> | </strong>
+          </span>
+          <span> Makes enough for {this.state.foundRecipe.titleDetails.servings}</span>
         </Row>
-      </Row>
-      <Row>
-        <h4>Micronutrients</h4>
-        <Table responsive>
-          <thead>
-            <tr>
-              {microKeys.map(micro => {
-                const target = foundRecipe.ingredients[0].micronutrients[micro];
+        <Row>
+          <h4>Ingredients</h4>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>Measure</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.foundRecipe.ingredients.map(ingredient => {
                 return (
-                  <th key={micro}>{`
-                    ${target.name} (${target.unit})
-                  `}</th>
+                  <tr key={ingredient.id}>
+                    <td>{ingredient.measure}</td>
+                    <td>{ingredient.name}</td>
+                  </tr>
                 );
               })}
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="text-center">
-              {microKeys.map(micro => {
+            </tbody>
+          </Table>
+        </Row>
+        <Row>
+          <h4>Macronutrients</h4>
+          <Table responsive>
+            <thead>
+              <tr>
+              {this.state.macroKeys.map(macro => {
+                const target = this.state.foundRecipe.ingredients[0].macronutrients[macro];
                 return (
-                  <td key={`${micro}Total`}>{totalMicronutrientValue(foundRecipe.ingredients, micro)}</td>
+                  <th style={{ color: COLORS[target.name]}} key={macro}>{`${target.name} (${target.unit})`}</th>
                 );
               })}
-            </tr>
-          </tbody>
-        </Table>
-      </Row>
-    </div>
-  );
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {this.state.macroKeys.map(macro => {
+                  return (
+                    <td key={`${macro}Total`}>{this.totalMacronutrientValue(this.state.foundRecipe.ingredients, macro)}</td>
+                  );
+                })}
+              </tr>
+            </tbody>
+          </Table>
+          <Row className="text-center">
+          <PieChart
+            size={200}
+            innerHoleSize={100}
+            data={this.state.macroData}
+          />
+  
+          </Row>
+        </Row>
+        <Row>
+          <h4>Micronutrients</h4>
+          <Table responsive>
+            <thead>
+              <tr>
+                {this.state.microKeys.map(micro => {
+                  const target = this.state.foundRecipe.ingredients[0].micronutrients[micro];
+                  return (
+                    <th key={micro}>{`
+                      ${target.name} (${target.unit})
+                    `}</th>
+                  );
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-center">
+                {this.state.microKeys.map(micro => {
+                  return (
+                    <td key={`${micro}Total`}>{this.totalMicronutrientValue(this.state.foundRecipe.ingredients, micro)}</td>
+                  );
+                })}
+              </tr>
+            </tbody>
+          </Table>
+        </Row>
+      </div>
+    );
+  }
 };
 
 RecipeDetails.propTypes = {
