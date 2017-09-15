@@ -1,7 +1,14 @@
-import { Row, Table } from 'react-bootstrap';
 import React from 'react';
+import { Row, Table } from 'react-bootstrap';
+import { PieChart } from 'react-easy-chart';
 import PropTypes from 'prop-types';
 import { roundToTwo } from '../utils/api';
+
+const COLORS = {
+  Protein: '#0088FE',
+  Fat: '#00C49F',
+  Carbohydrate: '#FF8042'
+};
 
 const totalMacronutrientValue = (ingredients, macro) => {
   const totalValue = ingredients.reduce((sum, current) => {
@@ -19,18 +26,40 @@ const totalMicronutrientValue = (ingredients, micro) => {
   return roundToTwo(totalValue);
 };
 
+const findMacroName = (macronutrients, target) => {
+  return macronutrients[target].name;
+};
+
+const formatMacroData = (ingredients, macroKeys) => {
+  return macroKeys.map(macro => {
+    const macroName = findMacroName(ingredients[0].macronutrients, macro);
+    return {
+      key: macroName,
+      value: totalMacronutrientValue(ingredients, macro),
+      color: COLORS[macroName]
+    };
+  }).filter(macroObj => {
+    return macroObj.key !== 'Calories';
+  });
+};
+
 const RecipeDetails = props => {
   const targetId = props.match.params.id;
   const foundRecipe = props.recipes.find(recipe => recipe.id === targetId);
   const macroKeys = Object.keys(foundRecipe.ingredients[0].macronutrients);
   const microKeys = Object.keys(foundRecipe.ingredients[0].micronutrients);
+  const macroData = formatMacroData(foundRecipe.ingredients, macroKeys);
+  console.log(macroData);
 
   return (
     <div>
       <Row>
         <h1>{foundRecipe.titleDetails.title}</h1>
-        <h4>Allergies: {foundRecipe.titleDetails.allergens}</h4>
-        <h4>Makes enough for {foundRecipe.titleDetails.servings}</h4>
+        <span>
+          <strong>Allergies:</strong> {foundRecipe.titleDetails.allergens}
+          <strong> | </strong>
+        </span>
+        <span> Makes enough for {foundRecipe.titleDetails.servings}</span>
       </Row>
       <Row>
         <h4>Ingredients</h4>
@@ -76,6 +105,15 @@ const RecipeDetails = props => {
             </tr>
           </tbody>
         </Table>
+        <Row className="text-center">
+        <PieChart
+          labels
+          size={200}
+          innerHoleSize={100}
+          data={macroData}
+        />
+
+        </Row>
       </Row>
       <Row>
         <h4>Micronutrients</h4>
