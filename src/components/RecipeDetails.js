@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import { Row, Table } from 'react-bootstrap';
-import { PieChart } from 'react-easy-chart';
+import { Row, Col, Table } from 'react-bootstrap';
+import { VictoryPie, VictoryTooltip } from 'victory';
 import PropTypes from 'prop-types';
 import { roundToTwo } from '../utils/api';
-
-const COLORS = {
-  Protein: '#0088FE',
-  Fat: '#00C49F',
-  Carbohydrate: '#FF8042'
-};
+import { COLORS } from '../constants/recipeDetails';
 
 class RecipeDetails extends Component {
   constructor(props) {
@@ -57,12 +52,11 @@ class RecipeDetails extends Component {
     return macroKeys.map(macro => {
       const macroName = this.findMacroName(ingredients[0].macronutrients, macro);
       return {
-        key: macroName,
-        value: this.totalMacronutrientValue(ingredients, macro),
-        color: COLORS[macroName]
+        x: macroName,
+        y: this.totalMacronutrientValue(ingredients, macro)
       };
     }).filter(macroObj => {
-      return macroObj.key !== 'Calories';
+      return macroObj.x !== 'Calories';
     });
   };
   render() {
@@ -99,7 +93,7 @@ class RecipeDetails extends Component {
         </Row>
         <Row>
           <h4>Macronutrients</h4>
-          <Table responsive>
+          <Table responsive bordered>
             <thead>
               <tr>
               {this.state.macroKeys.map(macro => {
@@ -120,18 +114,36 @@ class RecipeDetails extends Component {
               </tr>
             </tbody>
           </Table>
-          <Row className="text-center">
-          <PieChart
-            size={200}
-            innerHoleSize={100}
-            data={this.state.macroData}
-          />
+          <Col
+            style={{
+              minWidth: '300px',
+              minHeight: '300px',
+              padding: 0,
+            }}
+            xs={12} sm={8} lg={6}
+            smOffset={2}
+            lgOffset={3}
+          >
+            <VictoryPie
+              innerRadius={100}
+              labelRadius={100}
+              padAngle={3}
+              data={this.state.macroData}
+              colorScale={Object.values(COLORS)}
+              labelComponent={
+                <VictoryTooltip 
+                  text={(d) => `${d.x}: ${d.y}g`}
+                  orientation="top"
+                />
+              }
+            />
+          </Col>
   
-          </Row>
+
         </Row>
         <Row>
           <h4>Micronutrients</h4>
-          <Table responsive>
+          <Table responsive bordered>
             <thead>
               <tr>
                 {this.state.microKeys.map(micro => {
