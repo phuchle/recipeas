@@ -65,8 +65,8 @@ class RecipeDetails extends Component {
         <Row>
           <h1>{this.state.foundRecipe.titleDetails.title}</h1>
           <span>
-            <strong>Allergies:</strong> {this.state.foundRecipe.titleDetails.allergens}
-            <strong> | </strong>
+            <strong style={{ color: 'red'}}>Allergies:</strong> {this.state.foundRecipe.titleDetails.allergens}
+            <strong> ---- </strong>
           </span>
           <span> Makes enough for {this.state.foundRecipe.titleDetails.servings}</span>
         </Row>
