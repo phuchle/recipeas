@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MinusButton renders without crashing 1`] = `
+<Button
+  active={false}
+  block={false}
+  bsClass="btn"
+  bsStyle="danger"
+  className="undefined glyphicon glyphicon-minus"
+  disabled={false}
+  style={
+    Object {
+      "marginLeft": "5px",
+    }
+  }
+/>
+`;

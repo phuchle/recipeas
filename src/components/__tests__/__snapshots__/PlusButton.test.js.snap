@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlusButton It renders without crashing 1`] = `
+<button
+  className="undefined glyphicon glyphicon-plus btn btn-primary"
+  disabled={false}
+  style={
+    Object {
+      "marginBottom": "10px",
+      "marginLeft": "5px",
+    }
+  }
+  type="button"
+/>
+`;

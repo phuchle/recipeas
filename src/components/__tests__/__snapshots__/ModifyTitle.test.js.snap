@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModifyTitle renders without crashing 1`] = `
+<div>
+  <h4>
+    Recipe Information
+  </h4>
+  <FormGroup
+    bsClass="form-group"
+    controlId="recipeTitle"
+    validationState="error"
+  >
+    <ControlLabel
+      bsClass="control-label"
+      srOnly={false}
+    >
+      Title
+    </ControlLabel>
+    <FormControl
+      bsClass="form-control"
+      componentClass="input"
+      onChange={[Function]}
+      placeholder="Enter an awesome title"
+      type="text"
+      value=""
+    />
+    <FormControlFeedback
+      bsClass="form-control-feedback"
+      bsRole="feedback"
+    />
+    <HelpBlock
+      bsClass="help-block"
+    >
+      A title is required.
+    </HelpBlock>
+  </FormGroup>
+  <ControlLabel
+    bsClass="control-label"
+    srOnly={false}
+  >
+    Servings
+  </ControlLabel>
+  <FormControl
+    bsClass="form-control"
+    componentClass="input"
+    onChange={[Function]}
+    placeholder="How many people will this recipe feed?"
+    type="text"
+    value=""
+  />
+  <ControlLabel
+    bsClass="control-label"
+    srOnly={false}
+  >
+    Allergens
+  </ControlLabel>
+  <FormControl
+    bsClass="form-control"
+    componentClass="input"
+    onChange={[Function]}
+    placeholder="What allergens does this food contain?"
+    type="text"
+    value=""
+  />
+  <form>
+    <Button
+      active={false}
+      block={true}
+      bsClass="btn"
+      bsSize="large"
+      bsStyle="primary"
+      disabled={true}
+      onClick={[Function]}
+      type="submit"
+    >
+      Next
+    </Button>
+    <Link
+      replace={false}
+      to="/"
+    >
+      <Button
+        active={false}
+        block={true}
+        bsClass="btn"
+        bsSize="large"
+        bsStyle="default"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Back
+      </Button>
+    </Link>
+  </form>
+</div>
+`;

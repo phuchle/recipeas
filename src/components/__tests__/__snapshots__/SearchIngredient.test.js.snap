@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchIngredient renders without crashing 1`] = `
+<div>
+  <h4>
+    Search for an ingredient
+  </h4>
+  <form
+    onSubmit={[Function]}
+  >
+    <InputGroup
+      bsClass="input-group"
+    >
+      <FormControl
+        bsClass="form-control"
+        componentClass="input"
+        onChange={[Function]}
+        placeholder="Search"
+        type="text"
+        value=""
+      />
+      <InputGroupButton
+        bsClass="input-group-btn"
+      >
+        <Button
+          active={false}
+          block={false}
+          bsClass="btn"
+          bsStyle="default"
+          className="btn btn-default glyphicon glyphicon-search"
+          disabled={false}
+          type="submit"
+        />
+      </InputGroupButton>
+    </InputGroup>
+  </form>
+  <Link
+    replace={false}
+    to="/modify-ingredients"
+  >
+    <Button
+      active={false}
+      block={true}
+      bsClass="btn"
+      bsSize="large"
+      bsStyle="default"
+      disabled={false}
+      style={
+        Object {
+          "marginBottom": "10px",
+          "marginTop": "10px",
+        }
+      }
+    >
+      Back
+    </Button>
+  </Link>
+  <ListGroup
+    bsClass="list-group"
+  />
+</div>
+`;

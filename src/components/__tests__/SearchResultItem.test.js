@@ -1,15 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import NutrientsList from '../NutrientsList';
+import SearchResultItem from '../SearchResultItem';
 
-const props = {
-  nutrients: {}
-};
-
-describe('NutrientsList', () => {
+describe('SearchResultItem', () => {
   test('renders without crashing', () => {
-    const component = shallow(<NutrientsList {...props} />);
+    const component = shallow(<SearchResultItem />);
     const tree = toJson(component);
 
     expect(tree).toMatchSnapshot();

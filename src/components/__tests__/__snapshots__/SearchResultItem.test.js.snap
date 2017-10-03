@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResultItem renders without crashing 1`] = `
+<ListGroupItem
+  bsClass="list-group-item"
+  listItem={false}
+>
+  <Link
+    replace={false}
+    to={
+      Object {
+        "pathname": "/ingredient-details",
+        "state": Object {
+          "dbNumber": undefined,
+        },
+      }
+    }
+  />
+</ListGroupItem>
+`;

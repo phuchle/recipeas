@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewRecipe renders without crashing 1`] = `
+<div>
+  <h4>
+    Review Recipe
+  </h4>
+  <Connect(ModifyTitle)
+    nextButton={false}
+  />
+  <Connect(ModifyIngredients)
+    nextButton={false}
+    plusButton={false}
+  />
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Button
+      active={false}
+      block={true}
+      bsClass="btn"
+      bsSize="large"
+      bsStyle="primary"
+      disabled={false}
+      onClick={[Function]}
+      style={Object {}}
+    >
+      Submit
+    </Button>
+  </Link>
+  <Link
+    replace={false}
+    to="/modify-ingredients"
+  >
+    <Button
+      active={false}
+      block={true}
+      bsClass="btn"
+      bsSize="large"
+      bsStyle="default"
+      disabled={false}
+    >
+      Back
+    </Button>
+  </Link>
+</div>
+`;

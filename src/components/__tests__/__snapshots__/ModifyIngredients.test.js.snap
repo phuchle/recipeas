@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModifyIngredients renders without crashing 1`] = `
+<div>
+  <h4>
+    Ingredients
+    <Link
+      replace={false}
+      to="/search-ingredient"
+    >
+      <PlusButton
+        className="pull-right"
+      />
+    </Link>
+  </h4>
+  <ListGroup
+    bsClass="list-group"
+    style={
+      Object {
+        "marginTop": "25px",
+      }
+    }
+  />
+  <Pager
+    bsClass="pager"
+  >
+    <Link
+      replace={false}
+      to="/review"
+    >
+      <Button
+        active={false}
+        block={true}
+        bsClass="btn"
+        bsSize="large"
+        bsStyle="primary"
+        disabled={false}
+      >
+        Next
+      </Button>
+    </Link>
+    <Link
+      replace={false}
+      to="/modify-title"
+    >
+      <Button
+        active={false}
+        block={true}
+        bsClass="btn"
+        bsSize="large"
+        bsStyle="default"
+        disabled={false}
+      >
+        Back
+      </Button>
+    </Link>
+  </Pager>
+</div>
+`;
